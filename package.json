@@ -1,0 +1,9 @@
+{
+  "name": "apk-directory-pro",
+  "private": true,
+  "scripts": {
+    "build": "./scripts/build-zips.sh",
+    "test:plugin": "cd apk-directory-core && composer test",
+    "lint:php": "find apk-directory-core apk-directory-pro -name '*.php' -not -path '*/vendor/*' -print0 | xargs -0 -n1 php -l"
+  }
+}

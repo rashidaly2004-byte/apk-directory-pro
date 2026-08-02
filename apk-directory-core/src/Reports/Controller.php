@@ -1,0 +1,96 @@
+<?php
+
+namespace APD\Core\Reports;
+
+final class Controller {
+
+	public const POST_TYPE = 'adp_report';
+
+	public function register(): void {
+		add_action( 'init', [ $this, 'register_post_type' ] );
+		add_action( 'rest_api_init', [ $this, 'register_routes' ] );
+	}
+
+	public function register_post_type(): void {
+		register_post_type(
+			self::POST_TYPE,
+			[
+				'public'             => false,
+				'publicly_queryable' => false,
+				'show_ui'            => true,
+				'show_in_menu'       => 'edit.php?post_type=adp_app',
+				'labels'             => [
+					'name'          => __( 'App Reports', 'apk-directory-pro' ),
+					'singular_name' => __( 'App Report', 'apk-directory-pro' ),
+				],
+				'supports'           => [ 'title', 'editor' ],
+				'capability_type'    => 'post',
+				'map_meta_cap'       => true,
+			]
+		);
+	}
+
+	public function register_routes(): void {
+		register_rest_route(
+			'adp/v1',
+			'/apps/(?P<id>\d+)/report',
+			[
+				'methods'             => 'POST',
+				'callback'            => [ $this, 'submit_report' ],
+				'permission_callback' => '__return_true',
+			]
+		);
+	}
+
+	public function submit_report( \WP_REST_Request $request ): \WP_REST_Response {
+		$app_id = (int) $request->get_param( 'id' );
+		$reason = sanitize_text_field( $request->get_param( 'reason' ) ?? '' );
+		$details = sanitize_textarea_field( $request->get_param( 'details' ) ?? '' );
+		$email   = sanitize_email( $request->get_param( 'email' ) ?? '' );
+		$consent = (bool) $request->get_param( 'consent' );
+
+		$allowed_reasons = [ 'broken_link', 'outdated', 'malware', 'copyright', 'incorrect', 'other' ];
+		if ( ! in_array( $reason, $allowed_reasons, true ) ) {
+			return new \WP_REST_Response( [ 'error' => 'invalid_reason' ], 400 );
+		}
+
+		if ( ! $consent ) {
+			return new \WP_REST_Response( [ 'error' => 'consent_required' ], 400 );
+		}
+
+		// Honeypot via header or param.
+		if ( $request->get_param( 'hp' ) ) {
+			return new \WP_REST_Response( [ 'success' => true ], 200 );
+		}
+
+		$ip_key = 'adp_report_' . md5( $_SERVER['REMOTE_ADDR'] ?? '' );
+		if ( (int) get_transient( $ip_key ) >= 5 ) {
+			return new \WP_REST_Response( [ 'error' => 'rate_limited' ], 429 );
+		}
+		set_transient( $ip_key, (int) get_transient( $ip_key ) + 1, 3600 );
+
+		$post_id = wp_insert_post(
+			[
+				'post_type'    => self::POST_TYPE,
+				'post_status'  => 'private',
+				'post_title'   => sprintf( 'Report: App %d — %s', $app_id, $reason ),
+				'post_content' => $details,
+			],
+			true
+		);
+
+		if ( is_wp_error( $post_id ) ) {
+			return new \WP_REST_Response( [ 'error' => 'save_failed' ], 500 );
+		}
+
+		update_post_meta( $post_id, '_adp_report_app_id', $app_id );
+		update_post_meta( $post_id, '_adp_report_reason', $reason );
+		if ( $email ) {
+			update_post_meta( $post_id, '_adp_report_email', $email );
+		}
+
+		do_action( 'adp_report_submitted', $post_id, $app_id, $reason );
+
+		return new \WP_REST_Response( [ 'success' => true ], 201 );
+	}
+}

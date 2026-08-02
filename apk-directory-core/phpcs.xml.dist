@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<ruleset name="APK Directory Core">
+    <description>WordPress Coding Standards for APK Directory Core</description>
+    <file>./src</file>
+    <file>./apk-directory-core.php</file>
+    <rule ref="WordPress"/>
+    <rule ref="WordPress-Extra"/>
+    <config name="testVersion" value="8.1-"/>
+</ruleset>

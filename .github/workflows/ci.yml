@@ -1,0 +1,42 @@
+name: CI
+
+on:
+  push:
+    branches: [main, 'cursor/**']
+  pull_request:
+    branches: [main]
+
+jobs:
+  php-lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: PHP syntax check — plugin
+        run: find apk-directory-core -name '*.php' -not -path '*/vendor/*' -print0 | xargs -0 -n1 php -l
+      - name: PHP syntax check — theme
+        run: find apk-directory-pro -name '*.php' -not -path '*/vendor/*' -print0 | xargs -0 -n1 php -l
+
+  phpcs:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: php-actions/composer@v6
+        with:
+          php_version: '8.2'
+          php_extensions: mbstring
+          command: install
+          working_dir: apk-directory-core
+      - name: PHPCS plugin
+        run: cd apk-directory-core && ./vendor/bin/phpcs --standard=phpcs.xml.dist || true
+
+  build-zips:
+    runs-on: ubuntu-latest
+    needs: [php-lint]
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build release ZIPs
+        run: chmod +x scripts/build-zips.sh && ./scripts/build-zips.sh
+      - uses: actions/upload-artifact@v4
+        with:
+          name: release-zips
+          path: dist/*.zip

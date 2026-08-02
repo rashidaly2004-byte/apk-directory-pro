@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<ruleset name="APK Directory Pro Theme">
+    <description>WordPress Coding Standards for APK Directory Pro Theme</description>
+    <file>./inc</file>
+    <file>./functions.php</file>
+    <rule ref="WordPress"/>
+    <config name="testVersion" value="8.1-"/>
+</ruleset>
