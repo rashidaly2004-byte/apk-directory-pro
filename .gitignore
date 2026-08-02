@@ -1,7 +1,10 @@
 /.wordpress-test/
 /node_modules/
 /vendor/
+**/vendor/
 /dist/
 /.tools/
 *.log
+test-results/
+playwright-report/
 .lighthouseci/
