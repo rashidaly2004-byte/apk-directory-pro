@@ -10,3 +10,8 @@
 test-results/
 playwright-report/
 .lighthouseci/
+
+# Production release ZIPs only (ignore any other dist artifacts)
+dist/*
+!dist/apk-directory-core.zip
+!dist/apk-directory-pro-theme.zip
