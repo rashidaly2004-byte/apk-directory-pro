@@ -60,7 +60,7 @@ final class Repository {
 	public function find( int $id ): ?array {
 		global $wpdb;
 		$row = $wpdb->get_row(
-			$wpdb->prepare( 'SELECT * FROM ' . self::table_name() . ' WHERE id = %d', $id ),
+			$wpdb->prepare( 'SELECT * FROM %i WHERE id = %d', self::table_name(), $id ),
 			ARRAY_A
 		);
 		return $row ?: null;
@@ -70,7 +70,8 @@ final class Repository {
 		global $wpdb;
 		return $wpdb->get_results(
 			$wpdb->prepare(
-				'SELECT * FROM ' . self::table_name() . ' WHERE app_id = %d ORDER BY is_current DESC, release_date DESC, id DESC LIMIT %d OFFSET %d',
+				'SELECT * FROM %i WHERE app_id = %d ORDER BY is_current DESC, release_date DESC, id DESC LIMIT %d OFFSET %d',
+				self::table_name(),
 				$app_id,
 				$limit,
 				$offset
@@ -82,7 +83,7 @@ final class Repository {
 	public function count_by_app( int $app_id ): int {
 		global $wpdb;
 		return (int) $wpdb->get_var(
-			$wpdb->prepare( 'SELECT COUNT(*) FROM ' . self::table_name() . ' WHERE app_id = %d', $app_id )
+			$wpdb->prepare( 'SELECT COUNT(*) FROM %i WHERE app_id = %d', self::table_name(), $app_id )
 		);
 	}
 
@@ -90,7 +91,8 @@ final class Repository {
 		global $wpdb;
 		$row = $wpdb->get_row(
 			$wpdb->prepare(
-				'SELECT * FROM ' . self::table_name() . ' WHERE app_id = %d AND is_current = 1 LIMIT 1',
+				'SELECT * FROM %i WHERE app_id = %d AND is_current = 1 LIMIT 1',
+				self::table_name(),
 				$app_id
 			),
 			ARRAY_A
@@ -116,10 +118,11 @@ final class Repository {
 
 	public function set_current( int $app_id, int $version_id ): void {
 		global $wpdb;
-		$table = self::table_name();
-		$wpdb->query( $wpdb->prepare( "UPDATE {$table} SET is_current = 0 WHERE app_id = %d", $app_id ) );
+		$wpdb->query(
+			$wpdb->prepare( 'UPDATE %i SET is_current = 0 WHERE app_id = %d', self::table_name(), $app_id )
+		);
 		$wpdb->update(
-			$table,
+			self::table_name(),
 			array( 'is_current' => 1 ),
 			array(
 				'id'     => $version_id,

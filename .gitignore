@@ -1,4 +1,5 @@
 /.wordpress-test/
+/.wordpress-clean/
 /node_modules/
 /vendor/
 **/vendor/

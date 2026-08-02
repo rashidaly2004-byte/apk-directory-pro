@@ -11,7 +11,7 @@ if ( ! $retain ) {
 	global $wpdb;
 
 	$table = $wpdb->prefix . 'adp_versions';
-	$wpdb->query( "DROP TABLE IF EXISTS {$table}" ); // phpcs:ignore WordPress.DB.PreparedSQL
+	$wpdb->query( $wpdb->prepare( 'DROP TABLE IF EXISTS %i', $table ) );
 
 	delete_option( 'adp_db_version' );
 	delete_option( 'adp_retain_data_on_uninstall' );

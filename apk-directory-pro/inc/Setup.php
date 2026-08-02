@@ -14,6 +14,7 @@ final class Setup {
 
 		add_theme_support( 'title-tag' );
 		add_theme_support( 'post-thumbnails' );
+		add_theme_support( 'automatic-feed-links' );
 		add_theme_support( 'html5', array( 'search-form', 'comment-form', 'comment-list', 'gallery', 'caption', 'style', 'script' ) );
 		add_theme_support( 'custom-logo', array(
 			'height'      => 48,
@@ -24,6 +25,7 @@ final class Setup {
 		add_theme_support( 'responsive-embeds' );
 		add_theme_support( 'wp-block-styles' );
 		add_theme_support( 'editor-styles' );
+		add_editor_style( 'assets/css/main.css' );
 		add_theme_support( 'align-wide' );
 
 		set_post_thumbnail_size( 300, 300, true );

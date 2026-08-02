@@ -104,6 +104,14 @@ $verified      = (bool) adp_get_meta( $post_id, 'verified' );
 					<?php get_template_part( 'template-parts/app/toc' ); ?>
 				<?php endif; ?>
 				<?php the_content(); ?>
+				<?php
+				wp_link_pages(
+					array(
+						'before' => '<div class="adp-page-links"><span class="adp-page-links__label">' . esc_html__( 'Pages:', 'apk-directory-pro' ) . '</span>',
+						'after'  => '</div>',
+					)
+				);
+				?>
 			</div>
 
 			<?php if ( $whats_new = adp_get_meta( $post_id, 'whats_new' ) ) : ?>

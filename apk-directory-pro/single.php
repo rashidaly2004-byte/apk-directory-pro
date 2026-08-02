@@ -19,6 +19,14 @@ get_header();
 					<div class="adp-post-featured"><?php the_post_thumbnail( 'large' ); ?></div>
 				<?php endif; ?>
 				<div class="adp-article-content"><?php the_content(); ?></div>
+				<?php
+				wp_link_pages(
+					array(
+						'before' => '<div class="adp-page-links"><span class="adp-page-links__label">' . esc_html__( 'Pages:', 'apk-directory-pro' ) . '</span>',
+						'after'  => '</div>',
+					)
+				);
+				?>
 			</article>
 			<?php comments_template(); ?>
 		<?php endwhile; ?>

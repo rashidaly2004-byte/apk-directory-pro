@@ -2,6 +2,8 @@
 
 namespace APD\Core\Downloads;
 
+use APD\Core\Versions\Repository;
+
 final class Counter {
 
 	private const COOKIE_PREFIX = 'adp_dl_';
@@ -27,13 +29,13 @@ final class Counter {
 		}
 
 		global $wpdb;
-		$table = $wpdb->prefix . 'adp_versions';
+		$table = Repository::table_name();
 		$wpdb->query(
-			$wpdb->prepare( "UPDATE {$table} SET download_count = download_count + 1 WHERE id = %d", $version_id )
+			$wpdb->prepare( 'UPDATE %i SET download_count = download_count + 1 WHERE id = %d', $table, $version_id )
 		);
 
 		$version = $wpdb->get_row(
-			$wpdb->prepare( "SELECT app_id FROM {$table} WHERE id = %d", $version_id ),
+			$wpdb->prepare( 'SELECT app_id FROM %i WHERE id = %d', $table, $version_id ),
 			ARRAY_A
 		);
 		if ( $version ) {

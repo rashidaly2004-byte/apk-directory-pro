@@ -779,3 +779,27 @@ a:hover { color: var(--adp-primary-dark); }
 .adp-report-actions { display: flex; gap: var(--adp-space-3); justify-content: flex-end; }
 .adp-report-status { color: var(--adp-muted); font-size: 0.875rem; }
 
+/* WordPress core content classes */
+.sticky { position: relative; }
+.bypostauthor { border-left: 3px solid var(--adp-primary); padding-left: var(--adp-space-3); }
+.alignleft { float: left; margin: 0 var(--adp-space-4) var(--adp-space-4) 0; }
+.alignright { float: right; margin: 0 0 var(--adp-space-4) var(--adp-space-4); }
+.aligncenter { display: block; margin-inline: auto; clear: both; }
+.wp-caption { max-width: 100%; margin-bottom: var(--adp-space-4); }
+.wp-caption-text { font-size: 0.875rem; color: var(--adp-muted); margin-top: var(--adp-space-2); }
+.gallery-caption { font-size: 0.875rem; color: var(--adp-muted); }
+.screen-reader-text {
+	border: 0;
+	clip: rect(1px, 1px, 1px, 1px);
+	clip-path: inset(50%);
+	height: 1px;
+	margin: -1px;
+	overflow: hidden;
+	padding: 0;
+	position: absolute;
+	width: 1px;
+	word-wrap: normal;
+}
+.adp-page-links { margin-top: var(--adp-space-4); font-size: 0.875rem; }
+.adp-page-links__label { font-weight: 600; margin-right: var(--adp-space-2); }
+
