@@ -7,15 +7,15 @@ use APD\Core\Content\Meta;
 final class Metabox {
 
 	public function register(): void {
-		add_action( 'add_meta_boxes', [ $this, 'add_meta_boxes' ] );
-		add_action( 'save_post_adp_app', [ $this, 'save_meta' ], 10, 2 );
+		add_action( 'add_meta_boxes', array( $this, 'add_meta_boxes' ) );
+		add_action( 'save_post_adp_app', array( $this, 'save_meta' ), 10, 2 );
 	}
 
 	public function add_meta_boxes(): void {
 		add_meta_box(
 			'adp_app_details',
 			__( 'App Details', 'apk-directory-pro' ),
-			[ $this, 'render_details' ],
+			array( $this, 'render_details' ),
 			'adp_app',
 			'normal',
 			'high'
@@ -25,14 +25,14 @@ final class Metabox {
 	public function render_details( \WP_Post $post ): void {
 		wp_nonce_field( 'adp_save_meta', 'adp_meta_nonce' );
 
-		$fields = [
+		$fields = array(
 			'short_description'   => __( 'Short description', 'apk-directory-pro' ),
 			'package_name'        => __( 'Package name', 'apk-directory-pro' ),
 			'current_version'     => __( 'Current version', 'apk-directory-pro' ),
 			'android_requirement' => __( 'Android requirement', 'apk-directory-pro' ),
 			'store_url'           => __( 'Store URL', 'apk-directory-pro' ),
 			'official_url'        => __( 'Official URL', 'apk-directory-pro' ),
-		];
+		);
 
 		echo '<table class="form-table">';
 		foreach ( $fields as $key => $label ) {
@@ -44,6 +44,7 @@ final class Metabox {
 	}
 
 	public function save_meta( int $post_id, \WP_Post $post ): void {
+		unset( $post );
 		if ( ! isset( $_POST['adp_meta_nonce'] ) || ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['adp_meta_nonce'] ) ), 'adp_save_meta' ) ) {
 			return;
 		}
@@ -59,7 +60,7 @@ final class Metabox {
 			if ( ! isset( $_POST[ $field ] ) ) {
 				continue;
 			}
-			$raw   = wp_unslash( $_POST[ $field ] );
+			$raw   = wp_unslash( $_POST[ $field ] ); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- sanitized via callback below
 			$clean = isset( $config['sanitize_callback'] ) && is_callable( $config['sanitize_callback'] )
 				? call_user_func( $config['sanitize_callback'], $raw )
 				: sanitize_text_field( $raw );

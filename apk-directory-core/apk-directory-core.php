@@ -11,6 +11,8 @@
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain:       apk-directory-pro
  * Domain Path:       /languages
+ *
+ * @package APK_Directory_Core
  */
 
 defined( 'ABSPATH' ) || exit;

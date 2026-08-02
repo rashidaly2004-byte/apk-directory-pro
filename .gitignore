@@ -1,0 +1,7 @@
+/.wordpress-test/
+/node_modules/
+/vendor/
+/dist/
+/.tools/
+*.log
+.lighthouseci/

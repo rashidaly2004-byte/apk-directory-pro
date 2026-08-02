@@ -7,12 +7,12 @@ final class AppPostType {
 	public const POST_TYPE = 'adp_app';
 
 	public function register(): void {
-		add_action( 'init', [ $this, 'register_post_type' ] );
-		add_filter( 'enter_title_here', [ $this, 'title_placeholder' ], 10, 2 );
+		add_action( 'init', array( $this, 'register_post_type' ) );
+		add_filter( 'enter_title_here', array( $this, 'title_placeholder' ), 10, 2 );
 	}
 
 	public function register_post_type(): void {
-		$labels = [
+		$labels = array(
 			'name'               => __( 'Apps', 'apk-directory-pro' ),
 			'singular_name'      => __( 'App', 'apk-directory-pro' ),
 			'menu_name'          => __( 'Apps', 'apk-directory-pro' ),
@@ -25,26 +25,26 @@ final class AppPostType {
 			'not_found'          => __( 'No apps found.', 'apk-directory-pro' ),
 			'not_found_in_trash' => __( 'No apps found in Trash.', 'apk-directory-pro' ),
 			'all_items'          => __( 'All Apps', 'apk-directory-pro' ),
-		];
+		);
 
 		register_post_type(
 			self::POST_TYPE,
-			[
-				'labels'              => $labels,
-				'public'              => true,
-				'publicly_queryable'  => true,
-				'show_ui'             => true,
-				'show_in_menu'        => true,
-				'menu_icon'           => 'dashicons-smartphone',
-				'menu_position'       => 5,
-				'query_var'           => true,
-				'rewrite'             => [
+			array(
+				'labels'             => $labels,
+				'public'             => true,
+				'publicly_queryable' => true,
+				'show_ui'            => true,
+				'show_in_menu'       => true,
+				'menu_icon'          => 'dashicons-smartphone',
+				'menu_position'      => 5,
+				'query_var'          => true,
+				'rewrite'            => array(
 					'slug'       => 'app',
 					'with_front' => false,
-				],
-				'has_archive'         => 'apps',
-				'hierarchical'        => false,
-				'supports'            => [
+				),
+				'has_archive'        => 'apps',
+				'hierarchical'       => false,
+				'supports'           => array(
 					'title',
 					'editor',
 					'excerpt',
@@ -53,17 +53,17 @@ final class AppPostType {
 					'revisions',
 					'comments',
 					'custom-fields',
-				],
-				'show_in_rest'        => true,
-				'capability_type'     => 'post',
-				'map_meta_cap'        => true,
-				'taxonomies'          => [
+				),
+				'show_in_rest'       => true,
+				'capability_type'    => 'post',
+				'map_meta_cap'       => true,
+				'taxonomies'         => array(
 					'adp_app_category',
 					'adp_developer',
 					'adp_platform',
 					'adp_tag',
-				],
-			]
+				),
+			)
 		);
 	}
 

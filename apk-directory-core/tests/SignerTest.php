@@ -8,13 +8,10 @@ use PHPUnit\Framework\TestCase;
 class SignerTest extends TestCase {
 
 	public function test_token_roundtrip(): void {
-		if ( ! function_exists( 'wp_generate_password' ) ) {
-			$this->markTestSkipped( 'WordPress not loaded' );
-		}
 		$signer = new Signer();
 		$token  = $signer->create_token( 42, 7 );
 		$data   = $signer->validate_token( $token );
-		$this->assertNotNull( $data );
+		$this->assertNotNull( $data, 'Token should validate' );
 		$this->assertSame( 42, $data['version_id'] );
 		$this->assertSame( 7, $data['app_id'] );
 	}

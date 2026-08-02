@@ -5,8 +5,8 @@ namespace APD\Core\Admin;
 final class Settings {
 
 	public function register(): void {
-		add_action( 'admin_menu', [ $this, 'add_menu' ] );
-		add_action( 'admin_init', [ $this, 'register_settings' ] );
+		add_action( 'admin_menu', array( $this, 'add_menu' ) );
+		add_action( 'admin_init', array( $this, 'register_settings' ) );
 	}
 
 	public function add_menu(): void {
@@ -16,26 +16,38 @@ final class Settings {
 			__( 'Settings', 'apk-directory-pro' ),
 			'manage_options',
 			'adp-settings',
-			[ $this, 'render_page' ]
+			array( $this, 'render_page' )
 		);
 	}
 
 	public function register_settings(): void {
-		register_setting( 'adp_settings', 'adp_category_base', [
-			'type'              => 'string',
-			'default'           => 'category/app',
-			'sanitize_callback' => 'sanitize_title',
-		] );
-		register_setting( 'adp_settings', 'adp_allow_mod_content', [
-			'type'              => 'boolean',
-			'default'           => false,
-			'sanitize_callback' => 'rest_sanitize_boolean',
-		] );
-		register_setting( 'adp_settings', 'adp_download_countdown', [
-			'type'              => 'boolean',
-			'default'           => false,
-			'sanitize_callback' => 'rest_sanitize_boolean',
-		] );
+		register_setting(
+			'adp_settings',
+			'adp_category_base',
+			array(
+				'type'              => 'string',
+				'default'           => 'category/app',
+				'sanitize_callback' => 'sanitize_title',
+			)
+		);
+		register_setting(
+			'adp_settings',
+			'adp_allow_mod_content',
+			array(
+				'type'              => 'boolean',
+				'default'           => false,
+				'sanitize_callback' => 'rest_sanitize_boolean',
+			)
+		);
+		register_setting(
+			'adp_settings',
+			'adp_download_countdown',
+			array(
+				'type'              => 'boolean',
+				'default'           => false,
+				'sanitize_callback' => 'rest_sanitize_boolean',
+			)
+		);
 	}
 
 	public function render_page(): void {

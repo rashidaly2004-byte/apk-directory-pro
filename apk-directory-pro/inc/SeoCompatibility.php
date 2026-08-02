@@ -5,7 +5,7 @@ namespace APD\Theme;
 final class SeoCompatibility {
 
 	public static function init(): void {
-		add_filter( 'adp_output_breadcrumbs', [ self::class, 'maybe_disable_breadcrumbs' ] );
+		add_filter( 'adp_output_breadcrumbs', array( self::class, 'maybe_disable_breadcrumbs' ) );
 	}
 
 	public static function maybe_disable_breadcrumbs( bool $output ): bool {

@@ -5,9 +5,9 @@ namespace APD\Theme;
 final class TemplateHooks {
 
 	public static function init(): void {
-		add_action( 'adp_before_content', [ self::class, 'breadcrumbs' ] );
-		add_filter( 'body_class', [ self::class, 'body_classes' ] );
-		add_filter( 'wp_robots', [ self::class, 'search_noindex' ] );
+		add_action( 'adp_before_content', array( self::class, 'breadcrumbs' ) );
+		add_filter( 'body_class', array( self::class, 'body_classes' ) );
+		add_filter( 'wp_robots', array( self::class, 'search_noindex' ) );
 	}
 
 	public static function breadcrumbs(): void {

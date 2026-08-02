@@ -1,6 +1,8 @@
 <?php
 /**
  * APK Directory Pro bootstrap.
+ *
+ * @package APK_Directory_Pro
  */
 
 defined( 'ABSPATH' ) || exit;

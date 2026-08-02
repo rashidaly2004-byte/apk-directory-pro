@@ -76,7 +76,7 @@ final class Repository {
 				$offset
 			),
 			ARRAY_A
-		) ?: [];
+		) ?: array();
 	}
 
 	public function count_by_app( int $app_id ): int {
@@ -106,19 +106,26 @@ final class Repository {
 
 	public function update( int $id, array $data ): bool {
 		global $wpdb;
-		return (bool) $wpdb->update( self::table_name(), $this->prepare_row( $data ), [ 'id' => $id ] );
+		return (bool) $wpdb->update( self::table_name(), $this->prepare_row( $data ), array( 'id' => $id ) );
 	}
 
 	public function delete( int $id ): bool {
 		global $wpdb;
-		return (bool) $wpdb->delete( self::table_name(), [ 'id' => $id ] );
+		return (bool) $wpdb->delete( self::table_name(), array( 'id' => $id ) );
 	}
 
 	public function set_current( int $app_id, int $version_id ): void {
 		global $wpdb;
 		$table = self::table_name();
 		$wpdb->query( $wpdb->prepare( "UPDATE {$table} SET is_current = 0 WHERE app_id = %d", $app_id ) );
-		$wpdb->update( $table, [ 'is_current' => 1 ], [ 'id' => $version_id, 'app_id' => $app_id ] );
+		$wpdb->update(
+			$table,
+			array( 'is_current' => 1 ),
+			array(
+				'id'     => $version_id,
+				'app_id' => $app_id,
+			)
+		);
 	}
 
 	/**
@@ -126,12 +133,27 @@ final class Repository {
 	 * @return array<string, mixed>
 	 */
 	private function prepare_row( array $data ): array {
-		$allowed = [
-			'app_id', 'version_name', 'version_code', 'release_date', 'changelog',
-			'min_android', 'file_size_bytes', 'file_type', 'architectures_json', 'dpi_json',
-			'download_type', 'attachment_id', 'external_url', 'sha256', 'signature_sha256',
-			'virus_scan_status', 'virus_scan_date', 'is_current', 'download_count',
-		];
+		$allowed = array(
+			'app_id',
+			'version_name',
+			'version_code',
+			'release_date',
+			'changelog',
+			'min_android',
+			'file_size_bytes',
+			'file_type',
+			'architectures_json',
+			'dpi_json',
+			'download_type',
+			'attachment_id',
+			'external_url',
+			'sha256',
+			'signature_sha256',
+			'virus_scan_status',
+			'virus_scan_date',
+			'is_current',
+			'download_count',
+		);
 		return array_intersect_key( $data, array_flip( $allowed ) );
 	}
 }

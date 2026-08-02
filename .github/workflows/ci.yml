@@ -7,31 +7,76 @@ on:
     branches: [main]
 
 jobs:
-  php-lint:
+  php-quality:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: PHP syntax check — plugin
-        run: find apk-directory-core -name '*.php' -not -path '*/vendor/*' -print0 | xargs -0 -n1 php -l
-      - name: PHP syntax check — theme
-        run: find apk-directory-pro -name '*.php' -not -path '*/vendor/*' -print0 | xargs -0 -n1 php -l
-
-  phpcs:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: php-actions/composer@v6
+      - uses: shivammathur/setup-php@v2
         with:
-          php_version: '8.2'
-          php_extensions: mbstring
-          command: install
-          working_dir: apk-directory-core
+          php-version: '8.3'
+          extensions: mbstring, xml, curl, zip, mysql
+          coverage: none
+      - name: Install Composer deps — plugin
+        run: composer install --no-interaction
+        working-directory: apk-directory-core
+      - name: Install Composer deps — theme
+        run: composer install --no-interaction
+        working-directory: apk-directory-pro
+      - name: PHP syntax check
+        run: find apk-directory-core apk-directory-pro -name '*.php' -not -path '*/vendor/*' -print0 | xargs -0 -n1 php -l
       - name: PHPCS plugin
-        run: cd apk-directory-core && ./vendor/bin/phpcs --standard=phpcs.xml.dist || true
+        run: composer phpcs
+        working-directory: apk-directory-core
+      - name: PHPCS theme
+        run: ./vendor/bin/phpcs --standard=phpcs.xml.dist
+        working-directory: apk-directory-pro
+      - name: PHPStan
+        run: composer phpstan
+        working-directory: apk-directory-core
+      - name: PHPUnit
+        run: composer test
+        working-directory: apk-directory-core
+
+  e2e:
+    runs-on: ubuntu-latest
+    needs: php-quality
+    steps:
+      - uses: actions/checkout@v4
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.3'
+          extensions: mbstring, xml, curl, zip, mysql
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install MariaDB
+        run: |
+          sudo apt-get update -qq
+          sudo DEBIAN_FRONTEND=noninteractive apt-get install -y mariadb-server
+          sudo service mariadb start
+          sudo mysql -e "CREATE DATABASE IF NOT EXISTS adp_test; CREATE USER IF NOT EXISTS 'adp'@'localhost' IDENTIFIED BY 'adp'; GRANT ALL ON adp_test.* TO 'adp'@'localhost'; FLUSH PRIVILEGES;"
+      - name: Setup WordPress test site
+        run: |
+          curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
+          chmod +x wp-cli.phar
+          sudo mv wp-cli.phar /usr/local/bin/wp
+          chmod +x scripts/setup-wordpress-test.sh
+          ./scripts/setup-wordpress-test.sh
+      - name: Start WordPress server
+        run: |
+          cd .wordpress-test
+          wp server --host=127.0.0.1 --port=8080 &
+          sleep 3
+      - name: Install npm deps
+        run: npm ci || npm install
+      - name: Playwright smoke tests
+        run: WP_BASE_URL=http://127.0.0.1:8080 npx playwright test --config=playwright.config.js e2e/smoke.spec.ts --project=desktop
+      - name: Playwright a11y tests
+        run: WP_BASE_URL=http://127.0.0.1:8080 npx playwright test --config=playwright.config.js e2e/a11y --project=desktop
 
   build-zips:
     runs-on: ubuntu-latest
-    needs: [php-lint]
+    needs: [php-quality, e2e]
     steps:
       - uses: actions/checkout@v4
       - name: Build release ZIPs

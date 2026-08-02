@@ -5,8 +5,8 @@ namespace APD\Core\Admin;
 final class SetupWizard {
 
 	public function register(): void {
-		add_action( 'admin_init', [ $this, 'maybe_redirect' ] );
-		add_action( 'admin_menu', [ $this, 'add_menu' ] );
+		add_action( 'admin_init', array( $this, 'maybe_redirect' ) );
+		add_action( 'admin_menu', array( $this, 'add_menu' ) );
 	}
 
 	public function maybe_redirect(): void {
@@ -28,7 +28,7 @@ final class SetupWizard {
 			__( 'Setup', 'apk-directory-pro' ),
 			'manage_options',
 			'adp-setup',
-			[ $this, 'render_page' ]
+			array( $this, 'render_page' )
 		);
 	}
 
@@ -57,29 +57,36 @@ final class SetupWizard {
 	}
 
 	private function create_pages(): void {
-		$pages = [
-			'Home'        => '',
-			'Apps'        => '',
-			'Games'       => '',
-			'Blog'        => '',
-			'About'       => '',
-			'Contact'     => '',
-			'Privacy'     => '',
-			'Disclaimer'  => '',
-			'DMCA'        => '',
-			'Submit App'  => '',
-		];
+		$pages = array(
+			'Home'       => '',
+			'Apps'       => '',
+			'Games'      => '',
+			'Blog'       => '',
+			'About'      => '',
+			'Contact'    => '',
+			'Privacy'    => '',
+			'Disclaimer' => '',
+			'DMCA'       => '',
+			'Submit App' => '',
+		);
 
 		foreach ( $pages as $title => $content ) {
-			$existing = get_page_by_title( $title );
-			if ( ! $existing ) {
+			$existing = get_posts(
+				array(
+					'post_type'      => 'page',
+					'title'          => $title,
+					'post_status'    => 'any',
+					'posts_per_page' => 1,
+				)
+			);
+			if ( empty( $existing ) ) {
 				wp_insert_post(
-					[
+					array(
 						'post_title'   => $title,
 						'post_content' => $content,
 						'post_status'  => 'publish',
 						'post_type'    => 'page',
-					]
+					)
 				);
 			}
 		}

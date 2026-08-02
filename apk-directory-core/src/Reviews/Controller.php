@@ -9,47 +9,47 @@ final class Controller {
 	public const COMMENT_TYPE = 'adp_review';
 
 	public function register(): void {
-		add_action( 'rest_api_init', [ $this, 'register_routes' ] );
-		add_filter( 'preprocess_comment', [ $this, 'validate_review' ] );
-		add_filter( 'wp_insert_comment_data', [ $this, 'set_comment_type' ], 10, 2 );
-		add_action( 'comment_post', [ $this, 'save_rating_meta' ], 10, 3 );
+		add_action( 'rest_api_init', array( $this, 'register_routes' ) );
+		add_filter( 'preprocess_comment', array( $this, 'validate_review' ) );
+		add_filter( 'wp_insert_comment_data', array( $this, 'set_comment_type' ), 10, 2 );
+		add_action( 'comment_post', array( $this, 'save_rating_meta' ), 10, 3 );
 	}
 
 	public function register_routes(): void {
 		register_rest_route(
 			'adp/v1',
 			'/apps/(?P<id>\d+)/reviews',
-			[
+			array(
 				'methods'             => 'GET',
-				'callback'            => [ $this, 'get_reviews' ],
+				'callback'            => array( $this, 'get_reviews' ),
 				'permission_callback' => '__return_true',
-			]
+			)
 		);
 	}
 
 	public function get_reviews( \WP_REST_Request $request ): \WP_REST_Response {
-		$app_id = (int) $request->get_param( 'id' );
+		$app_id   = (int) $request->get_param( 'id' );
 		$comments = get_comments(
-			[
+			array(
 				'post_id' => $app_id,
 				'type'    => self::COMMENT_TYPE,
 				'status'  => 'approve',
 				'number'  => 20,
-			]
+			)
 		);
 
-		$data = [];
+		$data = array();
 		foreach ( $comments as $comment ) {
-			$data[] = [
+			$data[] = array(
 				'id'      => $comment->comment_ID,
 				'author'  => $comment->comment_author,
 				'content' => $comment->comment_content,
 				'rating'  => (int) get_comment_meta( $comment->comment_ID, '_adp_rating', true ),
 				'date'    => $comment->comment_date,
-			];
+			);
 		}
 
-		return new \WP_REST_Response( [ 'reviews' => $data ], 200 );
+		return new \WP_REST_Response( array( 'reviews' => $data ), 200 );
 	}
 
 	public function validate_review( array $commentdata ): array {
@@ -92,12 +92,12 @@ final class Controller {
 
 	public static function get_average_rating( int $app_id ): ?float {
 		$comments = get_comments(
-			[
+			array(
 				'post_id' => $app_id,
 				'type'    => self::COMMENT_TYPE,
 				'status'  => 'approve',
 				'count'   => true,
-			]
+			)
 		);
 
 		if ( ! $comments ) {
@@ -107,18 +107,18 @@ final class Controller {
 		$total = 0;
 		$count = 0;
 		$all   = get_comments(
-			[
+			array(
 				'post_id' => $app_id,
 				'type'    => self::COMMENT_TYPE,
 				'status'  => 'approve',
-			]
+			)
 		);
 
 		foreach ( $all as $c ) {
 			$r = (int) get_comment_meta( $c->comment_ID, '_adp_rating', true );
 			if ( $r >= 1 && $r <= 5 ) {
 				$total += $r;
-				$count++;
+				++$count;
 			}
 		}
 

@@ -1,0 +1,611 @@
+parameters:
+	ignoreErrors:
+		-
+			message: "#^Function get_current_screen not found\\.$#"
+			count: 1
+			path: src/Admin/EditorPanels.php
+
+		-
+			message: "#^Function wp_enqueue_script not found\\.$#"
+			count: 1
+			path: src/Admin/EditorPanels.php
+
+		-
+			message: "#^Function add_meta_box not found\\.$#"
+			count: 1
+			path: src/Admin/Metabox.php
+
+		-
+			message: "#^Function esc_attr not found\\.$#"
+			count: 4
+			path: src/Admin/Metabox.php
+
+		-
+			message: "#^Function esc_html not found\\.$#"
+			count: 1
+			path: src/Admin/Metabox.php
+
+		-
+			message: "#^Function wp_nonce_field not found\\.$#"
+			count: 1
+			path: src/Admin/Metabox.php
+
+		-
+			message: "#^Function wp_verify_nonce not found\\.$#"
+			count: 1
+			path: src/Admin/Metabox.php
+
+		-
+			message: "#^Function add_submenu_page not found\\.$#"
+			count: 1
+			path: src/Admin/Settings.php
+
+		-
+			message: "#^Function checked not found\\.$#"
+			count: 2
+			path: src/Admin/Settings.php
+
+		-
+			message: "#^Function do_settings_sections not found\\.$#"
+			count: 1
+			path: src/Admin/Settings.php
+
+		-
+			message: "#^Function esc_attr not found\\.$#"
+			count: 1
+			path: src/Admin/Settings.php
+
+		-
+			message: "#^Function esc_html_e not found\\.$#"
+			count: 4
+			path: src/Admin/Settings.php
+
+		-
+			message: "#^Function register_setting not found\\.$#"
+			count: 3
+			path: src/Admin/Settings.php
+
+		-
+			message: "#^Function settings_fields not found\\.$#"
+			count: 1
+			path: src/Admin/Settings.php
+
+		-
+			message: "#^Function submit_button not found\\.$#"
+			count: 1
+			path: src/Admin/Settings.php
+
+		-
+			message: "#^Function add_submenu_page not found\\.$#"
+			count: 1
+			path: src/Admin/SetupWizard.php
+
+		-
+			message: "#^Function admin_url not found\\.$#"
+			count: 1
+			path: src/Admin/SetupWizard.php
+
+		-
+			message: "#^Function check_admin_referer not found\\.$#"
+			count: 1
+			path: src/Admin/SetupWizard.php
+
+		-
+			message: "#^Function delete_transient not found\\.$#"
+			count: 1
+			path: src/Admin/SetupWizard.php
+
+		-
+			message: "#^Function esc_html__ not found\\.$#"
+			count: 1
+			path: src/Admin/SetupWizard.php
+
+		-
+			message: "#^Function esc_html_e not found\\.$#"
+			count: 3
+			path: src/Admin/SetupWizard.php
+
+		-
+			message: "#^Function flush_rewrite_rules not found\\.$#"
+			count: 1
+			path: src/Admin/SetupWizard.php
+
+		-
+			message: "#^Function get_transient not found\\.$#"
+			count: 1
+			path: src/Admin/SetupWizard.php
+
+		-
+			message: "#^Function is_network_admin not found\\.$#"
+			count: 1
+			path: src/Admin/SetupWizard.php
+
+		-
+			message: "#^Function submit_button not found\\.$#"
+			count: 1
+			path: src/Admin/SetupWizard.php
+
+		-
+			message: "#^Function wp_doing_ajax not found\\.$#"
+			count: 1
+			path: src/Admin/SetupWizard.php
+
+		-
+			message: "#^Function wp_nonce_field not found\\.$#"
+			count: 1
+			path: src/Admin/SetupWizard.php
+
+		-
+			message: "#^Function wp_safe_redirect not found\\.$#"
+			count: 1
+			path: src/Admin/SetupWizard.php
+
+		-
+			message: "#^Call to static method log\\(\\) on an unknown class WP_CLI\\.$#"
+			count: 2
+			path: src/Cli/Commands.php
+
+		-
+			message: "#^Call to static method success\\(\\) on an unknown class WP_CLI\\.$#"
+			count: 2
+			path: src/Cli/Commands.php
+
+		-
+			message: "#^Function flush_rewrite_rules not found\\.$#"
+			count: 1
+			path: src/Cli/Commands.php
+
+		-
+			message: "#^Function add_filter not found\\.$#"
+			count: 1
+			path: src/Content/AppPostType.php
+
+		-
+			message: "#^Function register_post_type not found\\.$#"
+			count: 1
+			path: src/Content/AppPostType.php
+
+		-
+			message: "#^Function get_role not found\\.$#"
+			count: 2
+			path: src/Content/Capabilities.php
+
+		-
+			message: "#^Function register_post_meta not found\\.$#"
+			count: 1
+			path: src/Content/Meta.php
+
+		-
+			message: "#^Function esc_attr not found\\.$#"
+			count: 1
+			path: src/Content/Taxonomies.php
+
+		-
+			message: "#^Function esc_html_e not found\\.$#"
+			count: 4
+			path: src/Content/Taxonomies.php
+
+		-
+			message: "#^Function esc_textarea not found\\.$#"
+			count: 1
+			path: src/Content/Taxonomies.php
+
+		-
+			message: "#^Function get_term_meta not found\\.$#"
+			count: 2
+			path: src/Content/Taxonomies.php
+
+		-
+			message: "#^Function register_taxonomy not found\\.$#"
+			count: 4
+			path: src/Content/Taxonomies.php
+
+		-
+			message: "#^Function sanitize_hex_color not found\\.$#"
+			count: 1
+			path: src/Content/Taxonomies.php
+
+		-
+			message: "#^Function update_term_meta not found\\.$#"
+			count: 2
+			path: src/Content/Taxonomies.php
+
+		-
+			message: "#^Parameter \\$term of method APD\\\\Core\\\\Content\\\\Taxonomies\\:\\:term_edit_fields\\(\\) has invalid type WP_Term\\.$#"
+			count: 1
+			path: src/Content/Taxonomies.php
+
+		-
+			message: "#^Function add_filter not found\\.$#"
+			count: 1
+			path: src/Downloads/Controller.php
+
+		-
+			message: "#^Function add_query_arg not found\\.$#"
+			count: 1
+			path: src/Downloads/Controller.php
+
+		-
+			message: "#^Function add_rewrite_rule not found\\.$#"
+			count: 2
+			path: src/Downloads/Controller.php
+
+		-
+			message: "#^Function add_rewrite_tag not found\\.$#"
+			count: 3
+			path: src/Downloads/Controller.php
+
+		-
+			message: "#^Function esc_html not found\\.$#"
+			count: 4
+			path: src/Downloads/Controller.php
+
+		-
+			message: "#^Function esc_html__ not found\\.$#"
+			count: 9
+			path: src/Downloads/Controller.php
+
+		-
+			message: "#^Function esc_url not found\\.$#"
+			count: 1
+			path: src/Downloads/Controller.php
+
+		-
+			message: "#^Function get_attached_file not found\\.$#"
+			count: 1
+			path: src/Downloads/Controller.php
+
+		-
+			message: "#^Function get_page_by_path not found\\.$#"
+			count: 1
+			path: src/Downloads/Controller.php
+
+		-
+			message: "#^Function get_query_var not found\\.$#"
+			count: 4
+			path: src/Downloads/Controller.php
+
+		-
+			message: "#^Function nocache_headers not found\\.$#"
+			count: 1
+			path: src/Downloads/Controller.php
+
+		-
+			message: "#^Function sanitize_file_name not found\\.$#"
+			count: 1
+			path: src/Downloads/Controller.php
+
+		-
+			message: "#^Function setup_postdata not found\\.$#"
+			count: 1
+			path: src/Downloads/Controller.php
+
+		-
+			message: "#^Function status_header not found\\.$#"
+			count: 1
+			path: src/Downloads/Controller.php
+
+		-
+			message: "#^Function wp_die not found\\.$#"
+			count: 8
+			path: src/Downloads/Controller.php
+
+		-
+			message: "#^Function wp_safe_redirect not found\\.$#"
+			count: 1
+			path: src/Downloads/Controller.php
+
+		-
+			message: "#^Function wp_upload_dir not found\\.$#"
+			count: 1
+			path: src/Downloads/Controller.php
+
+		-
+			message: "#^Function is_ssl not found\\.$#"
+			count: 1
+			path: src/Downloads/Counter.php
+
+		-
+			message: "#^Function add_submenu_page not found\\.$#"
+			count: 1
+			path: src/Migration/AppynMigrator.php
+
+		-
+			message: "#^Function admin_url not found\\.$#"
+			count: 1
+			path: src/Migration/AppynMigrator.php
+
+		-
+			message: "#^Function check_admin_referer not found\\.$#"
+			count: 3
+			path: src/Migration/AppynMigrator.php
+
+		-
+			message: "#^Function check_ajax_referer not found\\.$#"
+			count: 2
+			path: src/Migration/AppynMigrator.php
+
+		-
+			message: "#^Function esc_html not found\\.$#"
+			count: 10
+			path: src/Migration/AppynMigrator.php
+
+		-
+			message: "#^Function esc_html_e not found\\.$#"
+			count: 12
+			path: src/Migration/AppynMigrator.php
+
+		-
+			message: "#^Function submit_button not found\\.$#"
+			count: 3
+			path: src/Migration/AppynMigrator.php
+
+		-
+			message: "#^Function wp_create_nonce not found\\.$#"
+			count: 1
+			path: src/Migration/AppynMigrator.php
+
+		-
+			message: "#^Function wp_enqueue_script not found\\.$#"
+			count: 1
+			path: src/Migration/AppynMigrator.php
+
+		-
+			message: "#^Function wp_localize_script not found\\.$#"
+			count: 1
+			path: src/Migration/AppynMigrator.php
+
+		-
+			message: "#^Function wp_nonce_field not found\\.$#"
+			count: 3
+			path: src/Migration/AppynMigrator.php
+
+		-
+			message: "#^Function wp_send_json_error not found\\.$#"
+			count: 2
+			path: src/Migration/AppynMigrator.php
+
+		-
+			message: "#^Function wp_send_json_success not found\\.$#"
+			count: 2
+			path: src/Migration/AppynMigrator.php
+
+		-
+			message: "#^Function wp_parse_args not found\\.$#"
+			count: 1
+			path: src/Migration/MigrationService.php
+
+		-
+			message: "#^Call to static method add_command\\(\\) on an unknown class WP_CLI\\.$#"
+			count: 1
+			path: src/Plugin.php
+
+		-
+			message: "#^Function flush_rewrite_rules not found\\.$#"
+			count: 2
+			path: src/Plugin.php
+
+		-
+			message: "#^Function is_admin not found\\.$#"
+			count: 1
+			path: src/Plugin.php
+
+		-
+			message: "#^Function load_plugin_textdomain not found\\.$#"
+			count: 1
+			path: src/Plugin.php
+
+		-
+			message: "#^Function plugin_basename not found\\.$#"
+			count: 1
+			path: src/Plugin.php
+
+		-
+			message: "#^Function register_activation_hook not found\\.$#"
+			count: 1
+			path: src/Plugin.php
+
+		-
+			message: "#^Function register_deactivation_hook not found\\.$#"
+			count: 1
+			path: src/Plugin.php
+
+		-
+			message: "#^Function set_transient not found\\.$#"
+			count: 1
+			path: src/Plugin.php
+
+		-
+			message: "#^Parameter \\$query of method APD\\\\Core\\\\Plugin\\:\\:extend_search\\(\\) has invalid type WP_Query\\.$#"
+			count: 1
+			path: src/Plugin.php
+
+		-
+			message: "#^Function register_setting not found\\.$#"
+			count: 1
+			path: src/Privacy.php
+
+		-
+			message: "#^Function do_action not found\\.$#"
+			count: 1
+			path: src/Reports/Controller.php
+
+		-
+			message: "#^Function get_transient not found\\.$#"
+			count: 2
+			path: src/Reports/Controller.php
+
+		-
+			message: "#^Function register_post_type not found\\.$#"
+			count: 1
+			path: src/Reports/Controller.php
+
+		-
+			message: "#^Function register_rest_route not found\\.$#"
+			count: 1
+			path: src/Reports/Controller.php
+
+		-
+			message: "#^Function sanitize_email not found\\.$#"
+			count: 1
+			path: src/Reports/Controller.php
+
+		-
+			message: "#^Function sanitize_textarea_field not found\\.$#"
+			count: 1
+			path: src/Reports/Controller.php
+
+		-
+			message: "#^Function set_transient not found\\.$#"
+			count: 1
+			path: src/Reports/Controller.php
+
+		-
+			message: "#^Function add_filter not found\\.$#"
+			count: 2
+			path: src/Reviews/Controller.php
+
+		-
+			message: "#^Function esc_html__ not found\\.$#"
+			count: 3
+			path: src/Reviews/Controller.php
+
+		-
+			message: "#^Function get_comment_meta not found\\.$#"
+			count: 2
+			path: src/Reviews/Controller.php
+
+		-
+			message: "#^Function get_comments not found\\.$#"
+			count: 3
+			path: src/Reviews/Controller.php
+
+		-
+			message: "#^Function register_rest_route not found\\.$#"
+			count: 1
+			path: src/Reviews/Controller.php
+
+		-
+			message: "#^Function update_comment_meta not found\\.$#"
+			count: 1
+			path: src/Reviews/Controller.php
+
+		-
+			message: "#^Function wp_die not found\\.$#"
+			count: 3
+			path: src/Reviews/Controller.php
+
+		-
+			message: "#^Function wp_verify_nonce not found\\.$#"
+			count: 1
+			path: src/Reviews/Controller.php
+
+		-
+			message: "#^Function get_comments not found\\.$#"
+			count: 1
+			path: src/Schema/SoftwareApplication.php
+
+		-
+			message: "#^Function get_post invoked with 0 parameters, 1 required\\.$#"
+			count: 1
+			path: src/Schema/SoftwareApplication.php
+
+		-
+			message: "#^Function get_the_post_thumbnail_url not found\\.$#"
+			count: 1
+			path: src/Schema/SoftwareApplication.php
+
+		-
+			message: "#^Function is_singular not found\\.$#"
+			count: 1
+			path: src/Schema/SoftwareApplication.php
+
+		-
+			message: "#^Function get_the_post_thumbnail_url not found\\.$#"
+			count: 1
+			path: src/Search/Controller.php
+
+		-
+			message: "#^Function get_transient not found\\.$#"
+			count: 2
+			path: src/Search/Controller.php
+
+		-
+			message: "#^Function register_rest_route not found\\.$#"
+			count: 1
+			path: src/Search/Controller.php
+
+		-
+			message: "#^Function set_transient not found\\.$#"
+			count: 2
+			path: src/Search/Controller.php
+
+		-
+			message: "#^Instantiated class WP_Query not found\\.$#"
+			count: 2
+			path: src/Search/Controller.php
+
+		-
+			message: "#^Function add_meta_box not found\\.$#"
+			count: 1
+			path: src/Versions/Admin.php
+
+		-
+			message: "#^Function admin_url not found\\.$#"
+			count: 1
+			path: src/Versions/Admin.php
+
+		-
+			message: "#^Function check_ajax_referer not found\\.$#"
+			count: 1
+			path: src/Versions/Admin.php
+
+		-
+			message: "#^Function esc_attr not found\\.$#"
+			count: 3
+			path: src/Versions/Admin.php
+
+		-
+			message: "#^Function esc_html not found\\.$#"
+			count: 4
+			path: src/Versions/Admin.php
+
+		-
+			message: "#^Function esc_html_e not found\\.$#"
+			count: 15
+			path: src/Versions/Admin.php
+
+		-
+			message: "#^Function get_current_screen not found\\.$#"
+			count: 1
+			path: src/Versions/Admin.php
+
+		-
+			message: "#^Function wp_create_nonce not found\\.$#"
+			count: 1
+			path: src/Versions/Admin.php
+
+		-
+			message: "#^Function wp_enqueue_script not found\\.$#"
+			count: 1
+			path: src/Versions/Admin.php
+
+		-
+			message: "#^Function wp_localize_script not found\\.$#"
+			count: 1
+			path: src/Versions/Admin.php
+
+		-
+			message: "#^Function wp_send_json_error not found\\.$#"
+			count: 2
+			path: src/Versions/Admin.php
+
+		-
+			message: "#^Function wp_send_json_success not found\\.$#"
+			count: 3
+			path: src/Versions/Admin.php
+
+		-
+			message: "#^Function dbDelta not found\\.$#"
+			count: 1
+			path: src/Versions/Repository.php

@@ -4,7 +4,7 @@ namespace APD\Core\Content;
 
 final class Capabilities {
 
-	public const UPLOAD_APK = 'upload_apk_files';
+	public const UPLOAD_APK  = 'upload_apk_files';
 	public const MANAGE_APPS = 'manage_adp_apps';
 
 	public static function register(): void {

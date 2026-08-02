@@ -726,5 +726,56 @@ a:hover { color: var(--adp-primary-dark); }
 .adp-toc__title { font-size: 0.875rem; margin: 0 0 var(--adp-space-3); }
 .adp-toc__list { margin: 0; padding-left: var(--adp-space-4); }
 
-.adp-install-steps { padding-left: var(--adp-space-6); }
-.adp-install-steps li { margin-bottom: var(--adp-space-2); }
+.adp-report-dialog {
+	position: fixed;
+	inset: 0;
+	z-index: 500;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: var(--adp-space-4);
+}
+.adp-report-dialog[hidden] { display: none; }
+.adp-report-dialog__overlay {
+	position: absolute;
+	inset: 0;
+	background: rgba(0,0,0,0.5);
+}
+.adp-report-dialog__panel {
+	position: relative;
+	background: var(--adp-surface);
+	border-radius: var(--adp-radius-card);
+	padding: var(--adp-space-6);
+	max-width: 480px;
+	width: 100%;
+	max-height: 90vh;
+	overflow-y: auto;
+	border: 1px solid var(--adp-border);
+}
+.adp-report-dialog__close {
+	position: absolute;
+	top: var(--adp-space-3);
+	right: var(--adp-space-3);
+	background: none;
+	border: none;
+	font-size: 1.5rem;
+	cursor: pointer;
+	min-width: 44px;
+	min-height: 44px;
+}
+.adp-report-form label { display: block; margin-bottom: var(--adp-space-1); font-weight: 600; }
+.adp-report-form select,
+.adp-report-form textarea,
+.adp-report-form input[type="email"] {
+	width: 100%;
+	padding: var(--adp-space-3);
+	border: 1px solid var(--adp-border);
+	border-radius: var(--adp-radius-sm);
+	min-height: 44px;
+	margin-bottom: var(--adp-space-3);
+	background: var(--adp-bg);
+	color: var(--adp-text);
+}
+.adp-report-actions { display: flex; gap: var(--adp-space-3); justify-content: flex-end; }
+.adp-report-status { color: var(--adp-muted); font-size: 0.875rem; }
+

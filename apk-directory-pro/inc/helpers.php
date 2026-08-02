@@ -1,6 +1,8 @@
 <?php
 /**
  * Theme helper functions.
+ *
+ * @package APK_Directory_Pro
  */
 
 defined( 'ABSPATH' ) || exit;
@@ -64,13 +66,13 @@ function adp_get_category( int $post_id ): string {
 /**
  * Query apps with common args.
  */
-function adp_query_apps( array $args = [] ): \WP_Query {
-	$defaults = [
+function adp_query_apps( array $args = array() ): \WP_Query {
+	$defaults = array(
 		'post_type'      => 'adp_app',
 		'post_status'    => 'publish',
 		'posts_per_page' => 12,
 		'no_found_rows'  => false,
-	];
+	);
 	return new \WP_Query( array_merge( $defaults, $args ) );
 }
 

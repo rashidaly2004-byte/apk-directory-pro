@@ -8,16 +8,16 @@ use APD\Core\Versions\Service;
 final class Admin {
 
 	public function register(): void {
-		add_action( 'add_meta_boxes', [ $this, 'add_meta_box' ] );
-		add_action( 'admin_enqueue_scripts', [ $this, 'enqueue_assets' ] );
-		add_action( 'wp_ajax_adp_version_action', [ $this, 'handle_ajax' ] );
+		add_action( 'add_meta_boxes', array( $this, 'add_meta_box' ) );
+		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_assets' ) );
+		add_action( 'wp_ajax_adp_version_action', array( $this, 'handle_ajax' ) );
 	}
 
 	public function add_meta_box(): void {
 		add_meta_box(
 			'adp_versions',
 			__( 'Version Manager', 'apk-directory-pro' ),
-			[ $this, 'render' ],
+			array( $this, 'render' ),
 			'adp_app',
 			'normal',
 			'default'
@@ -32,11 +32,15 @@ final class Admin {
 		if ( ! $screen || $screen->post_type !== 'adp_app' ) {
 			return;
 		}
-		wp_enqueue_script( 'adp-version-manager', ADP_CORE_URL . 'assets/js/version-manager.js', [ 'jquery' ], ADP_CORE_VERSION, true );
-		wp_localize_script( 'adp-version-manager', 'adpVersions', [
-			'ajaxUrl' => admin_url( 'admin-ajax.php' ),
-			'nonce'   => wp_create_nonce( 'adp_version_action' ),
-		] );
+		wp_enqueue_script( 'adp-version-manager', ADP_CORE_URL . 'assets/js/version-manager.js', array( 'jquery' ), ADP_CORE_VERSION, true );
+		wp_localize_script(
+			'adp-version-manager',
+			'adpVersions',
+			array(
+				'ajaxUrl' => admin_url( 'admin-ajax.php' ),
+				'nonce'   => wp_create_nonce( 'adp_version_action' ),
+			)
+		);
 	}
 
 	public function render( \WP_Post $post ): void {
@@ -97,21 +101,24 @@ final class Admin {
 			wp_send_json_error( 'forbidden', 403 );
 		}
 
-		$action = sanitize_text_field( $_POST['version_action'] ?? '' );
-		$repo   = new Repository();
+		$action  = sanitize_text_field( wp_unslash( $_POST['version_action'] ?? '' ) );
+		$repo    = new Repository();
 		$service = new Service( $repo );
 
 		switch ( $action ) {
 			case 'create':
-				$id = $service->create_version( $post_id, [
-					'version_name'    => sanitize_text_field( $_POST['version_name'] ?? '' ),
-					'file_size_bytes' => absint( $_POST['file_size_bytes'] ?? 0 ),
-					'file_type'       => sanitize_text_field( $_POST['file_type'] ?? 'apk' ),
-					'external_url'    => esc_url_raw( $_POST['external_url'] ?? '' ),
-					'download_type'   => ! empty( $_POST['external_url'] ) ? 'external' : 'media',
-					'is_current'      => ! empty( $_POST['is_current'] ),
-				] );
-				wp_send_json_success( [ 'id' => $id ] );
+				$id = $service->create_version(
+					$post_id,
+					array(
+						'version_name'    => sanitize_text_field( wp_unslash( $_POST['version_name'] ?? '' ) ),
+						'file_size_bytes' => absint( $_POST['file_size_bytes'] ?? 0 ),
+						'file_type'       => sanitize_text_field( wp_unslash( $_POST['file_type'] ?? 'apk' ) ),
+						'external_url'    => esc_url_raw( wp_unslash( $_POST['external_url'] ?? '' ) ),
+						'download_type'   => ! empty( $_POST['external_url'] ) ? 'external' : 'media',
+						'is_current'      => ! empty( $_POST['is_current'] ),
+					)
+				);
+				wp_send_json_success( array( 'id' => $id ) );
 				break;
 
 			case 'set_current':

@@ -31,10 +31,10 @@ final class Plugin {
 	}
 
 	public function boot(): void {
-		register_activation_hook( ADP_CORE_FILE, [ $this, 'activate' ] );
-		register_deactivation_hook( ADP_CORE_FILE, [ $this, 'deactivate' ] );
+		register_activation_hook( ADP_CORE_FILE, array( $this, 'activate' ) );
+		register_deactivation_hook( ADP_CORE_FILE, array( $this, 'deactivate' ) );
 
-		add_action( 'plugins_loaded', [ $this, 'init' ] );
+		add_action( 'plugins_loaded', array( $this, 'init' ) );
 	}
 
 	public function activate(): void {
@@ -77,13 +77,13 @@ final class Plugin {
 			\WP_CLI::add_command( 'adp', Cli\Commands::class );
 		}
 
-		add_action( 'pre_get_posts', [ $this, 'extend_search' ] );
+		add_action( 'pre_get_posts', array( $this, 'extend_search' ) );
 	}
 
 	public function extend_search( \WP_Query $query ): void {
 		if ( is_admin() || ! $query->is_main_query() || ! $query->is_search() ) {
 			return;
 		}
-		$query->set( 'post_type', [ 'post', AppPostType::POST_TYPE ] );
+		$query->set( 'post_type', array( 'post', AppPostType::POST_TYPE ) );
 	}
 }

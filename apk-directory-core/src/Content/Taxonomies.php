@@ -5,11 +5,11 @@ namespace APD\Core\Content;
 final class Taxonomies {
 
 	public function register(): void {
-		add_action( 'init', [ $this, 'register_taxonomies' ] );
-		add_action( 'adp_app_category_add_form_fields', [ $this, 'term_add_fields' ] );
-		add_action( 'adp_app_category_edit_form_fields', [ $this, 'term_edit_fields' ] );
-		add_action( 'created_adp_app_category', [ $this, 'save_term_meta' ] );
-		add_action( 'edited_adp_app_category', [ $this, 'save_term_meta' ] );
+		add_action( 'init', array( $this, 'register_taxonomies' ) );
+		add_action( 'adp_app_category_add_form_fields', array( $this, 'term_add_fields' ) );
+		add_action( 'adp_app_category_edit_form_fields', array( $this, 'term_edit_fields' ) );
+		add_action( 'created_adp_app_category', array( $this, 'save_term_meta' ) );
+		add_action( 'edited_adp_app_category', array( $this, 'save_term_meta' ) );
 	}
 
 	public function register_taxonomies(): void {
@@ -18,69 +18,81 @@ final class Taxonomies {
 		register_taxonomy(
 			'adp_app_category',
 			AppPostType::POST_TYPE,
-			[
+			array(
 				'hierarchical'      => true,
-				'labels'            => [
+				'labels'            => array(
 					'name'          => __( 'App Categories', 'apk-directory-pro' ),
 					'singular_name' => __( 'App Category', 'apk-directory-pro' ),
-				],
+				),
 				'show_ui'           => true,
 				'show_admin_column' => true,
 				'query_var'         => true,
-				'rewrite'           => [ 'slug' => $category_base, 'with_front' => false ],
+				'rewrite'           => array(
+					'slug'       => $category_base,
+					'with_front' => false,
+				),
 				'show_in_rest'      => true,
-			]
+			)
 		);
 
 		register_taxonomy(
 			'adp_developer',
 			AppPostType::POST_TYPE,
-			[
+			array(
 				'hierarchical'      => false,
-				'labels'            => [
+				'labels'            => array(
 					'name'          => __( 'Developers', 'apk-directory-pro' ),
 					'singular_name' => __( 'Developer', 'apk-directory-pro' ),
-				],
+				),
 				'show_ui'           => true,
 				'show_admin_column' => true,
 				'query_var'         => true,
-				'rewrite'           => [ 'slug' => 'developer', 'with_front' => false ],
+				'rewrite'           => array(
+					'slug'       => 'developer',
+					'with_front' => false,
+				),
 				'show_in_rest'      => true,
-			]
+			)
 		);
 
 		register_taxonomy(
 			'adp_platform',
 			AppPostType::POST_TYPE,
-			[
+			array(
 				'hierarchical'      => true,
-				'labels'            => [
+				'labels'            => array(
 					'name'          => __( 'Platforms', 'apk-directory-pro' ),
 					'singular_name' => __( 'Platform', 'apk-directory-pro' ),
-				],
+				),
 				'show_ui'           => true,
 				'show_admin_column' => true,
 				'query_var'         => true,
-				'rewrite'           => [ 'slug' => 'platform', 'with_front' => false ],
+				'rewrite'           => array(
+					'slug'       => 'platform',
+					'with_front' => false,
+				),
 				'show_in_rest'      => true,
-			]
+			)
 		);
 
 		register_taxonomy(
 			'adp_tag',
 			AppPostType::POST_TYPE,
-			[
+			array(
 				'hierarchical'      => false,
-				'labels'            => [
+				'labels'            => array(
 					'name'          => __( 'App Tags', 'apk-directory-pro' ),
 					'singular_name' => __( 'App Tag', 'apk-directory-pro' ),
-				],
+				),
 				'show_ui'           => true,
 				'show_admin_column' => true,
 				'query_var'         => true,
-				'rewrite'           => [ 'slug' => 'app-tag', 'with_front' => false ],
+				'rewrite'           => array(
+					'slug'       => 'app-tag',
+					'with_front' => false,
+				),
 				'show_in_rest'      => true,
-			]
+			)
 		);
 	}
 
@@ -98,7 +110,7 @@ final class Taxonomies {
 	}
 
 	public function term_edit_fields( \WP_Term $term ): void {
-		$color     = get_term_meta( $term->term_id, '_adp_term_color', true );
+		$color      = get_term_meta( $term->term_id, '_adp_term_color', true );
 		$short_desc = get_term_meta( $term->term_id, '_adp_term_short_desc', true );
 		?>
 		<tr class="form-field">

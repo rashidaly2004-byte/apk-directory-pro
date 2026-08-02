@@ -7,13 +7,13 @@ final class Signer {
 	private const TOKEN_TTL = 3600;
 
 	public function create_token( int $version_id, int $app_id ): string {
-		$payload = wp_json_encode(
-			[
-				'v'  => $version_id,
-				'a'  => $app_id,
-				't'  => time(),
+		$payload   = wp_json_encode(
+			array(
+				'v'   => $version_id,
+				'a'   => $app_id,
+				't'   => time(),
 				'exp' => time() + self::TOKEN_TTL,
-			]
+			)
 		);
 		$signature = hash_hmac( 'sha256', $payload, $this->get_secret() );
 		return base64_encode( $payload . '.' . $signature ); // phpcs:ignore WordPress.PHP.DiscouragedPHPFunctions.obfuscation_base64_encode
@@ -26,7 +26,7 @@ final class Signer {
 		}
 
 		[ $payload, $signature ] = explode( '.', $decoded, 2 );
-		$expected = hash_hmac( 'sha256', $payload, $this->get_secret() );
+		$expected                = hash_hmac( 'sha256', $payload, $this->get_secret() );
 
 		if ( ! hash_equals( $expected, $signature ) ) {
 			return null;
@@ -37,10 +37,10 @@ final class Signer {
 			return null;
 		}
 
-		return [
+		return array(
 			'version_id' => (int) $data['v'],
 			'app_id'     => (int) $data['a'],
-		];
+		);
 	}
 
 	private function get_secret(): string {

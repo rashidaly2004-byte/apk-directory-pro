@@ -1,9 +1,19 @@
 {
-  "name": "apk-directory-pro",
+  "name": "apk-directory-pro-monorepo",
   "private": true,
   "scripts": {
     "build": "./scripts/build-zips.sh",
+    "lint:php": "find apk-directory-core apk-directory-pro -name '*.php' -not -path '*/vendor/*' -print0 | xargs -0 -n1 php -l",
     "test:plugin": "cd apk-directory-core && composer test",
-    "lint:php": "find apk-directory-core apk-directory-pro -name '*.php' -not -path '*/vendor/*' -print0 | xargs -0 -n1 php -l"
+    "test:e2e": "playwright test",
+    "test:a11y": "playwright test e2e/a11y",
+    "test:lighthouse": "lhci autorun",
+    "quality": "npm run lint:php && cd apk-directory-core && composer phpcs && composer phpstan && composer test"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "^4.10.2",
+    "@lhci/cli": "^0.14.0",
+    "@playwright/test": "^1.49.0",
+    "playwright": "^1.49.0"
   }
 }

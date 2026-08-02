@@ -13,14 +13,16 @@ final class Meta {
 				AppPostType::POST_TYPE,
 				self::META_PREFIX . $key,
 				array_merge(
-					[
-						'single'       => true,
-						'type'         => $config['type'],
-						'show_in_rest' => $config['show_in_rest'] ?? true,
-						'default'      => $config['default'] ?? ( $config['type'] === 'boolean' ? false : ( $config['type'] === 'array' ? [] : '' ) ),
-					],
-					isset( $config['sanitize_callback'] ) ? [ 'sanitize_callback' => $config['sanitize_callback'] ] : [],
-					isset( $config['auth_callback'] ) ? [ 'auth_callback' => $config['auth_callback'] ] : []
+					array(
+						'single'        => true,
+						'type'          => $config['type'],
+						'show_in_rest'  => $config['show_in_rest'] ?? true,
+						'default'       => $config['default'] ?? ( $config['type'] === 'boolean' ? false : ( $config['type'] === 'array' ? array() : '' ) ),
+						'auth_callback' => function () {
+							return current_user_can( 'edit_posts' );
+						},
+					),
+					isset( $config['sanitize_callback'] ) ? array( 'sanitize_callback' => $config['sanitize_callback'] ) : array()
 				)
 			);
 		}
@@ -30,38 +32,128 @@ final class Meta {
 	 * @return array<string, array<string, mixed>>
 	 */
 	public function get_field_definitions(): array {
-		return [
-			'short_description'   => [ 'type' => 'string', 'sanitize_callback' => 'sanitize_text_field' ],
-			'package_name'          => [ 'type' => 'string', 'sanitize_callback' => [ $this, 'sanitize_package_name' ] ],
-			'current_version'       => [ 'type' => 'string', 'sanitize_callback' => 'sanitize_text_field' ],
-			'version_code'          => [ 'type' => 'integer', 'sanitize_callback' => 'absint' ],
-			'file_size_bytes'       => [ 'type' => 'integer', 'sanitize_callback' => 'absint' ],
-			'android_requirement'   => [ 'type' => 'string', 'sanitize_callback' => 'sanitize_text_field' ],
-			'architectures'         => [ 'type' => 'array', 'sanitize_callback' => [ $this, 'sanitize_string_array' ] ],
-			'dpi'                   => [ 'type' => 'array', 'sanitize_callback' => [ $this, 'sanitize_string_array' ] ],
-			'release_date'          => [ 'type' => 'string', 'sanitize_callback' => [ $this, 'sanitize_date' ] ],
-			'updated_date'          => [ 'type' => 'string', 'sanitize_callback' => [ $this, 'sanitize_date' ] ],
-			'price_type'            => [ 'type' => 'string', 'sanitize_callback' => [ $this, 'sanitize_price_type' ] ],
-			'price_amount'          => [ 'type' => 'number', 'sanitize_callback' => [ $this, 'sanitize_float' ] ],
-			'price_currency'        => [ 'type' => 'string', 'sanitize_callback' => 'sanitize_text_field' ],
-			'official_url'          => [ 'type' => 'string', 'sanitize_callback' => [ $this, 'sanitize_url' ] ],
-			'store_url'             => [ 'type' => 'string', 'sanitize_callback' => [ $this, 'sanitize_url' ] ],
-			'support_url'           => [ 'type' => 'string', 'sanitize_callback' => [ $this, 'sanitize_url' ] ],
-			'privacy_url'           => [ 'type' => 'string', 'sanitize_callback' => [ $this, 'sanitize_url' ] ],
-			'license'               => [ 'type' => 'string', 'sanitize_callback' => 'sanitize_text_field' ],
-			'content_rating'        => [ 'type' => 'string', 'sanitize_callback' => 'sanitize_text_field' ],
-			'status_badge'          => [ 'type' => 'string', 'sanitize_callback' => [ $this, 'sanitize_status_badge' ] ],
-			'verified'              => [ 'type' => 'boolean', 'sanitize_callback' => 'rest_sanitize_boolean' ],
-			'editor_rating'         => [ 'type' => 'number', 'sanitize_callback' => [ $this, 'sanitize_rating' ] ],
-			'download_count'        => [ 'type' => 'integer', 'sanitize_callback' => 'absint' ],
-			'view_count'            => [ 'type' => 'integer', 'sanitize_callback' => 'absint' ],
-			'screenshot_ids'        => [ 'type' => 'array', 'sanitize_callback' => [ $this, 'sanitize_int_array' ] ],
-			'video_url'             => [ 'type' => 'string', 'sanitize_callback' => [ $this, 'sanitize_url' ] ],
-			'whats_new'             => [ 'type' => 'string', 'sanitize_callback' => 'wp_kses_post' ],
-			'mod_features'          => [ 'type' => 'string', 'sanitize_callback' => 'wp_kses_post' ],
-			'disclaimer_note'       => [ 'type' => 'string', 'sanitize_callback' => 'sanitize_text_field' ],
-			'disable_toc'           => [ 'type' => 'boolean', 'sanitize_callback' => 'rest_sanitize_boolean' ],
-		];
+		return array(
+			'short_description'   => array(
+				'type'              => 'string',
+				'sanitize_callback' => 'sanitize_text_field',
+			),
+			'package_name'        => array(
+				'type'              => 'string',
+				'sanitize_callback' => array( $this, 'sanitize_package_name' ),
+			),
+			'current_version'     => array(
+				'type'              => 'string',
+				'sanitize_callback' => 'sanitize_text_field',
+			),
+			'version_code'        => array(
+				'type'              => 'integer',
+				'sanitize_callback' => 'absint',
+			),
+			'file_size_bytes'     => array(
+				'type'              => 'integer',
+				'sanitize_callback' => 'absint',
+			),
+			'android_requirement' => array(
+				'type'              => 'string',
+				'sanitize_callback' => 'sanitize_text_field',
+			),
+			'architectures'       => array(
+				'type'              => 'array',
+				'sanitize_callback' => array( $this, 'sanitize_string_array' ),
+			),
+			'dpi'                 => array(
+				'type'              => 'array',
+				'sanitize_callback' => array( $this, 'sanitize_string_array' ),
+			),
+			'release_date'        => array(
+				'type'              => 'string',
+				'sanitize_callback' => array( $this, 'sanitize_date' ),
+			),
+			'updated_date'        => array(
+				'type'              => 'string',
+				'sanitize_callback' => array( $this, 'sanitize_date' ),
+			),
+			'price_type'          => array(
+				'type'              => 'string',
+				'sanitize_callback' => array( $this, 'sanitize_price_type' ),
+			),
+			'price_amount'        => array(
+				'type'              => 'number',
+				'sanitize_callback' => array( $this, 'sanitize_float' ),
+			),
+			'price_currency'      => array(
+				'type'              => 'string',
+				'sanitize_callback' => 'sanitize_text_field',
+			),
+			'official_url'        => array(
+				'type'              => 'string',
+				'sanitize_callback' => array( $this, 'sanitize_url' ),
+			),
+			'store_url'           => array(
+				'type'              => 'string',
+				'sanitize_callback' => array( $this, 'sanitize_url' ),
+			),
+			'support_url'         => array(
+				'type'              => 'string',
+				'sanitize_callback' => array( $this, 'sanitize_url' ),
+			),
+			'privacy_url'         => array(
+				'type'              => 'string',
+				'sanitize_callback' => array( $this, 'sanitize_url' ),
+			),
+			'license'             => array(
+				'type'              => 'string',
+				'sanitize_callback' => 'sanitize_text_field',
+			),
+			'content_rating'      => array(
+				'type'              => 'string',
+				'sanitize_callback' => 'sanitize_text_field',
+			),
+			'status_badge'        => array(
+				'type'              => 'string',
+				'sanitize_callback' => array( $this, 'sanitize_status_badge' ),
+			),
+			'verified'            => array(
+				'type'              => 'boolean',
+				'sanitize_callback' => 'rest_sanitize_boolean',
+			),
+			'editor_rating'       => array(
+				'type'              => 'number',
+				'sanitize_callback' => array( $this, 'sanitize_rating' ),
+			),
+			'download_count'      => array(
+				'type'              => 'integer',
+				'sanitize_callback' => 'absint',
+			),
+			'view_count'          => array(
+				'type'              => 'integer',
+				'sanitize_callback' => 'absint',
+			),
+			'screenshot_ids'      => array(
+				'type'              => 'array',
+				'sanitize_callback' => array( $this, 'sanitize_int_array' ),
+			),
+			'video_url'           => array(
+				'type'              => 'string',
+				'sanitize_callback' => array( $this, 'sanitize_url' ),
+			),
+			'whats_new'           => array(
+				'type'              => 'string',
+				'sanitize_callback' => 'wp_kses_post',
+			),
+			'mod_features'        => array(
+				'type'              => 'string',
+				'sanitize_callback' => 'wp_kses_post',
+			),
+			'disclaimer_note'     => array(
+				'type'              => 'string',
+				'sanitize_callback' => 'sanitize_text_field',
+			),
+			'disable_toc'         => array(
+				'type'              => 'boolean',
+				'sanitize_callback' => 'rest_sanitize_boolean',
+			),
+		);
 	}
 
 	public function sanitize_package_name( mixed $value ): string {
@@ -74,14 +166,14 @@ final class Meta {
 
 	public function sanitize_string_array( mixed $value ): array {
 		if ( ! is_array( $value ) ) {
-			return [];
+			return array();
 		}
 		return array_values( array_filter( array_map( 'sanitize_text_field', $value ) ) );
 	}
 
 	public function sanitize_int_array( mixed $value ): array {
 		if ( ! is_array( $value ) ) {
-			return [];
+			return array();
 		}
 		return array_values( array_filter( array_map( 'absint', $value ) ) );
 	}
@@ -95,13 +187,13 @@ final class Meta {
 	}
 
 	public function sanitize_price_type( mixed $value ): string {
-		$allowed = [ 'free', 'paid', 'freemium' ];
+		$allowed = array( 'free', 'paid', 'freemium' );
 		$value   = sanitize_text_field( (string) $value );
 		return in_array( $value, $allowed, true ) ? $value : 'free';
 	}
 
 	public function sanitize_status_badge( mixed $value ): string {
-		$allowed = [ 'none', 'new', 'updated', 'mod' ];
+		$allowed = array( 'none', 'new', 'updated', 'mod' );
 		$value   = sanitize_text_field( (string) $value );
 		return in_array( $value, $allowed, true ) ? $value : 'none';
 	}

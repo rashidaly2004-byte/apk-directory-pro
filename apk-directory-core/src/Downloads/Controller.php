@@ -18,10 +18,10 @@ final class Controller {
 	}
 
 	public function register(): void {
-		add_action( 'init', [ $this, 'register_rewrites' ] );
-		add_action( 'template_redirect', [ $this, 'handle_download_page' ] );
-		add_action( 'template_redirect', [ $this, 'handle_versions_page' ] );
-		add_filter( 'wp_robots', [ $this, 'noindex_download_pages' ] );
+		add_action( 'init', array( $this, 'register_rewrites' ) );
+		add_action( 'template_redirect', array( $this, 'handle_download_page' ) );
+		add_action( 'template_redirect', array( $this, 'handle_versions_page' ) );
+		add_filter( 'wp_robots', array( $this, 'noindex_download_pages' ) );
 	}
 
 	public function register_rewrites(): void {
@@ -42,7 +42,7 @@ final class Controller {
 
 	public function noindex_download_pages( array $robots ): array {
 		if ( get_query_var( 'adp_download_token' ) ) {
-			$robots['noindex'] = true;
+			$robots['noindex']  = true;
 			$robots['nofollow'] = true;
 		}
 		return $robots;
@@ -98,8 +98,8 @@ final class Controller {
 		}
 
 		global $post;
-		$post = $app;
-		setup_postdata( $post );
+		$GLOBALS['post'] = $app; // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited
+		setup_postdata( $app );
 
 		$template = ADP_CORE_PATH . 'templates/versions.php';
 		if ( file_exists( $template ) ) {
@@ -151,7 +151,7 @@ final class Controller {
 			wp_die( esc_html__( 'File not found.', 'apk-directory-pro' ), 404 );
 		}
 
-		$real_path = realpath( $file_path );
+		$real_path  = realpath( $file_path );
 		$upload_dir = wp_upload_dir();
 		$base_path  = realpath( $upload_dir['basedir'] );
 
