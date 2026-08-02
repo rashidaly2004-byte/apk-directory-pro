@@ -1,0 +1,13 @@
+{
+  "name": "apk-directory-core",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Build tooling for APK Directory Core plugin",
+  "scripts": {
+    "lint:js": "eslint assets/admin/js --ext .js",
+    "build": "echo 'No build step required for vanilla JS assets'"
+  },
+  "devDependencies": {
+    "eslint": "^8.57.0"
+  }
+}

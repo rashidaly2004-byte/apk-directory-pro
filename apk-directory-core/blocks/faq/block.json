@@ -1,0 +1,15 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "adp/faq",
+  "title": "FAQ",
+  "category": "widgets",
+  "icon": "editor-help",
+  "description": "FAQ accordion section.",
+  "textdomain": "apk-directory-core",
+  "attributes": {
+    "items": { "type": "array", "default": [] }
+  },
+  "supports": { "html": false },
+  "render": "file:./render.php"
+}

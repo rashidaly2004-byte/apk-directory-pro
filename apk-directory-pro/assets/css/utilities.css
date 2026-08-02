@@ -1,0 +1,98 @@
+/**
+ * Utility classes — APK Directory Pro
+ */
+
+.adp-u-hidden { display: none !important; }
+.adp-u-sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+
+.adp-u-text-center { text-align: center; }
+.adp-u-text-start { text-align: start; }
+.adp-u-text-end { text-align: end; }
+
+.adp-u-text-muted { color: var(--adp-color-muted); }
+.adp-u-text-primary { color: var(--adp-color-primary); }
+.adp-u-text-danger { color: var(--adp-color-danger); }
+
+.adp-u-font-sm { font-size: var(--adp-font-size-sm); }
+.adp-u-font-lg { font-size: var(--adp-font-size-lg); }
+
+.adp-u-mt-0 { margin-block-start: 0; }
+.adp-u-mb-0 { margin-block-end: 0; }
+.adp-u-mt-md { margin-block-start: var(--adp-space-md); }
+.adp-u-mb-md { margin-block-end: var(--adp-space-md); }
+.adp-u-mt-lg { margin-block-start: var(--adp-space-lg); }
+.adp-u-mb-lg { margin-block-end: var(--adp-space-lg); }
+
+.adp-u-p-md { padding: var(--adp-space-md); }
+.adp-u-p-lg { padding: var(--adp-space-lg); }
+
+.adp-u-flex { display: flex; }
+.adp-u-flex-col { flex-direction: column; }
+.adp-u-items-center { align-items: center; }
+.adp-u-justify-between { justify-content: space-between; }
+.adp-u-gap-sm { gap: var(--adp-space-sm); }
+.adp-u-gap-md { gap: var(--adp-space-md); }
+
+.adp-u-w-full { width: 100%; }
+.adp-u-max-content { max-width: var(--adp-content-width); margin-inline: auto; }
+
+.adp-u-rounded-sm { border-radius: var(--adp-radius-sm); }
+.adp-u-rounded-md { border-radius: var(--adp-radius-md); }
+.adp-u-rounded-lg { border-radius: var(--adp-radius-lg); }
+
+.adp-u-shadow-sm { box-shadow: var(--adp-shadow-sm); }
+.adp-u-shadow-md { box-shadow: var(--adp-shadow-md); }
+
+.adp-u-truncate {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.adp-u-line-clamp-2 {
+	display: -webkit-box;
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
+}
+
+.adp-u-visually-focusable:not(:focus):not(:focus-within) {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	margin: -1px;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	white-space: nowrap;
+	border: 0;
+}
+
+/* Logical property helpers for RTL */
+.adp-u-ms-auto { margin-inline-start: auto; }
+.adp-u-me-auto { margin-inline-end: auto; }
+.adp-u-ps-md { padding-inline-start: var(--adp-space-md); }
+.adp-u-pe-md { padding-inline-end: var(--adp-space-md); }
+
+/* Print */
+@media print {
+	.adp-header,
+	.adp-nav,
+	.adp-category-bar,
+	.adp-drawer,
+	.adp-sticky-download,
+	.adp-footer,
+	.adp-btn--download,
+	.adp-ad-slot {
+		display: none !important;
+	}
+
+	.adp-app-layout {
+		display: block;
+	}
+
+	body {
+		background: #fff;
+		color: #000;
+	}
+}

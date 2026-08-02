@@ -1,0 +1,63 @@
+.adp-editor-panel .components-base-control {
+	margin-bottom: 12px;
+}
+
+.adp-screenshot-gallery__toolbar {
+	margin-bottom: 8px;
+}
+
+.adp-screenshot-gallery__empty {
+	color: #646970;
+	font-style: italic;
+	margin: 0 0 8px;
+}
+
+.adp-screenshot-gallery__list {
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.adp-screenshot-gallery__item {
+	align-items: center;
+	background: #f6f7f7;
+	border: 1px solid #dcdcde;
+	border-radius: 4px;
+	cursor: grab;
+	display: flex;
+	gap: 12px;
+	padding: 8px;
+}
+
+.adp-screenshot-gallery__item:active {
+	cursor: grabbing;
+}
+
+.adp-screenshot-gallery__thumb {
+	border-radius: 2px;
+	height: 64px;
+	object-fit: cover;
+	width: 36px;
+}
+
+.adp-screenshot-gallery__placeholder {
+	align-items: center;
+	background: #fff;
+	border: 1px dashed #c3c4c7;
+	border-radius: 2px;
+	color: #646970;
+	display: flex;
+	font-size: 12px;
+	height: 64px;
+	justify-content: center;
+	width: 36px;
+}
+
+.adp-screenshot-gallery__actions {
+	display: flex;
+	gap: 4px;
+	margin-left: auto;
+}

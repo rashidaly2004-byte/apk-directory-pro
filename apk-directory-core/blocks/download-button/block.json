@@ -1,0 +1,13 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "adp/download-button",
+  "title": "Download Button",
+  "category": "widgets",
+  "icon": "download",
+  "description": "Context-aware download button for the current app.",
+  "textdomain": "apk-directory-core",
+  "attributes": {},
+  "supports": { "html": false },
+  "render": "file:./render.php"
+}

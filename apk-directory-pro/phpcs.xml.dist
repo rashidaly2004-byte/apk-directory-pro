@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<ruleset name="APK Directory Pro">
+	<description>PHP_CodeSniffer rules for APK Directory Pro theme.</description>
+
+	<file>./inc</file>
+	<file>./functions.php</file>
+	<file>./template-parts</file>
+	<file>./patterns</file>
+
+	<exclude-pattern>*/vendor/*</exclude-pattern>
+	<exclude-pattern>*/node_modules/*</exclude-pattern>
+
+	<arg value="sp"/>
+	<arg name="extensions" value="php"/>
+	<arg name="basepath" value="."/>
+
+	<rule ref="WordPress">
+		<exclude name="WordPress.Files.FileName"/>
+	</rule>
+
+	<rule ref="WordPress.NamingConventions.PrefixAllGlobals">
+		<properties>
+			<property name="prefixes" type="array">
+				<element value="adp"/>
+				<element value="Adp"/>
+			</property>
+		</properties>
+	</rule>
+
+	<config name="minimum_supported_wp_version" value="6.4"/>
+	<config name="testVersion" value="8.1-"/>
+</ruleset>

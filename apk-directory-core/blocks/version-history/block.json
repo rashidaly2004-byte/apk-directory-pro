@@ -1,0 +1,15 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "adp/version-history",
+  "title": "Version History",
+  "category": "widgets",
+  "icon": "backup",
+  "description": "Version history table for the current app.",
+  "textdomain": "apk-directory-core",
+  "attributes": {
+    "count": { "type": "number", "default": 10 }
+  },
+  "supports": { "html": false },
+  "render": "file:./render.php"
+}

@@ -1,0 +1,53 @@
+name: CI
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+
+jobs:
+  plugin:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: apk-directory-core
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.3'
+          coverage: none
+          tools: composer
+
+      - name: Install dependencies
+        run: composer install --no-interaction --prefer-dist
+
+      - name: PHP syntax check
+        run: find src blocks templates -name '*.php' -print0 | xargs -0 -n1 php -l
+
+      - name: PHPUnit
+        run: ./vendor/bin/phpunit
+
+      - name: PHPCS
+        run: ./vendor/bin/phpcs --standard=phpcs.xml.dist || true
+
+  theme:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: apk-directory-pro
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.3'
+          coverage: none
+
+      - name: PHP syntax check
+        run: find . -path ./vendor -prune -o -name '*.php' -print0 | xargs -0 -n1 php -l

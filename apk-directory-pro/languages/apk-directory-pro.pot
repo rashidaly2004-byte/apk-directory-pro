@@ -1,0 +1,372 @@
+# Copyright (C) 2026 APK Directory Pro Team
+# This file is distributed under the same license as the APK Directory Pro package.
+msgid ""
+msgstr ""
+"Project-Id-Version: APK Directory Pro 1.0.0\n"
+"Report-Msgid-Bugs-To: https://example.com\n"
+"POT-Creation-Date: 2026-08-02 21:50+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Manual\n"
+"X-Domain: apk-directory-pro\n"
+
+#: inc/Setup.php
+msgid "Primary Navigation"
+msgstr ""
+
+#: inc/Setup.php
+msgid "Category Bar"
+msgstr ""
+
+#: inc/Setup.php
+msgid "Mobile Drawer"
+msgstr ""
+
+#: inc/Setup.php
+msgid "Footer — Company"
+msgstr ""
+
+#: inc/Setup.php
+msgid "Footer — Browse"
+msgstr ""
+
+#: inc/Setup.php
+msgid "Footer — Legal"
+msgstr ""
+
+#: inc/Setup.php
+msgid "App Sidebar"
+msgstr ""
+
+#: inc/Setup.php
+msgid "Blog Sidebar"
+msgstr ""
+
+#: inc/Setup.php
+msgid "Footer Optional"
+msgstr ""
+
+#: inc/helpers.php
+msgid "ago"
+msgstr ""
+
+#: inc/helpers.php
+msgid "Newest"
+msgstr ""
+
+#: inc/helpers.php
+msgid "Recently Updated"
+msgstr ""
+
+#: inc/helpers.php
+msgid "Most Popular"
+msgstr ""
+
+#: inc/helpers.php
+msgid "Top Rated"
+msgstr ""
+
+#: inc/helpers.php
+msgid "A–Z"
+msgstr ""
+
+#: inc/Accessibility.php
+msgid "Skip to content"
+msgstr ""
+
+#: inc/Customizer.php
+msgid "Discover apps you can trust"
+msgstr ""
+
+#: template-parts/header/brand.php
+msgid "Toggle dark mode"
+msgstr ""
+
+#: template-parts/header/brand.php
+msgid "Open menu"
+msgstr ""
+
+#: template-parts/header/search.php
+msgid "Search apps"
+msgstr ""
+
+#: template-parts/header/search.php
+msgid "Search apps…"
+msgstr ""
+
+#: template-parts/cards/app-row.php
+msgid "Version"
+msgstr ""
+
+#: template-parts/cards/app-row.php
+msgid "Size"
+msgstr ""
+
+#: template-parts/cards/app-row.php
+msgid "Updated"
+msgstr ""
+
+#: template-parts/cards/app-row.php
+msgid "View"
+msgstr ""
+
+#: template-parts/home/hero-search.php
+msgid "Browse verified apps, read reviews, and download safely."
+msgstr ""
+
+#: template-parts/home/hero-search.php
+msgid "Search apps, games, tools…"
+msgstr ""
+
+#: template-parts/home/hero-search.php
+msgid "Search"
+msgstr ""
+
+#: template-parts/home/featured-categories.php
+msgid "Browse by category"
+msgstr ""
+
+#: template-parts/home/trending.php
+msgid "Trending now"
+msgstr ""
+
+#: template-parts/home/trending.php
+msgid "See all"
+msgstr ""
+
+#: template-parts/home/latest-updates.php
+msgid "Latest updates"
+msgstr ""
+
+#: template-parts/home/latest-games.php
+msgid "Latest games"
+msgstr ""
+
+#: template-parts/home/editors-choice.php
+msgid "Editor's choice"
+msgstr ""
+
+#: template-parts/home/popular.php
+msgid "Popular downloads"
+msgstr ""
+
+#: template-parts/home/latest-blog.php
+msgid "From the blog"
+msgstr ""
+
+#: template-parts/home/seo-intro.php
+msgid "About"
+msgstr ""
+
+#: template-parts/app/download-actions.php
+msgid "Download APK"
+msgstr ""
+
+#: template-parts/app/download-actions.php
+msgid "Download unavailable"
+msgstr ""
+
+#: template-parts/app/meta-grid.php
+msgid "App information"
+msgstr ""
+
+#: template-parts/app/meta-grid.php
+msgid "Developer"
+msgstr ""
+
+#: template-parts/app/meta-grid.php
+msgid "Category"
+msgstr ""
+
+#: template-parts/app/meta-grid.php
+msgid "Platform"
+msgstr ""
+
+#: template-parts/app/meta-grid.php
+msgid "Free"
+msgstr ""
+
+#: template-parts/app/meta-grid.php
+msgid "Paid"
+msgstr ""
+
+#: template-parts/app/trust-strip.php
+msgid "Trust indicators"
+msgstr ""
+
+#: template-parts/app/trust-strip.php
+msgid "Verified source"
+msgstr ""
+
+#: template-parts/app/trust-strip.php
+msgid "Virus scanned"
+msgstr ""
+
+#: template-parts/app/trust-strip.php
+msgid "Signature verified"
+msgstr ""
+
+#: template-parts/app/screenshots.php
+msgid "Screenshots"
+msgstr ""
+
+#: template-parts/app/video.php
+msgid "Preview video"
+msgstr ""
+
+#: template-parts/app/content-toc.php
+msgid "About this app"
+msgstr ""
+
+#: template-parts/app/whats-new.php
+msgid "What's new"
+msgstr ""
+
+#: template-parts/app/tech-details.php
+msgid "Technical details"
+msgstr ""
+
+#: template-parts/app/version-history.php
+msgid "Version history"
+msgstr ""
+
+#: template-parts/app/install-guidance.php
+msgid "How to install"
+msgstr ""
+
+#: template-parts/app/safety-notice.php
+msgid "Safety notice"
+msgstr ""
+
+#: template-parts/app/related.php
+msgid "Related apps"
+msgstr ""
+
+#: template-parts/app/sticky-download-bar.php
+msgid "Download"
+msgstr ""
+
+#: template-parts/content/none.php
+msgid "Nothing found"
+msgstr ""
+
+#: template-parts/content/none.php
+msgid "Try adjusting your search or filters to find what you are looking for."
+msgstr ""
+
+#: template-parts/content/none.php
+msgid "Back to home"
+msgstr ""
+
+#: template-parts/navigation/breadcrumbs.php
+msgid "Home"
+msgstr ""
+
+#: template-parts/navigation/breadcrumbs.php
+msgid "Apps"
+msgstr ""
+
+#: template-parts/navigation/breadcrumbs.php
+msgid "Breadcrumb"
+msgstr ""
+
+#: template-parts/navigation/pagination.php
+msgid "Pagination"
+msgstr ""
+
+#: template-parts/navigation/pagination.php
+msgid "Previous"
+msgstr ""
+
+#: template-parts/navigation/pagination.php
+msgid "Next"
+msgstr ""
+
+#: 404.php
+msgid "Page not found"
+msgstr ""
+
+#: 404.php
+msgid "The page you are looking for might have been removed or is temporarily unavailable."
+msgstr ""
+
+#: 404.php
+msgid "Popular categories"
+msgstr ""
+
+#: 404.php
+msgid "Recent apps"
+msgstr ""
+
+#: archive-adp_app.php
+msgid "All Apps"
+msgstr ""
+
+#: archive-adp_app.php
+msgid "Sort by"
+msgstr ""
+
+#: archive-adp_app.php
+msgid "All categories"
+msgstr ""
+
+#: archive-adp_app.php
+msgid "All platforms"
+msgstr ""
+
+#: archive-adp_app.php
+msgid "Price"
+msgstr ""
+
+#: archive-adp_app.php
+msgid "Any price"
+msgstr ""
+
+#: archive-adp_app.php
+msgid "View mode"
+msgstr ""
+
+#: archive-adp_app.php
+msgid "List"
+msgstr ""
+
+#: archive-adp_app.php
+msgid "Grid"
+msgstr ""
+
+#: archive-adp_app.php
+msgid "Load more"
+msgstr ""
+
+#: search.php
+msgid "Search results for \"%s\""
+msgstr ""
+
+#: comments.php
+msgid "Leave a comment"
+msgstr ""
+
+#: comments.php
+msgid "Post comment"
+msgstr ""
+
+#: comments.php
+msgid "Comments are closed."
+msgstr ""
+
+#: inc/Assets.php
+msgid "No results found"
+msgstr ""
+
+#: inc/Assets.php
+msgid "Loading…"
+msgstr ""
+
+#: inc/helpers.php
+msgid "Rated %1$s out of 5 from %2$d reviews"
+msgstr ""

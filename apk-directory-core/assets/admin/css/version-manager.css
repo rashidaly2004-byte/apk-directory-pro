@@ -1,0 +1,41 @@
+.adp-vm-toolbar {
+	margin-bottom: 12px;
+}
+
+.adp-vm-table {
+	margin-top: 12px;
+}
+
+.adp-vm-actions .button {
+	margin-right: 4px;
+	margin-bottom: 4px;
+}
+
+.adp-vm-form {
+	background: #f6f7f7;
+	border: 1px solid #dcdcde;
+	border-radius: 4px;
+	padding: 12px 16px;
+	margin-bottom: 16px;
+}
+
+.adp-vm-hash code {
+	font-size: 11px;
+	word-break: break-all;
+}
+
+.adp-vm-media {
+	background: #fff;
+	border: 1px solid #dcdcde;
+	border-radius: 4px;
+	margin-bottom: 12px;
+	padding: 12px;
+}
+
+.adp-vm-media__title {
+	font-weight: 600;
+}
+
+.adp-vm-table .adp-vm-hash {
+	max-width: 180px;
+}

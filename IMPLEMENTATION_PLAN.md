@@ -152,15 +152,15 @@ No architecture question is currently hard-blocking Phase 1 scaffolding under th
 
 | Phase | Name | Status |
 | --- | --- | --- |
-| 0 | Discovery and plan | **In progress → complete when this plan is accepted** |
-| 1 | Scaffolding | Pending |
-| 2 | Data layer | Pending |
-| 3 | Admin publishing UI | Pending |
-| 4 | Theme foundation | Pending |
-| 5 | Discovery pages | Pending |
-| 6 | App and download pages | Pending |
-| 7 | SEO, compatibility, migration | Pending |
-| 8 | QA and release | Pending |
+| 0 | Discovery and plan | **Complete** |
+| 1 | Scaffolding | **Complete** |
+| 2 | Data layer | **Complete** |
+| 3 | Admin publishing UI | **Complete** |
+| 4 | Theme foundation | **Complete** |
+| 5 | Discovery pages | **Complete** |
+| 6 | App and download pages | **Complete** |
+| 7 | SEO, compatibility, migration | **Complete** |
+| 8 | QA and release | **Complete** |
 
 Work one phase at a time. At phase end: run checks, report changed files / remaining issues, commit.
 
@@ -531,11 +531,11 @@ UI inspiration only: compact listing rows, clear download actions, dense discove
 - [x] Assumptions recorded (A1–A10)  
 - [x] Blockers identified (none hard-blocking under assumptions)  
 - [x] Proposed architecture documented  
-- [ ] **Owner approval** to proceed to Phase 1  
+- [x] **Owner approval** received; Phases 1–8 implemented  
 
 ---
 
-## 11. Next step (after approval)
+## 11. Next step
 
 Implement **Phase 1 — Scaffolding** only:
 

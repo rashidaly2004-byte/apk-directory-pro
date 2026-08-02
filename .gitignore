@@ -1,0 +1,32 @@
+# Build artifacts
+dist/
+.build/
+
+# Dependencies
+vendor/
+node_modules/
+
+# OS / editor
+.DS_Store
+.idea/
+.vscode/
+*.swp
+
+# PHPUnit / PHPStan cache
+.phpunit.cache/
+.phpunit.result.cache
+phpstan-cache/
+
+# Logs
+*.log
+
+# WordPress dev
+wp/
+wordpress/
+
+# Demo binaries
+demo-apks/
+*.apk
+
+# Source maps
+*.map

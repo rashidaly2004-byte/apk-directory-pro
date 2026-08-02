@@ -1,0 +1,20 @@
+{
+	"name": "apk-directory-pro",
+	"version": "1.0.0",
+	"description": "APK Directory Pro WordPress theme assets",
+	"private": true,
+	"scripts": {
+		"lint:css": "stylelint 'assets/css/**/*.css'",
+		"lint:js": "eslint 'assets/js/**/*.js'"
+	},
+	"devDependencies": {
+		"eslint": "^8.57.0",
+		"stylelint": "^16.2.1",
+		"stylelint-config-standard": "^36.0.0"
+	},
+	"browserslist": [
+		"> 1%",
+		"last 2 versions",
+		"not dead"
+	]
+}

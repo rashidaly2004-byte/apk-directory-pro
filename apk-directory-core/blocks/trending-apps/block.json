@@ -1,0 +1,15 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "adp/trending-apps",
+  "title": "Trending Apps",
+  "category": "widgets",
+  "icon": "chart-line",
+  "description": "Display trending apps by download count.",
+  "textdomain": "apk-directory-core",
+  "attributes": {
+    "count": { "type": "number", "default": 8 }
+  },
+  "supports": { "html": false },
+  "render": "file:./render.php"
+}

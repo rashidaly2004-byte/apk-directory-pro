@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<ruleset name="APK Directory Core">
+	<description>WordPress Coding Standards for APK Directory Core</description>
+	<file>./apk-directory-core.php</file>
+	<file>./uninstall.php</file>
+	<file>./src</file>
+	<file>./templates</file>
+	<file>./blocks</file>
+	<exclude-pattern>*/vendor/*</exclude-pattern>
+	<exclude-pattern>*/node_modules/*</exclude-pattern>
+	<rule ref="WordPress-Extra"/>
+	<rule ref="WordPress-Docs"/>
+	<config name="testVersion" value="8.1-"/>
+	<config name="minimum_supported_wp_version" value="6.6"/>
+</ruleset>

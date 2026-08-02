@@ -1,0 +1,15 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "adp/related-apps",
+  "title": "Related Apps",
+  "category": "widgets",
+  "icon": "networking",
+  "description": "Related apps by category or developer.",
+  "textdomain": "apk-directory-core",
+  "attributes": {
+    "count": { "type": "number", "default": 4 }
+  },
+  "supports": { "html": false },
+  "render": "file:./render.php"
+}

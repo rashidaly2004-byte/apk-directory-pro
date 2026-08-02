@@ -1,0 +1,17 @@
+/*
+Theme Name: APK Directory Pro
+Theme URI: https://example.com/apk-directory-pro
+Author: APK Directory Pro Team
+Author URI: https://example.com
+Description: A production-quality WordPress classic theme for app directory listings. Presentation-only, gracefully degrades when the companion plugin is inactive. Features app-store inspired UI, dark mode, accessibility, and full Customizer integration.
+Version: 1.0.0
+Requires at least: 6.4
+Tested up to: 6.7
+Requires PHP: 8.1
+License: GNU General Public License v2 or later
+License URI: https://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: apk-directory-pro
+Tags: custom-logo, custom-menu, featured-images, footer-widgets, full-width-template, rtl-language-support, theme-options, translation-ready, block-patterns, wide-blocks
+*/
+
+/* Theme styles are enqueued from assets/css/ via inc/Assets.php */

@@ -1,0 +1,39 @@
+{
+	"name": "apk-directory-pro/theme",
+	"description": "APK Directory Pro WordPress theme",
+	"type": "wordpress-theme",
+	"license": "GPL-2.0-or-later",
+	"require": {
+		"php": ">=8.1"
+	},
+	"require-dev": {
+		"phpstan/phpstan": "^1.10",
+		"squizlabs/php_codesniffer": "^3.9",
+		"wp-coding-standards/wpcs": "^3.1",
+		"phpstan/extension-installer": "^1.4",
+		"php-stubs/wordpress-stubs": "^6.7"
+	},
+	"autoload": {
+		"psr-4": {
+			"Adp\\Theme\\": "inc/"
+		},
+		"files": [
+			"inc/helpers.php"
+		]
+	},
+	"config": {
+		"allow-plugins": {
+			"phpstan/extension-installer": true,
+			"dealerdirect/phpcodesniffer-composer-installer": true
+		},
+		"sort-packages": true
+	},
+	"scripts": {
+		"phpcs": "phpcs",
+		"phpstan": "phpstan analyse",
+		"lint": [
+			"@phpcs",
+			"@phpstan"
+		]
+	}
+}

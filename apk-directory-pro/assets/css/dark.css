@@ -1,0 +1,102 @@
+/**
+ * Dark mode overrides — APK Directory Pro
+ */
+
+[data-theme="dark"] .adp-header,
+[data-theme="dark"] .adp-nav,
+[data-theme="dark"] .adp-category-bar,
+[data-theme="dark"] .adp-header-search {
+	background: var(--adp-color-surface);
+}
+
+[data-theme="dark"] .adp-search-form__wrapper,
+[data-theme="dark"] .adp-app-row,
+[data-theme="dark"] .adp-app-grid-item,
+[data-theme="dark"] .adp-category-card,
+[data-theme="dark"] .adp-post-card,
+[data-theme="dark"] .adp-meta-grid__list,
+[data-theme="dark"] .adp-widget,
+[data-theme="dark"] .adp-select,
+[data-theme="dark"] .adp-version-history__table,
+[data-theme="dark"] .adp-whats-new__content,
+[data-theme="dark"] .adp-toc {
+	background: var(--adp-color-surface);
+	border-color: var(--adp-color-border);
+}
+
+[data-theme="dark"] .adp-trust-strip__list {
+	background: rgb(24 169 87 / 10%);
+	border-color: rgb(24 169 87 / 25%);
+}
+
+[data-theme="dark"] .adp-safety-notice__inner {
+	background: rgb(245 158 11 / 10%);
+	border-color: rgb(245 158 11 / 25%);
+}
+
+[data-theme="dark"] .adp-section--highlight {
+	background: var(--adp-color-surface);
+}
+
+[data-theme="dark"] code {
+	background: var(--adp-color-bg);
+}
+
+[data-theme="dark"] .adp-header__theme-toggle:hover,
+[data-theme="dark"] .adp-header__menu-toggle:hover,
+[data-theme="dark"] .adp-nav__list a:hover,
+[data-theme="dark"] .adp-view-toggle__btn.is-active,
+[data-theme="dark"] .adp-view-toggle__btn:hover {
+	background: var(--adp-color-bg);
+}
+
+@media (prefers-color-scheme: dark) {
+	:root:not([data-theme="light"]) .adp-header,
+	:root:not([data-theme="light"]) .adp-nav,
+	:root:not([data-theme="light"]) .adp-category-bar,
+	:root:not([data-theme="light"]) .adp-header-search {
+		background: var(--adp-color-surface);
+	}
+
+	:root:not([data-theme="light"]) .adp-search-form__wrapper,
+	:root:not([data-theme="light"]) .adp-app-row,
+	:root:not([data-theme="light"]) .adp-app-grid-item,
+	:root:not([data-theme="light"]) .adp-category-card,
+	:root:not([data-theme="light"]) .adp-post-card,
+	:root:not([data-theme="light"]) .adp-meta-grid__list,
+	:root:not([data-theme="light"]) .adp-widget,
+	:root:not([data-theme="light"]) .adp-select {
+		background: var(--adp-color-surface);
+		border-color: var(--adp-color-border);
+	}
+}
+
+/* Dark mode toggle icon swap */
+[data-theme="dark"] .adp-header__theme-toggle .adp-icon--moon {
+	display: none;
+}
+
+[data-theme="dark"] .adp-header__theme-toggle .adp-icon--sun {
+	display: block;
+}
+
+:root:not([data-theme="dark"]) .adp-header__theme-toggle .adp-icon--sun,
+[data-theme="light"] .adp-header__theme-toggle .adp-icon--sun {
+	display: none;
+}
+
+@media (prefers-color-scheme: dark) {
+	:root:not([data-theme="light"]) .adp-header__theme-toggle .adp-icon--moon {
+		display: none;
+	}
+
+	:root:not([data-theme="light"]) .adp-header__theme-toggle .adp-icon--sun {
+		display: block;
+	}
+}
+
+@media (prefers-color-scheme: light) {
+	:root:not([data-theme="dark"]) .adp-header__theme-toggle .adp-icon--sun {
+		display: none;
+	}
+}

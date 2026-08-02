@@ -1,0 +1,16 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "adp/app-grid",
+  "title": "App Grid",
+  "category": "widgets",
+  "icon": "grid-view",
+  "description": "Display a grid of apps.",
+  "textdomain": "apk-directory-core",
+  "attributes": {
+    "count": { "type": "number", "default": 6 },
+    "category": { "type": "string", "default": "" }
+  },
+  "supports": { "html": false },
+  "render": "file:./render.php"
+}
