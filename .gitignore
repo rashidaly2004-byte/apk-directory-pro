@@ -5,6 +5,8 @@
 **/vendor/
 /.tools/
 *.log
+.phpunit.result.cache
+**/.phpunit.result.cache
 test-results/
 playwright-report/
 .lighthouseci/
