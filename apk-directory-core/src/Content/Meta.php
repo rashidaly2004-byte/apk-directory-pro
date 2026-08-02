@@ -9,22 +9,55 @@ final class Meta {
 	public function register(): void {
 		$fields = $this->get_field_definitions();
 		foreach ( $fields as $key => $config ) {
+			$type = $config['type'];
+			$args = array(
+				'single'        => true,
+				'type'          => $type,
+				'default'       => $config['default'] ?? $this->default_for_type( $type ),
+				'auth_callback' => function () {
+					return current_user_can( 'edit_posts' );
+				},
+			);
+
+			if ( isset( $config['show_in_rest'] ) && is_array( $config['show_in_rest'] ) ) {
+				$args['show_in_rest'] = $config['show_in_rest'];
+			} elseif ( $type === 'array' ) {
+				$args['show_in_rest'] = array(
+					'schema' => array(
+						'type'  => 'array',
+						'items' => array(
+							'type' => ( $key === 'screenshot_ids' ) ? 'integer' : 'string',
+						),
+					),
+				);
+			} else {
+				$args['show_in_rest'] = $config['show_in_rest'] ?? true;
+			}
+
+			if ( isset( $config['sanitize_callback'] ) ) {
+				$args['sanitize_callback'] = $config['sanitize_callback'];
+			}
+
 			register_post_meta(
 				AppPostType::POST_TYPE,
 				self::META_PREFIX . $key,
-				array_merge(
-					array(
-						'single'        => true,
-						'type'          => $config['type'],
-						'show_in_rest'  => $config['show_in_rest'] ?? true,
-						'default'       => $config['default'] ?? ( $config['type'] === 'boolean' ? false : ( $config['type'] === 'array' ? array() : '' ) ),
-						'auth_callback' => function () {
-							return current_user_can( 'edit_posts' );
-						},
-					),
-					isset( $config['sanitize_callback'] ) ? array( 'sanitize_callback' => $config['sanitize_callback'] ) : array()
-				)
+				$args
 			);
+		}
+	}
+
+	private function default_for_type( string $type ): mixed {
+		switch ( $type ) {
+			case 'boolean':
+				return false;
+			case 'integer':
+				return 0;
+			case 'number':
+				return 0;
+			case 'array':
+				return array();
+			default:
+				return '';
 		}
 	}
 

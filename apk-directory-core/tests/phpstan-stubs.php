@@ -6,6 +6,9 @@
 if ( ! function_exists( 'add_action' ) ) {
 	function add_action( $a, $b, $c = 10, $d = 1 ) {}
 }
+if ( ! function_exists( 'add_filter' ) ) {
+	function add_filter( $a, $b, $c = 10, $d = 1 ) {}
+}
 if ( ! function_exists( 'get_option' ) ) {
 	function get_option( $a, $b = false ) { return $b; }
 }

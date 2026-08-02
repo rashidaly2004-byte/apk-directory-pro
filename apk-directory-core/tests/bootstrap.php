@@ -39,7 +39,7 @@ if ( ! function_exists( 'esc_url_raw' ) ) {
 
 if ( ! function_exists( 'sanitize_text_field' ) ) {
 	function sanitize_text_field( $str ) {
-		return trim( strip_tags( (string) $str ) );
+		return trim( preg_replace( '/<[^>]*>/', '', (string) $str ) );
 	}
 }
 

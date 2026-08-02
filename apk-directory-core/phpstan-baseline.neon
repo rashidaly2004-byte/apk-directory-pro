@@ -156,11 +156,6 @@ parameters:
 			path: src/Cli/Commands.php
 
 		-
-			message: "#^Function add_filter not found\\.$#"
-			count: 1
-			path: src/Content/AppPostType.php
-
-		-
 			message: "#^Function register_post_type not found\\.$#"
 			count: 1
 			path: src/Content/AppPostType.php
@@ -214,11 +209,6 @@ parameters:
 			message: "#^Parameter \\$term of method APD\\\\Core\\\\Content\\\\Taxonomies\\:\\:term_edit_fields\\(\\) has invalid type WP_Term\\.$#"
 			count: 1
 			path: src/Content/Taxonomies.php
-
-		-
-			message: "#^Function add_filter not found\\.$#"
-			count: 1
-			path: src/Downloads/Controller.php
 
 		-
 			message: "#^Function add_query_arg not found\\.$#"
@@ -459,11 +449,6 @@ parameters:
 			message: "#^Function set_transient not found\\.$#"
 			count: 1
 			path: src/Reports/Controller.php
-
-		-
-			message: "#^Function add_filter not found\\.$#"
-			count: 2
-			path: src/Reviews/Controller.php
 
 		-
 			message: "#^Function esc_html__ not found\\.$#"

@@ -13,11 +13,15 @@ final class Service {
 	}
 
 	public function create_version( int $app_id, array $data ): int {
-		$allowed_types = array( 'apk', 'xapk', 'apks', 'zip', 'obb' );
-		$file_type     = in_array( $data['file_type'] ?? 'apk', $allowed_types, true ) ? $data['file_type'] : 'apk';
+		$allowed_types  = array( 'apk', 'xapk', 'apks', 'zip', 'obb' );
+		$file_type      = isset( $data['file_type'] ) && in_array( $data['file_type'], $allowed_types, true )
+			? $data['file_type']
+			: 'apk';
 
 		$download_types = array( 'media', 'external', 'redirect' );
-		$download_type  = in_array( $data['download_type'] ?? 'media', $download_types, true ) ? $data['download_type'] : 'media';
+		$download_type  = isset( $data['download_type'] ) && in_array( $data['download_type'], $download_types, true )
+			? $data['download_type']
+			: 'media';
 
 		$row = array(
 			'app_id'             => $app_id,

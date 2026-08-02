@@ -70,10 +70,14 @@ status_header( 200 );
 			<?php if ( $total > $per_page ) : ?>
 				<p>
 					<?php
-					echo paginate_links( [
-						'total'   => (int) ceil( $total / $per_page ),
-						'current' => $paged,
-					] );
+					echo wp_kses_post(
+						paginate_links(
+							array(
+								'total'   => (int) ceil( $total / $per_page ),
+								'current' => $paged,
+							)
+						)
+					);
 					?>
 				</p>
 			<?php endif; ?>

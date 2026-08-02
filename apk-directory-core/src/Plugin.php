@@ -39,6 +39,7 @@ final class Plugin {
 
 	public function activate(): void {
 		Capabilities::register();
+		Capabilities::add_caps_to_roles();
 		Repository::create_table();
 		flush_rewrite_rules();
 		set_transient( 'adp_activation_redirect', true, 30 );
