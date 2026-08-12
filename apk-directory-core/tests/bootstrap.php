@@ -9,7 +9,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 	define( 'ABSPATH', '/tmp/wordpress/' );
 }
 
-$GLOBALS['adp_test_options'] = [];
+$GLOBALS['adp_test_options']    = [];
+$GLOBALS['adp_test_transients'] = [];
+$GLOBALS['adp_test_filters']    = [];
 
 if ( ! function_exists( 'get_option' ) ) {
 	function get_option( $key, $default = false ) {
@@ -58,5 +60,49 @@ if ( ! function_exists( 'wp_json_encode' ) ) {
 if ( ! function_exists( 'wp_parse_args' ) ) {
 	function wp_parse_args( $args, $defaults = [] ) {
 		return array_merge( $defaults, $args );
+	}
+}
+
+if ( ! function_exists( 'wp_unslash' ) ) {
+	function wp_unslash( $value ) {
+		return is_string( $value ) ? stripslashes( $value ) : $value;
+	}
+}
+
+if ( ! function_exists( 'get_transient' ) ) {
+	function get_transient( $key ) {
+		$entry = $GLOBALS['adp_test_transients'][ $key ] ?? null;
+		if ( null === $entry ) {
+			return false;
+		}
+		if ( 0 !== $entry['expires'] && $entry['expires'] <= time() ) {
+			unset( $GLOBALS['adp_test_transients'][ $key ] );
+			return false;
+		}
+		return $entry['value'];
+	}
+}
+
+if ( ! function_exists( 'set_transient' ) ) {
+	function set_transient( $key, $value, $expiration = 0 ) {
+		$GLOBALS['adp_test_transients'][ $key ] = [
+			'value'   => $value,
+			'expires' => $expiration > 0 ? time() + (int) $expiration : 0,
+		];
+		return true;
+	}
+}
+
+if ( ! function_exists( 'delete_transient' ) ) {
+	function delete_transient( $key ) {
+		unset( $GLOBALS['adp_test_transients'][ $key ] );
+		return true;
+	}
+}
+
+if ( ! function_exists( 'apply_filters' ) ) {
+	function apply_filters( $hook, $value, ...$args ) {
+		$callback = $GLOBALS['adp_test_filters'][ $hook ] ?? null;
+		return null === $callback ? $value : $callback( $value, ...$args );
 	}
 }

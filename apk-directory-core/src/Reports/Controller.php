@@ -2,6 +2,8 @@
 
 namespace APD\Core\Reports;
 
+use APD\Core\Support\RateLimiter;
+
 final class Controller {
 
 	public const POST_TYPE = 'adp_report';
@@ -63,12 +65,17 @@ final class Controller {
 			return new \WP_REST_Response( array( 'success' => true ), 200 );
 		}
 
-		$ip      = isset( $_SERVER['REMOTE_ADDR'] ) ? sanitize_text_field( wp_unslash( $_SERVER['REMOTE_ADDR'] ) ) : '';
-		$ip_key  = 'adp_report_' . md5( $ip );
-		if ( (int) get_transient( $ip_key ) >= 5 ) {
+		/**
+		 * Filters the reports allowed per window. Set to 0 to disable the limit.
+		 */
+		$limit = (int) apply_filters( 'adp_report_rate_limit', 5 );
+
+		/** Filters the report rate limit window, in seconds. */
+		$window = (int) apply_filters( 'adp_report_rate_window', 3600 );
+
+		if ( ! RateLimiter::hit( 'report', $limit, $window ) ) {
 			return new \WP_REST_Response( array( 'error' => 'rate_limited' ), 429 );
 		}
-		set_transient( $ip_key, (int) get_transient( $ip_key ) + 1, 3600 );
 
 		$post_id = wp_insert_post(
 			array(

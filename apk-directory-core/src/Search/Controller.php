@@ -4,11 +4,11 @@ namespace APD\Core\Search;
 
 use APD\Core\Content\AppPostType;
 use APD\Core\Content\Meta;
+use APD\Core\Support\RateLimiter;
 
 final class Controller {
 
-	private const RATE_LIMIT_KEY = 'adp_search_rate';
-	private const MAX_RESULTS    = 10;
+	private const MAX_RESULTS = 10;
 
 	public function register(): void {
 		add_action( 'rest_api_init', array( $this, 'register_routes' ) );
@@ -104,20 +104,15 @@ final class Controller {
 	}
 
 	private function check_rate_limit(): bool {
-		$ip    = $this->get_client_ip();
-		$key   = self::RATE_LIMIT_KEY . '_' . md5( $ip );
-		$count = (int) get_transient( $key );
+		/**
+		 * Filters the suggestion requests allowed per window. Set to 0 to
+		 * disable the limit.
+		 */
+		$limit = (int) apply_filters( 'adp_search_rate_limit', 30 );
 
-		if ( $count >= 30 ) {
-			return false;
-		}
+		/** Filters the search rate limit window, in seconds. */
+		$window = (int) apply_filters( 'adp_search_rate_window', 60 );
 
-		set_transient( $key, $count + 1, 60 );
-		return true;
-	}
-
-	private function get_client_ip(): string {
-		$ip = isset( $_SERVER['REMOTE_ADDR'] ) ? sanitize_text_field( wp_unslash( $_SERVER['REMOTE_ADDR'] ) ) : '0.0.0.0';
-		return $ip;
+		return RateLimiter::hit( 'search', $limit, $window );
 	}
 }
