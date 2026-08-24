@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Learn HTML — a hands-on course</title>
+  <meta name="description" content="A hands-on HTML course: eight short lessons with live examples and exercises you edit yourself.">
+  <link rel="stylesheet" href="assets/course.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap wide">
+    <p class="eyebrow">Start here</p>
+    <h1>Learn HTML by writing it</h1>
+    <p class="lede">
+      Eight short lessons. Every one of them is a real HTML page, so you can read the
+      lesson in your browser and then open the same file in your editor to see exactly
+      how it was built. Nothing to install, no build step, no framework.
+    </p>
+  </div>
+</header>
+
+<main class="wrap wide">
+
+  <h2>How to use this course</h2>
+  <p>
+    Open <code>lessons/01-your-first-page.html</code> in a browser (double-clicking the file
+    works fine) and read it. Then keep two windows side by side: the browser and your editor.
+    Change something in the file, save, and refresh the browser. That loop — edit, save,
+    refresh — is the whole job.
+  </p>
+  <p>
+    If you'd rather serve the files over <code>http://</code> instead of <code>file://</code>,
+    run <code>python3 -m http.server</code> from the <code>html-course</code> folder and visit
+    <code>http://localhost:8000</code>. You'll need this later when you start loading
+    images and stylesheets from other folders.
+  </p>
+
+  <div class="tip">
+    <strong>The single most useful habit:</strong> right-click any page on the web and choose
+    <em>View Page Source</em>. Every site you admire is HTML that someone typed. Reading other
+    people's markup is how the shapes start to feel obvious.
+  </div>
+
+  <h2>Lessons</h2>
+  <ol class="cards">
+    <li>
+      <a href="lessons/01-your-first-page.html">
+        <span class="num">Lesson 01</span>
+        <span class="title">Your first page</span>
+        <span class="blurb">What an element is, what the doctype does, and why every page has a head and a body.</span>
+      </a>
+    </li>
+    <li>
+      <a href="lessons/02-text.html">
+        <span class="num">Lesson 02</span>
+        <span class="title">Text: headings, paragraphs, lists</span>
+        <span class="blurb">The elements you'll reach for constantly, plus quotes, line breaks and character entities.</span>
+      </a>
+    </li>
+    <li>
+      <a href="lessons/03-links.html">
+        <span class="num">Lesson 03</span>
+        <span class="title">Links and paths</span>
+        <span class="blurb">Absolute vs relative URLs, linking between your own pages, anchors, mail links, new tabs.</span>
+      </a>
+    </li>
+    <li>
+      <a href="lessons/04-images-and-media.html">
+        <span class="num">Lesson 04</span>
+        <span class="title">Images and media</span>
+        <span class="blurb">The img element, writing good alt text, figures with captions, audio and video.</span>
+      </a>
+    </li>
+    <li>
+      <a href="lessons/05-structure.html">
+        <span class="num">Lesson 05</span>
+        <span class="title">Page structure and semantics</span>
+        <span class="blurb">header, nav, main, section, article, aside, footer — and when a plain div is the right answer.</span>
+      </a>
+    </li>
+    <li>
+      <a href="lessons/06-tables.html">
+        <span class="num">Lesson 06</span>
+        <span class="title">Tables</span>
+        <span class="blurb">Rows, cells, header cells and scope, spanning columns, and what tables are not for.</span>
+      </a>
+    </li>
+    <li>
+      <a href="lessons/07-forms.html">
+        <span class="num">Lesson 07</span>
+        <span class="title">Forms and inputs</span>
+        <span class="blurb">Labels, input types, selects, checkboxes and radios, and free browser validation.</span>
+      </a>
+    </li>
+    <li>
+      <a href="lessons/08-head-and-accessibility.html">
+        <span class="num">Lesson 08</span>
+        <span class="title">The head, accessibility and shipping</span>
+        <span class="blurb">Metadata, social previews, favicons, the accessibility rules that matter most, validators.</span>
+      </a>
+    </li>
+  </ol>
+
+  <h2>Exercises</h2>
+  <p>
+    Each exercise is a <code>starter.html</code> file with numbered TODO comments and a
+    <code>solution.html</code> next to it. Do the starter first and only peek at the solution
+    when you're stuck or when you want to compare.
+  </p>
+  <ul class="cards">
+    <li>
+      <a href="exercises/01-recipe-card/starter.html">
+        <span class="num">Exercise 01 · after lesson 02</span>
+        <span class="title">Recipe card</span>
+        <span class="blurb">Headings, paragraphs, an ordered list and an unordered list on one page.</span>
+      </a>
+    </li>
+    <li>
+      <a href="exercises/02-profile-page/starter.html">
+        <span class="num">Exercise 02 · after lesson 05</span>
+        <span class="title">Profile page</span>
+        <span class="blurb">A semantic layout with navigation, an image with real alt text, and internal links.</span>
+      </a>
+    </li>
+    <li>
+      <a href="exercises/03-signup-form/starter.html">
+        <span class="num">Exercise 03 · after lesson 07</span>
+        <span class="title">Signup form</span>
+        <span class="blurb">Correctly labelled fields, sensible input types, required fields and a fieldset.</span>
+      </a>
+    </li>
+  </ul>
+
+  <h2>Reference</h2>
+  <p>
+    <a href="cheatsheet.md">cheatsheet.md</a> is a one-page dump of every tag and attribute used
+    in this course, so you have somewhere to look when you half-remember a name.
+  </p>
+
+  <h2>What this course leaves out</h2>
+  <p>
+    HTML decides what things <em>are</em>. CSS decides how they <em>look</em>, and JavaScript
+    decides what they <em>do</em>. This course is only the first of those three, on purpose —
+    HTML is small enough to learn properly in an afternoon, and it's much easier to learn CSS
+    once you already know what you're styling. Lesson 08 points you at where to go next.
+  </p>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap wide">Learn HTML — a hands-on course. Edit these files freely; they're yours.</div>
+</footer>
+
+</body>
+</html>

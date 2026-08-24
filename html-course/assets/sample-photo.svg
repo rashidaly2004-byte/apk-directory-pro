@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 200" width="320" height="200" role="img" aria-label="Illustration of hills at sunset">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#2b3a67"/>
+      <stop offset="55%" stop-color="#b06a8a"/>
+      <stop offset="100%" stop-color="#f2a35e"/>
+    </linearGradient>
+  </defs>
+  <rect width="320" height="200" fill="url(#sky)"/>
+  <circle cx="228" cy="126" r="26" fill="#ffe6b0" opacity="0.95"/>
+  <path d="M0 150 L70 104 L128 150 Z" fill="#1e2b4a" opacity="0.9"/>
+  <path d="M90 158 L168 96 L246 158 Z" fill="#16223c"/>
+  <path d="M198 160 L268 116 L320 160 Z" fill="#101a30"/>
+  <rect y="158" width="320" height="42" fill="#0b1220"/>
+</svg>
