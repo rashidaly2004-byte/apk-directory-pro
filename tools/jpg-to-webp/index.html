@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WebP Lab — JPG to WebP Converter</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="atmosphere" aria-hidden="true"></div>
+
+    <header class="top">
+      <p class="brand">WebP Lab</p>
+      <p class="lede">Drop JPG or PNG files. Get smaller WebP downloads — all in your browser.</p>
+    </header>
+
+    <main>
+      <section class="workspace" aria-labelledby="convert-heading">
+        <h1 id="convert-heading" class="visually-hidden">Convert images to WebP</h1>
+
+        <label class="dropzone" id="dropzone" for="file-input">
+          <input
+            id="file-input"
+            type="file"
+            accept="image/jpeg,image/jpg,image/png,image/webp"
+            multiple
+            hidden
+          />
+          <span class="dropzone-title">Drop images here</span>
+          <span class="dropzone-hint">or click to browse · JPG / PNG</span>
+        </label>
+
+        <div class="controls">
+          <label class="quality" for="quality">
+            <span>Quality <strong id="quality-value">80</strong>%</span>
+            <input id="quality" type="range" min="1" max="100" value="80" />
+          </label>
+          <button type="button" id="convert-btn" class="btn primary" disabled>Convert to WebP</button>
+          <button type="button" id="clear-btn" class="btn ghost" disabled>Clear</button>
+        </div>
+
+        <p class="status" id="status" role="status" aria-live="polite"></p>
+
+        <ul class="results" id="results" hidden></ul>
+      </section>
+
+      <section class="learn" aria-labelledby="learn-heading">
+        <h2 id="learn-heading">How this tool works</h2>
+        <ol>
+          <li><strong>HTML</strong> builds the UI (drop zone, slider, buttons).</li>
+          <li><strong>JavaScript</strong> reads the image file you choose.</li>
+          <li>The browser draws it onto a hidden <code>canvas</code>.</li>
+          <li><code>canvas.toBlob('image/webp')</code> encodes WebP.</li>
+          <li>You download the new file — nothing is uploaded to a server.</li>
+        </ol>
+      </section>
+    </main>
+
+    <footer>
+      <p>Runs locally in your browser. Open <code>index.html</code> and start converting.</p>
+    </footer>
+
+    <script src="app.js"></script>
+  </body>
+</html>
