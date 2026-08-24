@@ -40,6 +40,10 @@ Lesson 08 ends with a three-page final project.
 Do the `starter.html` first — it's a plain HTML file with numbered TODO
 comments. `solution.html` sits next to it, with comments explaining the choices.
 
+The exercises deliberately load no stylesheet, so they render with raw browser
+defaults. They're meant to look plain: the point is to judge the markup on its
+own.
+
 | Exercise | Do it after | Practises |
 | --- | --- | --- |
 | [01 · Recipe card](exercises/01-recipe-card/starter.html) | Lesson 02 | Headings, paragraphs, both list types, entities |
