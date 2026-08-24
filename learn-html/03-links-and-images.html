@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<!--
+  ============================================================
+  LESSON 3: LINKS AND IMAGES
+  ============================================================
+
+  The "hypertext" in HyperText Markup Language IS the link.
+  This lesson also introduces ATTRIBUTES — extra settings
+  written inside an opening tag:
+
+      <a href="https://example.com">visit</a>
+         ^^^^ attribute name
+              ^^^^^^^^^^^^^^^^^^^ attribute value (in quotes)
+-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lesson 3: Links and Images</title>
+</head>
+<body>
+
+  <h1>Lesson 3: Links and Images</h1>
+
+  <!-- ==========================================================
+       LINKS: the <a> (anchor) element
+       ========================================================== -->
+  <h2>Links</h2>
+  <p>
+    A link is an <code>&lt;a&gt;</code> element. The <code>href</code>
+    attribute says where it goes; the text between the tags is what the
+    user clicks. For example, here is a link to the
+    <a href="https://developer.mozilla.org/en-US/docs/Web/HTML">MDN HTML documentation</a>
+    — the best reference site for web developers. Bookmark it!
+  </p>
+
+  <h3>Three kinds of link destinations</h3>
+  <p>
+    <!-- 1. ABSOLUTE URL: full address including https:// -->
+    <strong>Absolute:</strong>
+    <a href="https://www.wikipedia.org">https://www.wikipedia.org</a>
+    — a complete address to another site.<br>
+
+    <!-- 2. RELATIVE URL: a path from THIS file's folder. -->
+    <strong>Relative:</strong>
+    <a href="02-text.html">02-text.html</a>
+    — a path relative to the current file. This is how you link between
+    pages of your own site.<br>
+
+    <!-- 3. FRAGMENT: jumps to an element with a matching id on the page. -->
+    <strong>Fragment:</strong>
+    <a href="#exercises">#exercises</a>
+    — jumps to the element on this page whose <code>id</code> is
+    "exercises" (scroll down after clicking!).
+  </p>
+
+  <h3>Useful link tricks</h3>
+  <p>
+    <!-- target="_blank" opens in a new tab.
+         rel="noopener" is a standard safety companion for it. -->
+    Open in a new tab with <code>target="_blank"</code>:
+    <a href="https://developer.mozilla.org" target="_blank" rel="noopener">MDN in a new tab</a>.<br>
+
+    <!-- mailto: opens the user's email app -->
+    Email links:
+    <a href="mailto:rashid@example.com">send me an email</a>.
+  </p>
+
+  <!-- ==========================================================
+       IMAGES: the <img> element
+       ========================================================== -->
+  <h2>Images</h2>
+  <p>
+    <code>&lt;img&gt;</code> is a void element (no closing tag) with two
+    attributes you should always set:
+  </p>
+  <p>
+    • <code>src</code> — where the image file lives (absolute or relative,
+    just like links).<br>
+    • <code>alt</code> — a text description, read aloud by screen readers
+    and shown if the image fails to load. Describe the image's
+    <em>content</em>, e.g. <code>alt="A cat sleeping on a laptop"</code>.
+  </p>
+
+  <!-- This image loads from the internet, so you need to be online.
+       width/height (in pixels) reserve space so the page doesn't jump
+       around while the image loads. -->
+  <img
+    src="https://picsum.photos/id/237/400/250"
+    alt="A black puppy looking up at the camera"
+    width="400"
+    height="250">
+
+  <p>
+    The image above comes from the internet. The one below has a broken
+    <code>src</code> on purpose — notice how the browser shows the
+    <code>alt</code> text instead:
+  </p>
+
+  <img src="does-not-exist.jpg" alt="(This alt text appears because the image is missing)">
+
+  <!-- ==========================================================
+       COMBINING THEM: a clickable image
+       ========================================================== -->
+  <h2>A clickable image</h2>
+  <p>Wrap an <code>&lt;img&gt;</code> inside an <code>&lt;a&gt;</code>:</p>
+  <a href="https://picsum.photos" target="_blank" rel="noopener">
+    <img
+      src="https://picsum.photos/id/1015/300/200"
+      alt="A river winding through mountains — click to visit Lorem Picsum"
+      width="300"
+      height="200">
+  </a>
+
+  <!-- The id attribute gives an element a unique name that fragment
+       links (#exercises) can jump to. -->
+  <h2 id="exercises">🏋️ Your exercises</h2>
+  <p>
+    <strong>1.</strong> Add a link to your favorite website that opens in a
+    new tab.<br>
+    <strong>2.</strong> Add an image from
+    <a href="https://picsum.photos" target="_blank" rel="noopener">picsum.photos</a>
+    (any URL like <code>https://picsum.photos/400/300</code> works) with a
+    proper <code>alt</code> description.<br>
+    <strong>3.</strong> Put a small "back to top" link at the bottom of this
+    page: give the <code>&lt;h1&gt;</code> an <code>id="top"</code> and link
+    to <code>#top</code>.<br>
+    <strong>4.</strong> Download any photo to this folder and display it
+    with a relative <code>src</code> (just the file name).
+  </p>
+
+  <p>
+    Next: <a href="04-lists-and-tables.html">Lesson 4: Lists and tables</a>
+    — or back to <a href="02-text.html">Lesson 2</a>.
+  </p>
+
+</body>
+</html>

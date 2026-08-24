@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<!--
+  ============================================================
+  LESSON 6: SEMANTIC PAGE LAYOUT
+  ============================================================
+
+  You now know enough tags to build real pages. The final skill
+  is STRUCTURE: organizing a whole page into meaningful regions.
+
+  "Semantic" means the tag NAME describes the MEANING of its
+  content. <header> says "this is the page header" the same way
+  <p> says "this is a paragraph".
+
+  Why bother, when a plain <div> looks identical?
+    • Screen readers can jump straight to <nav> or <main>.
+    • Search engines understand your page better.
+    • Your code is far easier to read: <footer> beats
+      <div class="bottom-thing">.
+-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lesson 6: Semantic Page Layout</title>
+</head>
+<body>
+
+  <!-- ==========================================================
+       <header> — introductory content for the page:
+       usually the site name and navigation.
+       ========================================================== -->
+  <header>
+    <h1>Rashid's Dev Blog</h1>
+    <p><em>(A pretend blog, to demonstrate page structure.)</em></p>
+
+    <!-- <nav> — the page's main navigation links.
+         Note: it's a LIST of links, which is exactly what
+         navigation is. Lesson 4 paying off already. -->
+    <nav>
+      <ul>
+        <li><a href="#post-1">First post</a></li>
+        <li><a href="#post-2">Second post</a></li>
+        <li><a href="#about">About</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- ==========================================================
+       <main> — THE main content. Exactly one per page.
+       Everything unique to this page lives here.
+       ========================================================== -->
+  <main>
+
+    <!-- <article> — a self-contained piece that would make sense
+         on its own: a blog post, news story, product card,
+         forum comment. -->
+    <article id="post-1">
+      <header>
+        <h2>I built my first web page!</h2>
+        <!-- <time> marks machine-readable dates -->
+        <p><time datetime="2026-08-24">August 24, 2026</time></p>
+      </header>
+      <p>
+        Today I learned that HTML is just structured text. The browser
+        does all the hard work — I only have to say what everything
+        <em>is</em>.
+      </p>
+      <!-- articles can have their own footer -->
+      <footer>
+        <p><small>Filed under: learning, html</small></p>
+      </footer>
+    </article>
+
+    <hr>
+
+    <article id="post-2">
+      <header>
+        <h2>Semantic tags are just labeled boxes</h2>
+        <p><time datetime="2026-08-25">August 25, 2026</time></p>
+      </header>
+      <p>
+        A page is boxes inside boxes. Semantic tags are boxes with
+        meaningful names. That is honestly 90% of it.
+      </p>
+
+      <!-- <section> — a thematic grouping WITHIN something,
+           usually with its own heading. -->
+      <section>
+        <h3>The main regions</h3>
+        <p>
+          <code>&lt;header&gt;</code>, <code>&lt;nav&gt;</code>,
+          <code>&lt;main&gt;</code>, <code>&lt;footer&gt;</code> — the big
+          four that frame nearly every page on the web.
+        </p>
+      </section>
+
+      <section>
+        <h3>The content groupers</h3>
+        <p>
+          <code>&lt;article&gt;</code> for self-contained pieces,
+          <code>&lt;section&gt;</code> for thematic chunks,
+          <code>&lt;aside&gt;</code> for side notes.
+        </p>
+      </section>
+    </article>
+
+    <!-- <aside> — related-but-separate content: sidebars,
+         pull quotes, "you might also like" boxes. -->
+    <aside>
+      <h3>💡 Did you know?</h3>
+      <p>
+        Press <strong>F12</strong> (or right-click → Inspect) in your
+        browser to open DevTools and see the structure of ANY page on the
+        internet. Try it on your favorite site — you'll recognize the tags
+        now.
+      </p>
+    </aside>
+
+    <!-- ========================================================
+         <div> and <span> — the MEANINGLESS containers
+         ======================================================== -->
+    <section id="about">
+      <h2>So what are &lt;div&gt; and &lt;span&gt; for?</h2>
+      <p>
+        <code>&lt;div&gt;</code> (block container) and
+        <code>&lt;span&gt;</code> (inline container) mean nothing on
+        purpose. They exist as hooks for CSS styling when no semantic tag
+        fits. The rule of thumb: reach for a semantic tag first, and use
+        <code>div</code>/<code>span</code> only when nothing else applies.
+      </p>
+    </section>
+
+  </main>
+
+  <!-- ==========================================================
+       <footer> — closing content: copyright, contact, links.
+       ========================================================== -->
+  <footer>
+    <hr>
+    <p>
+      <small>© 2026 Rashid — built while learning HTML.</small>
+    </p>
+  </footer>
+
+  <!-- Exercises live outside the pretend blog, in a comment,
+       so they don't break the illusion:
+
+       🏋️ YOUR EXERCISES
+       1. Add a third <article> to the blog: any topic, with a
+          heading, a date, a paragraph, and a footer. Add it to
+          the <nav> list too.
+       2. Add an <aside> with your favorite keyboard shortcut.
+       3. Open any big website, press F12, and find its <header>,
+          <nav>, <main>, and <footer> in the Elements panel.
+       4. FINAL PROJECT TIME: open exercises/my-profile-starter.html
+          and build your own page from scratch. Everything you need,
+          you now know.
+  -->
+
+  <p>
+    <strong>Done with the lessons!</strong> Now build something:
+    open <a href="exercises/my-profile-starter.html">the final project</a>.
+    (Peek at the exercises in the source of this page first — there's a
+    comment near the bottom.)
+  </p>
+
+</body>
+</html>

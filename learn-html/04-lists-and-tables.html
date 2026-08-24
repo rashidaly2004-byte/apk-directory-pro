@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<!--
+  ============================================================
+  LESSON 4: LISTS AND TABLES
+  ============================================================
+
+  Lists are everywhere on the web: navigation menus, search
+  results, shopping carts — most of them are lists under the
+  hood. Tables are for genuinely tabular data (rows/columns).
+-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lesson 4: Lists and Tables</title>
+</head>
+<body>
+
+  <h1>Lesson 4: Lists and Tables</h1>
+
+  <!-- ==========================================================
+       UNORDERED LISTS: <ul> — bullet points
+       ========================================================== -->
+  <h2>Unordered lists</h2>
+  <p>
+    Use <code>&lt;ul&gt;</code> when order doesn't matter. Each item is an
+    <code>&lt;li&gt;</code> (list item):
+  </p>
+  <ul>
+    <li>HTML — structure</li>
+    <li>CSS — appearance</li>
+    <li>JavaScript — behavior</li>
+  </ul>
+
+  <!-- ==========================================================
+       ORDERED LISTS: <ol> — numbered steps
+       ========================================================== -->
+  <h2>Ordered lists</h2>
+  <p>Use <code>&lt;ol&gt;</code> when the order matters:</p>
+  <ol>
+    <li>Open the file in your editor</li>
+    <li>Change something</li>
+    <li>Save</li>
+    <li>Refresh the browser</li>
+  </ol>
+  <!-- Tip: <ol start="5"> begins numbering at 5,
+       and <ol reversed> counts down. -->
+
+  <!-- ==========================================================
+       NESTED LISTS: a list inside a list item
+       ========================================================== -->
+  <h2>Nested lists</h2>
+  <p>
+    Put a whole <code>&lt;ul&gt;</code> <em>inside</em> an
+    <code>&lt;li&gt;</code> to create sub-items:
+  </p>
+  <ul>
+    <li>
+      Frontend
+      <!-- This inner list belongs to the "Frontend" item,
+           so it lives INSIDE that <li>, before its closing tag. -->
+      <ul>
+        <li>HTML</li>
+        <li>CSS</li>
+      </ul>
+    </li>
+    <li>
+      Backend
+      <ul>
+        <li>Databases</li>
+        <li>APIs</li>
+      </ul>
+    </li>
+  </ul>
+
+  <!-- ==========================================================
+       DESCRIPTION LISTS: <dl> — term + description pairs
+       ========================================================== -->
+  <h2>Description lists</h2>
+  <p>For glossaries and key–value pairs:</p>
+  <dl>
+    <dt>Element</dt>
+    <dd>Opening tag + content + closing tag.</dd>
+    <dt>Attribute</dt>
+    <dd>A name="value" setting inside an opening tag.</dd>
+    <dt>Void element</dt>
+    <dd>An element with no content or closing tag, like &lt;img&gt; or &lt;br&gt;.</dd>
+  </dl>
+
+  <!-- ==========================================================
+       TABLES
+       ========================================================== -->
+  <h2>Tables</h2>
+  <p>
+    A table is built row by row. The pieces:
+    <code>&lt;table&gt;</code> wraps everything,
+    <code>&lt;tr&gt;</code> is a table row,
+    <code>&lt;th&gt;</code> is a header cell, and
+    <code>&lt;td&gt;</code> is a data cell.
+    <code>&lt;thead&gt;</code> and <code>&lt;tbody&gt;</code> group the
+    header and body rows.
+  </p>
+
+  <!-- border="1" is a quick way to see the table's edges while learning.
+       In real projects you'd style tables with CSS instead. -->
+  <table border="1">
+    <!-- <caption> is the table's title, read by screen readers too. -->
+    <caption>HTML lessons in this course</caption>
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Lesson</th>
+        <th>Topic</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td>Hello, World</td>
+        <td>Document structure</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>Text</td>
+        <td>Headings, paragraphs, emphasis</td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td>Links &amp; Images</td>
+        <td>Anchors, attributes, alt text</td>
+      </tr>
+      <tr>
+        <td>4</td>
+        <td>Lists &amp; Tables</td>
+        <td>You are here!</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>
+    <strong>One warning:</strong> in the old days people used tables to lay
+    out entire pages. Don't — tables are for data. Page layout is CSS's job
+    (your next adventure after HTML).
+  </p>
+
+  <h2>🏋️ Your exercises</h2>
+  <ol>
+    <li>Make an unordered list of three things you want to build once you
+        know HTML.</li>
+    <li>Write a numbered recipe (real or silly) with at least five steps.</li>
+    <li>Create a nested list: your three favorite music genres, each with
+        two artists under it.</li>
+    <li>Build a table of your typical week: columns for Day, Main task, and
+        Mood. Add at least three rows and a caption.</li>
+  </ol>
+
+  <p>
+    Next: <a href="05-forms.html">Lesson 5: Forms and inputs</a>
+    — or back to <a href="03-links-and-images.html">Lesson 3</a>.
+  </p>
+
+</body>
+</html>

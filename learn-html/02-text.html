@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<!--
+  ============================================================
+  LESSON 2: WORKING WITH TEXT
+  ============================================================
+
+  In this lesson: headings, paragraphs, emphasis, quotes,
+  line breaks, and special characters.
+
+  Same routine as before: read the page in the browser,
+  then read this source, then do the exercises.
+-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lesson 2: Working with Text</title>
+</head>
+<body>
+
+  <h1>Lesson 2: Working with Text</h1>
+
+  <!-- ==========================================================
+       HEADINGS: h1 through h6
+       ========================================================== -->
+  <h2>Headings come in six levels</h2>
+  <p>
+    <code>&lt;h1&gt;</code> is the most important, <code>&lt;h6&gt;</code>
+    the least. Use them like an outline of a document — don't pick a level
+    just because of its size. Search engines and screen readers use heading
+    levels to understand your page's structure.
+  </p>
+
+  <!-- Never skip levels for looks: after an h2 comes an h3, not an h5. -->
+  <h3>This is an h3 — a subsection of the h2 above</h3>
+  <h4>This is an h4 — a sub-subsection</h4>
+  <p>You will rarely need h5 and h6.</p>
+
+  <!-- ==========================================================
+       EMPHASIS AND IMPORTANCE
+       ========================================================== -->
+  <h2>Making text stand out</h2>
+  <p>
+    Use <em>&lt;em&gt; for emphasis</em> (usually shown as italics) and
+    <strong>&lt;strong&gt; for importance</strong> (usually shown as bold).
+  </p>
+  <p>
+    There are also <b>&lt;b&gt;</b> and <i>&lt;i&gt;</i>, which look the
+    same but carry no meaning — prefer <code>em</code> and
+    <code>strong</code>, because they say <em>why</em> the text stands out,
+    not just how it looks.
+  </p>
+  <p>
+    A few more useful ones:
+    <code>&lt;code&gt;</code> renders text in a monospace font (great for
+    code, like <code>console.log()</code>),
+    <mark>&lt;mark&gt; highlights text</mark>,
+    <small>&lt;small&gt; makes fine print</small>,
+    <del>&lt;del&gt; shows deleted text</del> and
+    <ins>&lt;ins&gt; shows inserted text</ins>.
+  </p>
+
+  <!-- ==========================================================
+       LINE BREAKS AND HORIZONTAL RULES
+       ========================================================== -->
+  <h2>Line breaks</h2>
+  <p>
+    Here is something important: in HTML, pressing Enter in your editor
+    does NOT create a new line on the page. The browser collapses
+
+
+    all whitespace       (even this!)      into single spaces.
+  </p>
+  <p>
+    To force a line break <em>inside</em> a paragraph, use
+    <code>&lt;br&gt;</code>:<br>
+    Like<br>
+    this.
+  </p>
+  <!-- <br> has no closing tag. Elements like this (br, img, input, meta)
+       are called VOID elements — they can't contain content. -->
+  <p>
+    But if two pieces of text are separate thoughts, use two paragraphs
+    instead of <code>&lt;br&gt;</code>. A horizontal rule
+    <code>&lt;hr&gt;</code> marks a thematic break between sections:
+  </p>
+  <hr>
+
+  <!-- ==========================================================
+       QUOTES
+       ========================================================== -->
+  <h2>Quoting people</h2>
+  <!-- blockquote = a long, standalone quotation. Browsers indent it. -->
+  <blockquote>
+    <p>The secret of getting ahead is getting started.</p>
+  </blockquote>
+  <p>
+    For a short quote inside a sentence, use <code>&lt;q&gt;</code>:
+    my mentor always says <q>ship it, then polish it</q> — the browser
+    adds the quotation marks for you.
+  </p>
+
+  <!-- ==========================================================
+       SPECIAL CHARACTERS (ENTITIES)
+       ========================================================== -->
+  <h2>Special characters</h2>
+  <p>
+    Since <code>&lt;</code> and <code>&gt;</code> start and end tags, you
+    can't type them directly in your text — the browser would think you're
+    opening a tag. Instead you write ENTITIES:
+  </p>
+  <p>
+    <code>&amp;lt;</code> shows &lt; &nbsp;•&nbsp;
+    <code>&amp;gt;</code> shows &gt; &nbsp;•&nbsp;
+    <code>&amp;amp;</code> shows &amp; &nbsp;•&nbsp;
+    <code>&amp;nbsp;</code> is a non-breaking space
+  </p>
+
+  <h2>🏋️ Your exercises</h2>
+  <p>
+    <strong>1.</strong> Add an <code>&lt;h2&gt;</code> section at the bottom
+    called "My favorite quote" containing a <code>&lt;blockquote&gt;</code>
+    with a quote you like.<br>
+    <strong>2.</strong> Write a paragraph where one word is emphasized with
+    <code>&lt;em&gt;</code> and one phrase is marked important with
+    <code>&lt;strong&gt;</code>.<br>
+    <strong>3.</strong> Try to display the literal text
+    <code>&lt;h1&gt;</code> on the page (hint: entities).<br>
+    <strong>4.</strong> Write a short address (name, street, city) using
+    <code>&lt;br&gt;</code> between the lines.
+  </p>
+
+  <p>
+    Next up: <a href="03-links-and-images.html">Lesson 3: Links and images</a>
+    — or go back to <a href="01-hello-world.html">Lesson 1</a>.
+  </p>
+
+</body>
+</html>

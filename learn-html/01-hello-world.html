@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<!--
+  ============================================================
+  LESSON 1: HELLO, WORLD — YOUR FIRST HTML PAGE
+  ============================================================
+
+  Welcome! This file is both a web page AND a lesson.
+
+  HOW TO USE IT:
+    1. Open this file in your browser (double-click it, or drag
+       it onto a browser window). Read the rendered page.
+    2. Open the same file in your code editor, side by side.
+    3. Change something, save, and refresh the browser (F5).
+       That edit-save-refresh loop is how you learn HTML.
+
+  WHAT IS HTML?
+    HTML (HyperText Markup Language) describes the STRUCTURE
+    and MEANING of a page's content. It is not a programming
+    language — there are no loops or variables. You wrap pieces
+    of content in "tags" that say what each piece IS:
+    a heading, a paragraph, a link, an image, and so on.
+
+  ANATOMY OF AN ELEMENT:
+
+      <p>Hello there</p>
+      ^^^            ^^^^
+      opening tag    closing tag (note the slash /)
+
+    The whole thing — opening tag + content + closing tag —
+    is called an ELEMENT.
+
+  Everything between <!- - and - -> (without the spaces) is a
+  COMMENT. The browser ignores comments completely; they exist
+  only for humans reading the code. This entire block is one.
+-->
+
+<!-- The <html> element wraps the ENTIRE page. lang="en" tells
+     browsers and screen readers the page is in English. -->
+<html lang="en">
+
+  <!-- ==========================================================
+       THE HEAD: information ABOUT the page.
+       Nothing inside <head> is displayed on the page itself.
+       ========================================================== -->
+  <head>
+    <!-- charset="UTF-8" lets the page display any character:
+         accents, emoji, other alphabets. Always include it. -->
+    <meta charset="UTF-8">
+
+    <!-- Makes the page scale properly on phones. Standard boilerplate. -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- The <title> appears in the browser TAB, not on the page.
+         Look at your browser tab right now — there it is! -->
+    <title>Lesson 1: Hello, World</title>
+  </head>
+
+  <!-- ==========================================================
+       THE BODY: everything the visitor actually SEES.
+       ========================================================== -->
+  <body>
+
+    <!-- <h1> is the main heading. A page should have exactly one. -->
+    <h1>Hello, World! 👋</h1>
+
+    <!-- <p> is a paragraph. Browsers add space between paragraphs
+         automatically. -->
+    <p>
+      Congratulations — you are looking at a web page that you can
+      change yourself. Everything you see here comes from the file
+      <code>01-hello-world.html</code>.
+    </p>
+
+    <p>
+      Now open this file in your editor and look at the source code.
+      Notice the comments (they start with <code>&lt;!--</code>) —
+      they explain every part of the page.
+    </p>
+
+    <h2>The rules so far</h2>
+    <p>
+      Only four ideas make up this whole page:
+    </p>
+    <p>
+      1. A page starts with <code>&lt;!DOCTYPE html&gt;</code> — it tells
+      the browser "this is modern HTML".<br>
+      2. <code>&lt;head&gt;</code> holds information <em>about</em> the page.<br>
+      3. <code>&lt;body&gt;</code> holds what visitors <em>see</em>.<br>
+      4. Content is wrapped in tags like <code>&lt;p&gt;...&lt;/p&gt;</code>
+      that describe what it is.
+    </p>
+
+    <h2>🏋️ Your exercises</h2>
+    <p>
+      Do these in your editor, saving and refreshing the browser after each one:
+    </p>
+    <p>
+      <strong>1.</strong> Change the text inside the <code>&lt;h1&gt;</code>
+      to greet yourself by name.<br>
+      <strong>2.</strong> Change the <code>&lt;title&gt;</code> in the head
+      and watch the browser tab update.<br>
+      <strong>3.</strong> Add a brand-new paragraph at the bottom of the body
+      describing why you want to learn HTML.<br>
+      <strong>4.</strong> Break something on purpose: delete a closing tag
+      like <code>&lt;/p&gt;</code>, refresh, and see what happens. Then fix it.
+      (Browsers are forgiving — they try to guess what you meant — but
+      relying on that leads to messy bugs later.)
+    </p>
+
+    <p>
+      When you're comfortable, move on to
+      <a href="02-text.html">Lesson 2: Working with text</a>.
+    </p>
+
+  </body>
+</html>

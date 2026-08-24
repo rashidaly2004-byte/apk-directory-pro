@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<!--
+  ============================================================
+  FINAL PROJECT — ONE POSSIBLE SOLUTION
+  ============================================================
+
+  Your page doesn't need to match this! Any page that hits the
+  checklist is a correct solution. Compare structures, not
+  exact text.
+-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rashid — Profile</title>
+</head>
+<body>
+
+  <header id="top">
+    <h1>Rashid</h1>
+    <nav>
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+
+    <section id="about">
+      <h2>About me</h2>
+      <p>
+        I'm a <strong>software engineer</strong> who just learned HTML by
+        building things — which, it turns out, is the <em>only</em> way
+        anything sticks.
+      </p>
+      <img
+        src="https://picsum.photos/id/180/400/250"
+        alt="A workspace with a laptop showing code"
+        width="400"
+        height="250">
+    </section>
+
+    <section id="skills">
+      <h2>Skills &amp; goals</h2>
+
+      <ul>
+        <li>Structuring pages with semantic HTML</li>
+        <li>Building forms with built-in validation</li>
+        <li>Debugging with browser DevTools</li>
+      </ul>
+
+      <table border="1">
+        <caption>Current skill levels</caption>
+        <thead>
+          <tr>
+            <th>Skill</th>
+            <th>Level</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>HTML</td>
+            <td>Comfortable</td>
+          </tr>
+          <tr>
+            <td>CSS</td>
+            <td>Next up</td>
+          </tr>
+          <tr>
+            <td>JavaScript</td>
+            <td>Soon</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="contact">
+      <h2>Contact me</h2>
+
+      <form action="#">
+        <p>
+          <label for="sender-name">Your name:</label><br>
+          <input type="text" id="sender-name" name="sender-name" required>
+        </p>
+        <p>
+          <label for="sender-email">Your email:</label><br>
+          <input type="email" id="sender-email" name="sender-email" required>
+        </p>
+        <p>
+          <label for="message">Message:</label><br>
+          <textarea id="message" name="message" rows="5" cols="40"></textarea>
+        </p>
+        <p>
+          <button type="submit">Send message</button>
+        </p>
+      </form>
+
+      <p>
+        Find me on
+        <a href="https://github.com" target="_blank" rel="noopener">GitHub</a>.
+      </p>
+    </section>
+
+  </main>
+
+  <footer>
+    <hr>
+    <p><small>© 2026 Rashid — my first hand-written web page.</small></p>
+    <p><a href="#top">Back to top ↑</a></p>
+  </footer>
+
+</body>
+</html>

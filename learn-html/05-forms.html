@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<!--
+  ============================================================
+  LESSON 5: FORMS AND INPUTS
+  ============================================================
+
+  Forms are how users send data TO a website: logins, sign-ups,
+  searches, checkouts. Actually processing the data requires a
+  server or JavaScript (later adventures) — but the form itself,
+  with all its fields and built-in validation, is pure HTML.
+-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lesson 5: Forms and Inputs</title>
+</head>
+<body>
+
+  <h1>Lesson 5: Forms and Inputs</h1>
+
+  <p>
+    Everything below is interactive — click around, type things, and try
+    submitting with fields empty to see the browser's built-in validation.
+  </p>
+
+  <!-- ==========================================================
+       THE FORM ELEMENT
+       action = where the data is sent (a server URL).
+       Here we use "#" (nowhere) since we have no server —
+       submitting will just reload the page with the values
+       visible in the address bar. Watch for that!
+       ========================================================== -->
+  <form action="#">
+
+    <!-- ========================================================
+         TEXT INPUTS AND LABELS
+
+         Every input needs a <label>. Connect them by giving the
+         input an id and the label a matching for="".
+         Clicking the label then focuses the input — try it! —
+         and screen readers announce the field properly.
+         ======================================================== -->
+    <h2>Text fields</h2>
+
+    <p>
+      <label for="username">Username:</label><br>
+      <!-- "required" blocks submission while empty.
+           "placeholder" is the gray hint text — it is NOT a label! -->
+      <input type="text" id="username" name="username"
+             placeholder="e.g. rashid_dev" required>
+    </p>
+
+    <p>
+      <label for="email">Email:</label><br>
+      <!-- type="email" makes the browser check for a valid email
+           format. On phones it also shows the @ keyboard. -->
+      <input type="email" id="email" name="email" required>
+    </p>
+
+    <p>
+      <label for="password">Password:</label><br>
+      <!-- type="password" hides what you type.
+           minlength enforces a minimum length. -->
+      <input type="password" id="password" name="password" minlength="8">
+    </p>
+
+    <p>
+      <label for="bio">Short bio:</label><br>
+      <!-- <textarea> = multi-line text. Unlike <input>, it has a
+           closing tag. rows sets its visible height. -->
+      <textarea id="bio" name="bio" rows="4" cols="40"
+                placeholder="Tell us about yourself..."></textarea>
+    </p>
+
+    <!-- ========================================================
+         OTHER INPUT TYPES
+         Same <input> element — the "type" changes everything.
+         ======================================================== -->
+    <h2>Numbers, dates, and colors</h2>
+
+    <p>
+      <label for="age">Age:</label>
+      <input type="number" id="age" name="age" min="13" max="120">
+      <!-- min/max are validated by the browser -->
+    </p>
+
+    <p>
+      <label for="birthday">Birthday:</label>
+      <input type="date" id="birthday" name="birthday">
+      <!-- free calendar picker, no JavaScript needed! -->
+    </p>
+
+    <p>
+      <label for="favcolor">Favorite color:</label>
+      <input type="color" id="favcolor" name="favcolor" value="#3366ff">
+    </p>
+
+    <p>
+      <label for="skill">HTML skill level:</label><br>
+      <input type="range" id="skill" name="skill" min="0" max="10" value="3">
+    </p>
+
+    <!-- ========================================================
+         CHOICES: radio buttons, checkboxes, dropdowns
+         ======================================================== -->
+    <h2>Choosing options</h2>
+
+    <!-- RADIO BUTTONS: pick exactly ONE of a group.
+         The same name="editor" is what groups them together. -->
+    <p>Which code editor do you use?</p>
+    <p>
+      <input type="radio" id="ed-cursor" name="editor" value="cursor" checked>
+      <label for="ed-cursor">Cursor</label><br>
+
+      <input type="radio" id="ed-vscode" name="editor" value="vscode">
+      <label for="ed-vscode">VS Code</label><br>
+
+      <input type="radio" id="ed-other" name="editor" value="other">
+      <label for="ed-other">Something else</label>
+    </p>
+
+    <!-- CHECKBOXES: pick ANY number, each independent. -->
+    <p>What do you want to learn after HTML?</p>
+    <p>
+      <input type="checkbox" id="learn-css" name="learn" value="css">
+      <label for="learn-css">CSS</label><br>
+
+      <input type="checkbox" id="learn-js" name="learn" value="js">
+      <label for="learn-js">JavaScript</label><br>
+
+      <input type="checkbox" id="learn-backend" name="learn" value="backend">
+      <label for="learn-backend">Backend development</label>
+    </p>
+
+    <!-- DROPDOWN: <select> with <option> children. -->
+    <p>
+      <label for="hours">Hours you can practice per week:</label><br>
+      <select id="hours" name="hours">
+        <option value="">-- choose --</option>
+        <option value="1-3">1–3 hours</option>
+        <option value="4-7">4–7 hours</option>
+        <option value="8+">8 or more</option>
+      </select>
+    </p>
+
+    <!-- ========================================================
+         SUBMITTING
+         A button with type="submit" sends the form.
+         ======================================================== -->
+    <h2>Send it</h2>
+    <p>
+      <button type="submit">Create my account</button>
+      <button type="reset">Clear everything</button>
+    </p>
+    <p>
+      <small>
+        After you submit, look at the address bar: the field values appear
+        there as <code>?username=...&amp;email=...</code>. That is the form
+        data being "sent" — with a real server, it would be processed
+        instead of just reloading the page.
+      </small>
+    </p>
+
+  </form>
+
+  <h2>🏋️ Your exercises</h2>
+  <ol>
+    <li>Try submitting with an empty username — read the browser's error
+        message. Then type an invalid email (like "hello") and submit.</li>
+    <li>Add a phone number field (<code>type="tel"</code>) with a label.</li>
+    <li>Add a checkbox: "I agree to the terms" — make it
+        <code>required</code> and see what happens when you submit without
+        checking it.</li>
+    <li>Build a tiny pizza-order form from scratch in a new file: name,
+        size (radio buttons), toppings (checkboxes), delivery date, and a
+        submit button.</li>
+  </ol>
+
+  <p>
+    Next: <a href="06-semantic-layout.html">Lesson 6: Semantic page layout</a>
+    — or back to <a href="04-lists-and-tables.html">Lesson 4</a>.
+  </p>
+
+</body>
+</html>
