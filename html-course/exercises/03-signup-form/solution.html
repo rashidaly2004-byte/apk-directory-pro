@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Join Northgate Climbing</title>
+</head>
+<body>
+
+  <h1>Join Northgate Climbing</h1>
+
+  <p>Fields marked <abbr title="required">*</abbr> are required.</p>
+
+  <form method="get">
+
+    <fieldset>
+      <legend>Your details</legend>
+
+      <p>
+        <label for="name">Full name <abbr title="required">*</abbr></label><br>
+        <input type="text" id="name" name="name" required autocomplete="name">
+      </p>
+
+      <p>
+        <label for="email">Email address <abbr title="required">*</abbr></label><br>
+        <input type="email" id="email" name="email" required autocomplete="email">
+      </p>
+
+      <p>
+        <label for="password">Choose a password <abbr title="required">*</abbr></label><br>
+        <input type="password" id="password" name="password"
+               required minlength="8" autocomplete="new-password">
+      </p>
+
+      <p>
+        <label for="dob">Date of birth <abbr title="required">*</abbr></label><br>
+        <input type="date" id="dob" name="dob" required max="2026-12-31">
+      </p>
+
+      <p>
+        <label for="phone">Phone (optional)</label><br>
+        <input type="tel" id="phone" name="phone"
+               placeholder="+44 7700 900000" autocomplete="tel">
+      </p>
+    </fieldset>
+
+    <fieldset>
+      <legend>Membership</legend>
+
+      <p>
+        <input type="radio" id="tier-day" name="tier" value="day">
+        <label for="tier-day">Day pass — &pound;12</label>
+      </p>
+      <p>
+        <input type="radio" id="tier-monthly" name="tier" value="monthly" checked>
+        <label for="tier-monthly">Monthly — &pound;45</label>
+      </p>
+      <p>
+        <input type="radio" id="tier-annual" name="tier" value="annual">
+        <label for="tier-annual">Annual — &pound;450</label>
+      </p>
+    </fieldset>
+
+    <fieldset>
+      <legend>A bit more about you</legend>
+
+      <p>
+        <label for="source">How did you hear about us?</label><br>
+        <select id="source" name="source">
+          <option value="">Choose&hellip;</option>
+          <optgroup label="Online">
+            <option value="search">Search engine</option>
+            <option value="social">Social media</option>
+            <option value="newsletter">A newsletter</option>
+          </optgroup>
+          <optgroup label="Offline">
+            <option value="friend">A friend told me</option>
+            <option value="poster">Saw a poster</option>
+            <option value="walkin">Walked past</option>
+          </optgroup>
+        </select>
+      </p>
+
+      <p>
+        <label for="years">Years of climbing experience</label><br>
+        <input type="number" id="years" name="years" min="0" max="60" step="1" value="0">
+      </p>
+
+      <p>
+        <label for="notes">Anything we should know? (injuries, access needs)</label><br>
+        <textarea id="notes" name="notes" rows="4" maxlength="500"></textarea>
+      </p>
+    </fieldset>
+
+    <p>
+      <input type="checkbox" id="terms" name="terms" value="accepted" required>
+      <label for="terms">
+        I accept the <a href="#terms-note">membership terms</a> <abbr title="required">*</abbr>
+      </label>
+    </p>
+
+    <p>
+      <input type="checkbox" id="events" name="events" value="yes">
+      <label for="events">Email me about competitions and social evenings</label>
+    </p>
+
+    <p>
+      <button type="submit">Create my membership</button>
+      <button type="reset">Clear the form</button>
+    </p>
+
+  </form>
+
+  <h2 id="terms-note">Membership tiers</h2>
+
+  <table>
+    <caption>What each tier includes</caption>
+    <thead>
+      <tr>
+        <th scope="col">Tier</th>
+        <th scope="col">Price</th>
+        <th scope="col">Guest passes</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">Day pass</th>
+        <td>&pound;12</td>
+        <td>None</td>
+      </tr>
+      <tr>
+        <th scope="row">Monthly</th>
+        <td>&pound;45 / month</td>
+        <td>1 per month</td>
+      </tr>
+      <tr>
+        <th scope="row">Annual</th>
+        <td>&pound;450 / year</td>
+        <td>2 per month</td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <td colspan="2">Under-18s pay half price on every tier</td>
+        <td>Same</td>
+      </tr>
+    </tfoot>
+  </table>
+
+  <!--
+    Notes on the choices here:
+
+    - Every control's label uses for/id. Click any label text and the control
+      focuses or toggles: that's the test.
+    - The radios share name="tier" so they behave as one group, and each has its
+      own value, which is what gets submitted.
+    - The two checkboxes have different names, because they're independent
+      questions. Only ticked checkboxes are submitted at all.
+    - The first <option> has an empty value, so "Choose…" can't be mistaken for
+      a real answer if you later add required to the select.
+    - The <textarea> tags are written adjacent, because whitespace between them
+      would become the field's initial value.
+    - The <tfoot> row has two cells, not three, because the first spans two
+      columns.
+    - method="get" is here so you can read the submitted data in the URL. A real
+      signup form would use method="post" over HTTPS, and would re-validate
+      every one of these constraints on the server.
+  -->
+
+</body>
+</html>

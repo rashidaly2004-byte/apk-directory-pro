@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sam Okafor — bridge engineer and occasional woodworker</title>
+  <meta name="description" content="Profile of Sam Okafor, a bridge engineer in Leeds, with a few side projects and ways to get in touch.">
+</head>
+<body id="top">
+
+  <a href="#content">Skip to content</a>
+
+  <header>
+    <p><strong>Sam Okafor</strong></p>
+    <nav aria-label="Sections of this page">
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="content">
+    <h1>Sam Okafor — bridge engineer, occasional woodworker</h1>
+
+    <section id="about">
+      <h2>About</h2>
+
+      <figure>
+        <img src="../../assets/sample-photo.svg"
+             alt="The Pennine ridge at sunset, seen from the site office"
+             width="320" height="200">
+        <figcaption>The view from a site office in the Pennines, drawn from memory.</figcaption>
+      </figure>
+
+      <p>
+        I inspect and repair road bridges in West Yorkshire. Most of the job is
+        <em>looking</em> — concrete tells you what's wrong long before the instruments do,
+        if you know where to stand.
+      </p>
+      <p>
+        Outside work I make furniture badly and slowly, and I've been keeping notes on
+        every repair I've been called out to since 2019.
+      </p>
+    </section>
+
+    <section id="projects">
+      <h2>Projects</h2>
+
+      <article>
+        <h3><a href="#projects">Bridge log</a></h3>
+        <p>Every callout since 2019, with photos and what the fix cost.</p>
+        <p><time datetime="2019-04">Started April 2019</time></p>
+      </article>
+
+      <article>
+        <h3><a href="#projects">Concrete cover calculator</a></h3>
+        <p>A single-page tool for estimating rebar cover depth from a survey reading.</p>
+        <p><time datetime="2024-11">November 2024</time></p>
+      </article>
+
+      <article>
+        <h3><a href="#projects">Workshop bench, mark three</a></h3>
+        <p>Beech top, mortise and tenon frame, still not flat.</p>
+        <p><time datetime="2026-02">February 2026</time></p>
+      </article>
+    </section>
+
+    <aside aria-labelledby="reading">
+      <h2 id="reading">Things I recommend</h2>
+      <ul>
+        <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML">MDN's HTML documentation</a></li>
+        <li><a href="https://validator.w3.org/nu/">The W3C markup validator</a></li>
+        <li>
+          <a href="https://www.brunel-museum.org.uk/" target="_blank" rel="noopener noreferrer">
+            The Brunel Museum (opens in a new tab)
+          </a>
+        </li>
+      </ul>
+    </aside>
+  </main>
+
+  <footer id="contact">
+    <h2>Contact</h2>
+    <p>
+      Email <a href="mailto:sam@example.com">sam@example.com</a>
+      or call <a href="tel:+441132960000">+44&nbsp;113&nbsp;296&nbsp;0000</a>.
+    </p>
+    <p><a href="#top">Back to top</a></p>
+  </footer>
+
+  <!--
+    Notes on the choices here:
+
+    - The name in the site <header> is a <p><strong>, not a heading. It isn't a
+      section title, and using an <h1> there would leave the page with two.
+    - The skip link points at main's id, and body has id="top" so "back to top"
+      has somewhere to go.
+    - The <aside> is labelled by its own heading with aria-labelledby, so a
+      screen reader announces the landmark as "Things I recommend".
+    - The external link that opens a new tab says so in its text.
+    - There isn't a single <div> on the page, because nothing here needed a
+      meaningless wrapper. Once you add CSS, you may well want a few.
+  -->
+
+</body>
+</html>

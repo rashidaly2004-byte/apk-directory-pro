@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Exercise 03 — Signup form</title>
+</head>
+<body>
+
+  <!--
+    EXERCISE 03 — SIGNUP FORM
+    Practises: lesson 07 (forms), plus tables from lesson 06
+
+    Build the signup form for a fictional climbing gym.
+
+    Rules for this exercise:
+      - every single control has a <label> whose "for" matches the control's "id"
+      - every control that should be submitted has a "name"
+      - use method="get" while developing, so you can read the submitted data
+        straight out of the address bar
+      - no placeholder is used as a substitute for a label
+
+    Compare with solution.html when you're done.
+  -->
+
+  <h1>Join Northgate Climbing</h1>
+
+  <!-- TODO 1: Open a <form method="get">. Leave the action attribute off
+              entirely, which means "submit back to this same page".
+              Everything below goes inside the form. -->
+
+  <!-- TODO 2: A <fieldset> with <legend>Your details</legend> containing:
+                - full name        (text, required, autocomplete="name")
+                - email            (type=email, required, autocomplete="email")
+                - password         (type=password, required, minlength=8)
+                - date of birth    (type=date, required)
+                - phone            (type=tel, optional, with a format hint in
+                                    a placeholder AND a real label) -->
+
+  <!-- TODO 3: A <fieldset> with <legend>Membership</legend> containing three
+              radio buttons that share one name: "day" / "monthly" / "annual".
+              Make "monthly" the default with the checked attribute. -->
+
+  <!-- TODO 4: A <select> for "How did you hear about us?" with a first
+              option whose value is empty ("Choose…"), then at least four
+              options grouped into two <optgroup>s. -->
+
+  <!-- TODO 5: A number input for "How many years have you been climbing?"
+              with min=0, max=60 and a sensible default value. -->
+
+  <!-- TODO 6: A <textarea> for "Anything we should know?" with rows and a
+              maxlength. Remember: no value attribute, and keep the opening
+              and closing tags together so you don't add stray whitespace. -->
+
+  <!-- TODO 7: Two checkboxes, each with its own id and label:
+                - "I accept the terms" (required)
+                - "Email me about events" (optional)
+              Note that checkboxes are only submitted when ticked, so give
+              each one a value. -->
+
+  <!-- TODO 8: A submit button and a reset button. -->
+
+  <!-- TODO 9: Close the form. Then, BELOW it, add a table (caption, thead,
+              tbody, scope on every th) comparing the three membership tiers:
+              tier / price / guest passes. Add a final row that spans the
+              first two columns. -->
+
+  <!-- TODO 10: Submit the form and read the query string in the address bar.
+               Then delete one field's name attribute, submit again, and watch
+               that value vanish. Put it back. -->
+
+</body>
+</html>
