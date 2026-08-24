@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lesson 6: Forms</title>
+</head>
+<body>
+
+  <h1>Lesson 6: Forms</h1>
+  <p>
+    Forms are how a page collects input from a visitor. This form doesn't
+    submit anywhere real yet — that would need a server — but every field
+    below is fully interactive in your browser right now.
+  </p>
+
+  <!--
+    <form> wraps all the fields.
+    Every real input should have a matching <label> (helps accessibility
+    and lets clicking the label text focus the field).
+    The "for" attribute of <label> must match the "id" of its input.
+  -->
+  <form>
+
+    <div>
+      <label for="name">Your name:</label><br />
+      <input type="text" id="name" name="name" placeholder="Ada Lovelace" />
+    </div>
+    <br />
+
+    <div>
+      <label for="email">Your email:</label><br />
+      <input type="email" id="email" name="email" placeholder="you@example.com" />
+    </div>
+    <br />
+
+    <div>
+      <label for="age">Your age:</label><br />
+      <input type="number" id="age" name="age" min="0" max="120" />
+    </div>
+    <br />
+
+    <div>
+      <label for="favorite-lang">Favorite language:</label><br />
+      <select id="favorite-lang" name="favorite-lang">
+        <option value="html">HTML</option>
+        <option value="css">CSS</option>
+        <option value="js">JavaScript</option>
+        <option value="python">Python</option>
+      </select>
+    </div>
+    <br />
+
+    <div>
+      <p>Which of these do you already know? (checkboxes = pick any number)</p>
+      <input type="checkbox" id="know-html" name="know" value="html" />
+      <label for="know-html">HTML</label><br />
+      <input type="checkbox" id="know-css" name="know" value="css" />
+      <label for="know-css">CSS</label><br />
+      <input type="checkbox" id="know-js" name="know" value="js" />
+      <label for="know-js">JavaScript</label>
+    </div>
+    <br />
+
+    <div>
+      <p>How would you rate your HTML confidence right now? (radio = pick one)</p>
+      <input type="radio" id="level-beginner" name="level" value="beginner" />
+      <label for="level-beginner">Beginner</label><br />
+      <input type="radio" id="level-intermediate" name="level" value="intermediate" />
+      <label for="level-intermediate">Intermediate</label><br />
+      <input type="radio" id="level-confident" name="level" value="confident" />
+      <label for="level-confident">Confident</label>
+    </div>
+    <br />
+
+    <div>
+      <label for="notes">Anything else?</label><br />
+      <textarea id="notes" name="notes" rows="4" cols="40" placeholder="Type here..."></textarea>
+    </div>
+    <br />
+
+    <button type="submit">Submit</button>
+  </form>
+
+  <!--
+    TRY IT YOURSELF:
+    1. Add a "phone number" text field with a sensible placeholder.
+    2. Add a new <option> to the favorite-language <select>.
+    3. Add a checkbox for "Python" in the "which do you know" group.
+    (Nothing will actually be sent anywhere — that's normal. Real
+    submission needs a backend, which is a topic for later.)
+  -->
+
+</body>
+</html>

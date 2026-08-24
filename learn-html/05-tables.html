@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lesson 5: Tables</title>
+  <style>
+    /* A tiny bit of CSS just so the table is readable. Don't worry about
+       understanding this yet — CSS is the next thing to learn after HTML. */
+    table { border-collapse: collapse; }
+    th, td { border: 1px solid #999; padding: 6px 10px; text-align: left; }
+    th { background: #eee; }
+  </style>
+</head>
+<body>
+
+  <h1>Lesson 5: Tables</h1>
+
+  <!--
+    TABLE STRUCTURE:
+    <table>            the whole table
+      <thead>           the header section (optional but recommended)
+        <tr>             a table row
+          <th>           a header cell
+      <tbody>           the body section
+        <tr>             a table row
+          <td>           a normal data cell
+  -->
+  <table>
+    <thead>
+      <tr>
+        <th>Language</th>
+        <th>Used for</th>
+        <th>Year created</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>HTML</td>
+        <td>Structure</td>
+        <td>1993</td>
+      </tr>
+      <tr>
+        <td>CSS</td>
+        <td>Styling</td>
+        <td>1996</td>
+      </tr>
+      <tr>
+        <td>JavaScript</td>
+        <td>Interactivity</td>
+        <td>1995</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>
+    Each &lt;tr&gt; is one row. Inside a row, &lt;th&gt; cells are headers
+    (usually bold, describing a column) and &lt;td&gt; cells hold the
+    actual data.
+  </p>
+
+  <!--
+    TRY IT YOURSELF:
+    1. Add a new column called "Typically runs in" with values like
+       "Browser", "Browser", "Browser" (or something else you know).
+    2. Add a 4th row for a language you know or want to learn.
+  -->
+
+</body>
+</html>

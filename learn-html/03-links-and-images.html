@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lesson 3: Links and Images</title>
+</head>
+<body>
+
+  <h1>Lesson 3: Links and Images</h1>
+
+  <!--
+    LINKS: the <a> ("anchor") tag.
+    The href attribute is the destination. The text between the tags
+    is what the visitor clicks on.
+  -->
+  <h2>Links</h2>
+  <p>
+    Here is a link to
+    <a href="https://developer.mozilla.org/en-US/docs/Web/HTML">
+      MDN's HTML documentation
+    </a>
+    — one of the best free HTML references.
+  </p>
+
+  <p>
+    You can also link to another file in this same folder, like the
+    <a href="01-basic-structure.html">first lesson</a>.
+  </p>
+
+  <p>
+    Open a link in a new tab with target="_blank":
+    <a href="https://developer.mozilla.org" target="_blank" rel="noopener">
+      MDN (opens in a new tab)
+    </a>
+  </p>
+
+  <!--
+    IMAGES: the <img> tag.
+    - src   = where the image file is (a URL or a local path)
+    - alt   = text shown if the image fails to load, and read aloud by
+              screen readers. Never skip this — it's not optional in
+              practice.
+    - width/height (optional) = size hints so the page doesn't jump
+      around while images are loading.
+  -->
+  <h2>Images</h2>
+  <img
+    src="https://upload.wikimedia.org/wikipedia/commons/6/61/HTML5_logo_and_wordmark.svg"
+    alt="The official HTML5 logo: an orange shield with '5' in the center"
+    width="150"
+  />
+  <p>
+    The alt text above describes the image in words. If your internet is
+    offline right now, you should see that description instead of a broken
+    image icon.
+  </p>
+
+  <!--
+    You can also make an image itself a clickable link by wrapping it in <a>:
+  -->
+  <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img">
+    <img
+      src="https://upload.wikimedia.org/wikipedia/commons/6/61/HTML5_logo_and_wordmark.svg"
+      alt="Click this HTML5 logo to read the MDN <img> docs"
+      width="80"
+    />
+  </a>
+
+  <!--
+    TRY IT YOURSELF:
+    1. Add a link back to "02-text-and-headings.html".
+    2. Find any image URL online (or use one from your computer) and
+       display it here with a meaningful alt description.
+    3. Wrap that image in an <a> tag so clicking it opens a related link.
+  -->
+
+</body>
+</html>

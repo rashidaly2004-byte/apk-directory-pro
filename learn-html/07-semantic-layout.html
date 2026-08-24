@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lesson 7: Semantic Layout</title>
+  <style>
+    header, nav, main, aside, footer, section, article {
+      border: 1px dashed #999;
+      margin: 10px 0;
+      padding: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <!--
+    LESSON 7: Semantic layout tags
+
+    You COULD build any layout using only <div> everywhere, but modern
+    HTML gives you named tags that describe WHAT each part of the page
+    IS, not just how it's positioned. This helps browsers, screen
+    readers, and search engines understand your page — and it makes
+    your own code easier to read.
+
+    (The dashed borders below are just CSS added so you can visually
+    see where each section starts and ends — they're not required.)
+  -->
+
+  <header>
+    <h1>My Site</h1>
+    <!-- <header>: introductory content, usually a title/logo, at the top -->
+  </header>
+
+  <nav>
+    <!-- <nav>: a block of navigation links -->
+    <a href="#home">Home</a> |
+    <a href="#about">About</a> |
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <main>
+    <!-- <main>: the primary content of the page. There should only be ONE <main> per page. -->
+
+    <section id="home">
+      <!-- <section>: a themed group of content, usually with its own heading -->
+      <h2>Home</h2>
+      <p>Welcome to my page! This section introduces the site.</p>
+    </section>
+
+    <section id="about">
+      <h2>About</h2>
+      <article>
+        <!-- <article>: a self-contained piece of content that could stand
+             on its own, like a blog post, news story, or comment. -->
+        <h3>Why I'm learning HTML</h3>
+        <p>
+          Because it's the foundation every website is built on, and it's
+          the first step toward building real things on the web.
+        </p>
+      </article>
+    </section>
+
+    <aside>
+      <!-- <aside>: content related to, but separate from, the main flow —
+           like a sidebar, a tip, or related links. -->
+      <h3>Related tip</h3>
+      <p>Once you know HTML, CSS is the natural next step for styling it.</p>
+    </aside>
+  </main>
+
+  <footer>
+    <!-- <footer>: closing content, usually copyright, contact info, links -->
+    <p>&copy; 2026 My Site. Built while learning HTML.</p>
+  </footer>
+
+  <!--
+    TRY IT YOURSELF:
+    1. Add a second <article> inside the "about" <section> about a
+       different topic you're curious about.
+    2. Add a new <nav> link that points to a new <section id="projects">
+       you create inside <main>, with a heading and a short paragraph.
+    3. Remove the <style> block at the top and refresh — notice the
+       page still works, it just loses the dashed borders. Semantic
+       tags don't require any styling to function correctly.
+  -->
+
+</body>
+</html>
