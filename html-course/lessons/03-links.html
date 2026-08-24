@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lesson 03 · Links and paths</title>
+  <link rel="stylesheet" href="../assets/course.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <p class="eyebrow">Lesson 03</p>
+    <h1>Links and paths</h1>
+    <p class="lede">
+      The element the whole web is named after. Also: the file-path rules that trip up
+      absolutely everyone at first.
+    </p>
+  </div>
+</header>
+
+<main class="wrap">
+  <p class="crumbs"><a href="../index.html">Course home</a> · <a href="02-text.html">← Lesson 02</a></p>
+
+  <h2>The anchor element</h2>
+  <p>
+    A link is an <code>&lt;a&gt;</code> element with an <code>href</code> attribute — the
+    <em>h</em>ypertext <em>ref</em>erence, i.e. where it goes.
+  </p>
+
+<pre><code>&lt;a href="https://developer.mozilla.org"&gt;MDN Web Docs&lt;/a&gt;</code></pre>
+
+  <p class="demo-label">Renders as</p>
+  <div class="demo">
+    <p><a href="https://developer.mozilla.org">MDN Web Docs</a></p>
+  </div>
+
+  <p>
+    The text between the tags is what the user clicks, so make it describe the destination.
+    "Click here" and "read more" are useless to someone whose screen reader is listing every
+    link on the page out of context.
+  </p>
+
+<pre><code>&lt;!-- Bad --&gt;
+&lt;p&gt;To see our prices, &lt;a href="/pricing"&gt;click here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;!-- Good --&gt;
+&lt;p&gt;See our &lt;a href="/pricing"&gt;pricing and plans&lt;/a&gt;.&lt;/p&gt;</code></pre>
+
+  <h2>Four kinds of href</h2>
+
+  <h3>1. Absolute URLs</h3>
+  <p>
+    The full address, starting with a scheme. Use these for other people's sites. Always include
+    <code>https://</code> — without it, <code>href="example.com"</code> is read as a
+    <em>file</em> called "example.com" in the current folder.
+  </p>
+
+<pre><code>&lt;a href="https://example.com/about"&gt;About Example&lt;/a&gt;</code></pre>
+
+  <h3>2. Relative paths</h3>
+  <p>
+    A path interpreted from the folder the current page lives in. This is how you link your own
+    pages together. Given this layout:
+  </p>
+
+<pre><code>my-site/
+├── index.html
+├── about.html
+├── assets/
+│   └── styles.css
+└── blog/
+    ├── index.html
+    └── first-post.html</code></pre>
+
+  <table class="ref">
+    <thead><tr><th>From</th><th>To reach</th><th>Write</th></tr></thead>
+    <tbody>
+      <tr><td><code>index.html</code></td><td><code>about.html</code></td><td><code>href="about.html"</code></td></tr>
+      <tr><td><code>index.html</code></td><td><code>blog/first-post.html</code></td><td><code>href="blog/first-post.html"</code></td></tr>
+      <tr><td><code>blog/first-post.html</code></td><td><code>index.html</code></td><td><code>href="../index.html"</code></td></tr>
+      <tr><td><code>blog/first-post.html</code></td><td><code>assets/styles.css</code></td><td><code>href="../assets/styles.css"</code></td></tr>
+      <tr><td><code>blog/first-post.html</code></td><td><code>blog/index.html</code></td><td><code>href="index.html"</code></td></tr>
+    </tbody>
+  </table>
+
+  <p>
+    <code>../</code> means "up one folder", and you can stack it: <code>../../</code>. That's the
+    entire system. This lesson links back to the course home page with
+    <code>href="../index.html"</code>, because lessons live one folder down.
+  </p>
+
+  <h3>3. Root-relative paths</h3>
+  <p>
+    A path starting with <code>/</code> means "from the root of the site", ignoring where the
+    current page is. <code>href="/blog/first-post.html"</code> works identically from every page,
+    which is why real sites prefer it.
+  </p>
+
+  <div class="gotcha">
+    <strong>Root-relative paths don't work when you open a file directly.</strong> With a
+    <code>file://</code> URL, <code>/</code> means the root of your hard drive, not your project.
+    This is the single most common "why is my image broken?" — it happens because you
+    double-clicked the file. Serve the folder instead: <code>python3 -m http.server</code>, then
+    open <code>http://localhost:8000</code>.
+  </div>
+
+  <h3>4. Fragments</h3>
+  <p>
+    A <code>#</code> followed by an element's <code>id</code> jumps to that element on the page.
+    Give the target an id, then link to it:
+  </p>
+
+<pre><code>&lt;h2 id="shipping"&gt;Shipping&lt;/h2&gt;
+...
+&lt;a href="#shipping"&gt;Jump to shipping&lt;/a&gt;
+
+&lt;!-- Or on another page --&gt;
+&lt;a href="faq.html#shipping"&gt;Shipping FAQ&lt;/a&gt;</code></pre>
+
+  <p>
+    Ids must be unique on the page and can't contain spaces. Fragment links are how any
+    "table of contents" or "back to top" link works.
+  </p>
+
+  <h3>Other schemes</h3>
+<pre><code>&lt;a href="mailto:hi@example.com"&gt;Email us&lt;/a&gt;
+&lt;a href="tel:+441234567890"&gt;Call us&lt;/a&gt;
+&lt;a href="report.pdf" download&gt;Download the report&lt;/a&gt;</code></pre>
+
+  <h2>Opening in a new tab</h2>
+<pre><code>&lt;a href="https://example.com" target="_blank" rel="noopener noreferrer"&gt;
+  Example (opens in a new tab)
+&lt;/a&gt;</code></pre>
+
+  <p>
+    <code>target="_blank"</code> opens a new tab; <code>rel="noopener noreferrer"</code> stops the
+    new page from getting a scripting handle back to yours. Modern browsers imply
+    <code>noopener</code>, but it's still worth writing.
+  </p>
+  <p>
+    Use this sparingly. It takes the back button away from the user, and it should never be a
+    surprise — say so in the link text or with an icon.
+  </p>
+
+  <h2>Links can wrap anything</h2>
+  <p>
+    An <code>&lt;a&gt;</code> may contain images, headings, whole blocks. That's how a clickable
+    card works:
+  </p>
+
+<pre><code>&lt;a href="post.html"&gt;
+  &lt;img src="thumb.jpg" alt=""&gt;
+  &lt;h3&gt;How I learned HTML&lt;/h3&gt;
+  &lt;p&gt;A short account of an afternoon well spent.&lt;/p&gt;
+&lt;/a&gt;</code></pre>
+
+  <p>
+    The one thing you must not do is nest a link inside a link, or put a
+    <code>&lt;button&gt;</code> inside one.
+  </p>
+
+  <div class="tip">
+    <strong>If it navigates, it's a link. If it acts, it's a button.</strong>
+    A <code>&lt;div&gt;</code> with a click handler is neither: it can't be tabbed to, can't be
+    opened in a new tab, and is invisible to screen readers. Never fake a link with a div.
+  </div>
+
+  <h2>Navigation</h2>
+  <p>
+    A group of links that navigates the site belongs in a <code>&lt;nav&gt;</code>, marked up as a
+    list — because it <em>is</em> a list:
+  </p>
+
+<pre><code>&lt;nav aria-label="Main"&gt;
+  &lt;ul&gt;
+    &lt;li&gt;&lt;a href="/"&gt;Home&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="/work"&gt;Work&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="/about" aria-current="page"&gt;About&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/nav&gt;</code></pre>
+
+  <p>
+    <code>aria-current="page"</code> tells assistive technology which item is the page you're on.
+    More on <code>&lt;nav&gt;</code> in lesson 05.
+  </p>
+
+  <h2>Try it</h2>
+  <ol class="checklist">
+    <li>Make two files, <code>index.html</code> and <code>about.html</code>, in the same folder, and
+        link each to the other. Click back and forth.</li>
+    <li>Move <code>about.html</code> into a <code>pages/</code> folder and fix both links.</li>
+    <li>Add three <code>&lt;h2&gt;</code>s with ids to one page and build a table of contents that
+        jumps to each.</li>
+    <li>Add a "back to top" link at the bottom of the page.</li>
+    <li>Take a link that says "click here" and rewrite it so the link text alone tells you where it
+        goes.</li>
+  </ol>
+
+  <nav class="pager">
+    <a href="02-text.html">← Lesson 02</a>
+    <span class="spacer"></span>
+    <a href="04-images-and-media.html">Lesson 04: Images and media →</a>
+  </nav>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">Learn HTML — lesson 03 of 08</div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lesson 04 · Images and media</title>
+  <link rel="stylesheet" href="../assets/course.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <p class="eyebrow">Lesson 04</p>
+    <h1>Images and media</h1>
+    <p class="lede">
+      One tag, four attributes, and one piece of writing that matters more than all of them:
+      the alt text.
+    </p>
+  </div>
+</header>
+
+<main class="wrap">
+  <p class="crumbs"><a href="../index.html">Course home</a> · <a href="03-links.html">← Lesson 03</a></p>
+
+  <h2>The img element</h2>
+  <p>
+    <code>&lt;img&gt;</code> is a void element — no closing tag, no content. It has two required
+    attributes and two you should always include anyway.
+  </p>
+
+<pre><code>&lt;img src="../assets/sample-photo.svg"
+     alt="Illustration of layered hills against a sunset sky"
+     width="320" height="200"&gt;</code></pre>
+
+  <p class="demo-label">Renders as</p>
+  <div class="demo">
+    <img src="../assets/sample-photo.svg"
+         alt="Illustration of layered hills against a sunset sky"
+         width="320" height="200">
+  </div>
+
+  <table class="ref">
+    <thead><tr><th>Attribute</th><th>What it does</th></tr></thead>
+    <tbody>
+      <tr><td><code>src</code></td><td>Where the image file is. Same path rules as links (lesson 03).</td></tr>
+      <tr><td><code>alt</code></td><td>Text shown if the image fails, and read aloud by screen readers. Required.</td></tr>
+      <tr><td><code>width</code> / <code>height</code></td>
+          <td>The image's real pixel dimensions. Supply both so the browser can reserve space and the
+              page stops jumping around as images load. CSS can still resize it.</td></tr>
+      <tr><td><code>loading="lazy"</code></td><td>Defer loading until the image is near the viewport. Great for images below the fold, bad for the top one.</td></tr>
+    </tbody>
+  </table>
+
+  <h2>Writing alt text</h2>
+  <p>
+    The test: if the image vanished, what sentence would keep the page making sense? Write that.
+  </p>
+  <ul>
+    <li>Describe the <strong>purpose</strong>, not the pixels. For a headshot on an about page,
+        "Photo of Rashid" beats "man in blue shirt in front of window".</li>
+    <li>Don't start with "image of" or "picture of" — screen readers already announce that it's an
+        image.</li>
+    <li>If the image is <strong>purely decorative</strong>, use an empty alt:
+        <code>alt=""</code>. That tells assistive tech to skip it. Omitting the attribute
+        entirely is different and worse — then the screen reader may read out the filename.</li>
+    <li>If the image contains text, put that text in the alt.</li>
+    <li>If the image is inside a link and is the only thing in it, the alt must describe where the
+        link goes, not the picture.</li>
+  </ul>
+
+<pre><code>&lt;!-- Meaningful --&gt;
+&lt;img src="chart.png" alt="Revenue tripled between 2024 and 2026"&gt;
+
+&lt;!-- Decorative flourish --&gt;
+&lt;img src="squiggle.svg" alt=""&gt;
+
+&lt;!-- Image as the whole link --&gt;
+&lt;a href="/"&gt;&lt;img src="logo.svg" alt="Acme home"&gt;&lt;/a&gt;</code></pre>
+
+  <h2>Which file format</h2>
+  <table class="ref">
+    <thead><tr><th>Format</th><th>Use for</th></tr></thead>
+    <tbody>
+      <tr><td><code>.svg</code></td><td>Logos, icons, diagrams. Vector, so it's sharp at any size and usually tiny.</td></tr>
+      <tr><td><code>.webp</code> / <code>.avif</code></td><td>Photos. Much smaller than JPEG at the same quality; both are widely supported now.</td></tr>
+      <tr><td><code>.jpg</code></td><td>Photos, when you want the safest possible compatibility.</td></tr>
+      <tr><td><code>.png</code></td><td>Screenshots, and anything needing transparency where SVG won't do.</td></tr>
+      <tr><td><code>.gif</code></td><td>Nothing, really. Use a muted, looping <code>&lt;video&gt;</code> instead — far smaller.</td></tr>
+    </tbody>
+  </table>
+
+  <h2>Figures and captions</h2>
+  <p>
+    When an image needs a visible caption, wrap it in a <code>&lt;figure&gt;</code> and put the
+    caption in a <code>&lt;figcaption&gt;</code>. This associates the two so assistive tech knows
+    the caption belongs to the image — something a plain paragraph underneath can't do.
+  </p>
+
+<pre><code>&lt;figure&gt;
+  &lt;img src="../assets/sample-photo.svg" alt="Layered hills at sunset" width="320" height="200"&gt;
+  &lt;figcaption&gt;Fig 1. Sunset over the ridge, drawn entirely in SVG.&lt;/figcaption&gt;
+&lt;/figure&gt;</code></pre>
+
+  <p class="demo-label">Renders as</p>
+  <div class="demo">
+    <figure>
+      <img src="../assets/sample-photo.svg" alt="Layered hills at sunset" width="320" height="200">
+      <figcaption><small>Fig 1. Sunset over the ridge, drawn entirely in SVG.</small></figcaption>
+    </figure>
+  </div>
+
+  <p>
+    A <code>&lt;figure&gt;</code> isn't only for images — it also suits code samples, diagrams and
+    quotes that are referenced from the text.
+  </p>
+
+  <h2>Different images for different screens</h2>
+  <p>
+    <code>srcset</code> offers the browser several sizes of the same image and lets it pick based on
+    screen width and pixel density. <code>sizes</code> tells it how wide the image will actually be
+    displayed.
+  </p>
+
+<pre><code>&lt;img src="photo-800.jpg"
+     srcset="photo-400.jpg 400w, photo-800.jpg 800w, photo-1600.jpg 1600w"
+     sizes="(max-width: 600px) 100vw, 800px"
+     alt="The workshop at dawn" width="800" height="500"&gt;</code></pre>
+
+  <p>
+    <code>&lt;picture&gt;</code> goes further: you specify the alternatives yourself, and the browser
+    takes the first <code>&lt;source&gt;</code> it can use. It's how you offer a modern format with
+    a fallback, or crop differently on mobile.
+  </p>
+
+<pre><code>&lt;picture&gt;
+  &lt;source srcset="hero.avif" type="image/avif"&gt;
+  &lt;source srcset="hero.webp" type="image/webp"&gt;
+  &lt;img src="hero.jpg" alt="The workshop at dawn" width="1200" height="600"&gt;
+&lt;/picture&gt;</code></pre>
+
+  <p>
+    The <code>&lt;img&gt;</code> inside is mandatory — it's the fallback, and it's where
+    <code>alt</code> lives.
+  </p>
+
+  <h2>Video and audio</h2>
+<pre><code>&lt;video src="demo.mp4" controls width="640" height="360"
+       poster="demo-thumb.jpg" preload="metadata"&gt;
+  &lt;track kind="captions" src="demo.en.vtt" srclang="en" label="English" default&gt;
+  &lt;p&gt;Your browser can't play video. &lt;a href="demo.mp4"&gt;Download it&lt;/a&gt;.&lt;/p&gt;
+&lt;/video&gt;
+
+&lt;audio src="episode.mp3" controls&gt;&lt;/audio&gt;</code></pre>
+
+  <table class="ref">
+    <thead><tr><th>Attribute</th><th>Effect</th></tr></thead>
+    <tbody>
+      <tr><td><code>controls</code></td><td>Show the play/pause UI. Without it there's no way to start playback.</td></tr>
+      <tr><td><code>poster</code></td><td>Still image shown before play.</td></tr>
+      <tr><td><code>preload="none|metadata|auto"</code></td><td>How much to fetch up front. <code>metadata</code> is a polite default.</td></tr>
+      <tr><td><code>muted autoplay loop playsinline</code></td><td>The combination needed for a silent background clip. Browsers block autoplay with sound.</td></tr>
+      <tr><td><code>&lt;track kind="captions"&gt;</code></td><td>Subtitles from a <code>.vtt</code> file. This is what makes video accessible.</td></tr>
+    </tbody>
+  </table>
+
+  <div class="gotcha">
+    <strong>Never autoplay with sound.</strong> Browsers will block it, and users who aren't blocked
+    will leave. If a clip must autoplay, it must be <code>muted</code>.
+  </div>
+
+  <h2>Embedding other pages</h2>
+  <p>
+    <code>&lt;iframe&gt;</code> puts another document inside yours — maps, YouTube players, payment
+    widgets. Give it a <code>title</code> so screen reader users know what it is, and constrain what
+    it may do:
+  </p>
+
+<pre><code>&lt;iframe src="https://www.youtube.com/embed/VIDEO_ID"
+        title="Product tour video"
+        width="560" height="315"
+        loading="lazy"
+        allowfullscreen&gt;&lt;/iframe&gt;</code></pre>
+
+  <h2>Try it</h2>
+  <ol class="checklist">
+    <li>Put a real image next to your HTML file and display it. Then move it into an
+        <code>images/</code> folder and fix the <code>src</code>.</li>
+    <li>Deliberately misspell the <code>src</code> and reload. That's what your alt text looks like
+        to someone with a slow connection.</li>
+    <li>Wrap the image in a <code>&lt;figure&gt;</code> with a caption.</li>
+    <li>Write alt text for: your logo, a decorative divider, and a screenshot of an error message.
+        Three different answers.</li>
+    <li>Make an image into a link back to your home page.</li>
+  </ol>
+
+  <nav class="pager">
+    <a href="03-links.html">← Lesson 03</a>
+    <span class="spacer"></span>
+    <a href="05-structure.html">Lesson 05: Page structure →</a>
+  </nav>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">Learn HTML — lesson 04 of 08</div>
+</footer>
+
+</body>
+</html>

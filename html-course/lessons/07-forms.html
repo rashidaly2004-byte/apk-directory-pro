@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lesson 07 · Forms and inputs</title>
+  <link rel="stylesheet" href="../assets/course.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <p class="eyebrow">Lesson 07</p>
+    <h1>Forms and inputs</h1>
+    <p class="lede">
+      Where HTML stops describing content and starts collecting it. Also where the browser
+      gives you keyboards, date pickers and validation for free — if you use the right types.
+    </p>
+  </div>
+</header>
+
+<main class="wrap">
+  <p class="crumbs"><a href="../index.html">Course home</a> · <a href="06-tables.html">← Lesson 06</a></p>
+
+  <h2>The shape of a form</h2>
+
+<pre><code>&lt;form action="/subscribe" method="post"&gt;
+  &lt;label for="email"&gt;Email address&lt;/label&gt;
+  &lt;input type="email" id="email" name="email" required&gt;
+  &lt;button type="submit"&gt;Subscribe&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+
+  <table class="ref">
+    <thead><tr><th>Piece</th><th>Job</th></tr></thead>
+    <tbody>
+      <tr><td><code>action</code></td><td>The URL the data is sent to. Omit it to post back to the current page.</td></tr>
+      <tr><td><code>method</code></td>
+          <td><code>get</code> puts the data in the URL's query string — for searches and filters.
+              <code>post</code> puts it in the request body — for anything that changes state or is
+              remotely private.</td></tr>
+      <tr><td><code>name</code></td>
+          <td>The key the value is sent under. <strong>A field with no <code>name</code> is never
+              submitted</strong>, which is the classic silent form bug.</td></tr>
+      <tr><td><code>id</code></td><td>Connects the input to its <code>&lt;label&gt;</code>. Not sent anywhere.</td></tr>
+      <tr><td><code>&lt;button type="submit"&gt;</code></td><td>Sends the form. Also fires when the user presses Enter in a text field.</td></tr>
+    </tbody>
+  </table>
+
+  <h2>Labels are not optional</h2>
+  <p>
+    Every input needs a label, and the label's <code>for</code> must match the input's
+    <code>id</code>. This gives you three things: a screen reader announces the field's purpose,
+    clicking the label focuses the field, and checkbox hit areas get usefully bigger.
+  </p>
+
+<pre><code>&lt;!-- Explicit: for matches id --&gt;
+&lt;label for="city"&gt;City&lt;/label&gt;
+&lt;input type="text" id="city" name="city"&gt;
+
+&lt;!-- Implicit: the input lives inside the label --&gt;
+&lt;label&gt;City &lt;input type="text" name="city"&gt;&lt;/label&gt;</code></pre>
+
+  <div class="gotcha">
+    <strong>A placeholder is not a label.</strong> It disappears the moment someone types, it's often
+    too low-contrast to read, and some screen readers ignore it. Use <code>placeholder</code> only
+    for a format hint — <code>placeholder="+44 7700 900000"</code> — on top of a real label.
+  </div>
+
+  <h2>Input types</h2>
+  <p>
+    <code>type</code> changes the keyboard on phones, the on-screen widget, and the validation the
+    browser performs. Picking the right one is the cheapest usability win in HTML.
+  </p>
+
+  <table class="ref">
+    <thead><tr><th>Type</th><th>Gives you</th></tr></thead>
+    <tbody>
+      <tr><td><code>text</code></td><td>The default single-line field.</td></tr>
+      <tr><td><code>email</code></td><td>An @-key keyboard and a check that it looks like an address.</td></tr>
+      <tr><td><code>password</code></td><td>Masked characters.</td></tr>
+      <tr><td><code>tel</code></td><td>A phone keypad. No validation — phone formats vary too much.</td></tr>
+      <tr><td><code>url</code></td><td>Requires a scheme like <code>https://</code>.</td></tr>
+      <tr><td><code>number</code></td><td>A numeric field with <code>min</code>, <code>max</code>, <code>step</code>. Not for phone numbers or card numbers.</td></tr>
+      <tr><td><code>date</code>, <code>time</code>, <code>datetime-local</code>, <code>month</code></td><td>Native pickers.</td></tr>
+      <tr><td><code>range</code></td><td>A slider. Always pair it with a visible value.</td></tr>
+      <tr><td><code>color</code></td><td>A colour picker.</td></tr>
+      <tr><td><code>file</code></td><td>A file chooser. Add <code>accept="image/*"</code> and <code>multiple</code> as needed.</td></tr>
+      <tr><td><code>search</code></td><td>A search field, often with a clear button.</td></tr>
+      <tr><td><code>checkbox</code></td><td>Independent on/off choices.</td></tr>
+      <tr><td><code>radio</code></td><td>One choice from a set. All options share the same <code>name</code>.</td></tr>
+      <tr><td><code>hidden</code></td><td>A value submitted without being shown.</td></tr>
+    </tbody>
+  </table>
+
+  <h2>Multi-line text, dropdowns and groups</h2>
+
+<pre><code>&lt;label for="bio"&gt;Short bio&lt;/label&gt;
+&lt;textarea id="bio" name="bio" rows="4" maxlength="300"&gt;&lt;/textarea&gt;
+
+&lt;label for="country"&gt;Country&lt;/label&gt;
+&lt;select id="country" name="country"&gt;
+  &lt;option value=""&gt;Choose…&lt;/option&gt;
+  &lt;optgroup label="Europe"&gt;
+    &lt;option value="uk"&gt;United Kingdom&lt;/option&gt;
+    &lt;option value="de"&gt;Germany&lt;/option&gt;
+  &lt;/optgroup&gt;
+  &lt;optgroup label="Asia"&gt;
+    &lt;option value="in" selected&gt;India&lt;/option&gt;
+  &lt;/optgroup&gt;
+&lt;/select&gt;</code></pre>
+
+  <p>
+    <code>&lt;textarea&gt;</code> is not a void element and its default value goes
+    <em>between</em> the tags, not in a <code>value</code> attribute. Keep the opening and closing
+    tags adjacent, because every space inside them counts as content.
+  </p>
+
+  <h3>Radios and checkboxes</h3>
+  <p>
+    Radio buttons only behave as a group if they share a <code>name</code>. Each needs its own
+    <code>id</code> and <code>value</code>. Wrap the set in a <code>&lt;fieldset&gt;</code> with a
+    <code>&lt;legend&gt;</code> — the legend is what tells a screen reader user what the group is
+    asking.
+  </p>
+
+<pre><code>&lt;fieldset&gt;
+  &lt;legend&gt;Delivery speed&lt;/legend&gt;
+
+  &lt;input type="radio" id="std" name="speed" value="standard" checked&gt;
+  &lt;label for="std"&gt;Standard (3–5 days)&lt;/label&gt;
+
+  &lt;input type="radio" id="exp" name="speed" value="express"&gt;
+  &lt;label for="exp"&gt;Express (next day)&lt;/label&gt;
+&lt;/fieldset&gt;</code></pre>
+
+  <h2>Validation you get for free</h2>
+  <p>
+    The browser will refuse to submit and show its own message when these constraints fail. No
+    JavaScript involved.
+  </p>
+
+  <table class="ref">
+    <thead><tr><th>Attribute</th><th>Meaning</th></tr></thead>
+    <tbody>
+      <tr><td><code>required</code></td><td>Must not be empty.</td></tr>
+      <tr><td><code>minlength</code> / <code>maxlength</code></td><td>Character count limits for text fields.</td></tr>
+      <tr><td><code>min</code> / <code>max</code> / <code>step</code></td><td>Numeric and date range limits.</td></tr>
+      <tr><td><code>pattern="[0-9]{4}"</code></td><td>A regular expression the value must match. Pair with <code>title</code> to explain the format.</td></tr>
+      <tr><td><code>autocomplete="email"</code></td><td>Lets the browser fill it correctly. Use the standard token names — this genuinely helps people.</td></tr>
+      <tr><td><code>novalidate</code> (on the form)</td><td>Turns the whole lot off.</td></tr>
+    </tbody>
+  </table>
+
+  <div class="note">
+    <strong>Client-side validation is a convenience, not a security control.</strong> Anyone can edit
+    your HTML or post to your endpoint directly. Whatever you check here, check again on the server.
+  </div>
+
+  <h2>A complete, working form</h2>
+  <p>
+    This one is live. Try submitting it empty, then with a malformed email, to see the browser's
+    built-in messages. It has no <code>action</code>, so it submits back to this same page — a
+    successful submit just reloads the lesson with your answers in the address bar.
+  </p>
+
+  <div class="demo">
+    <form method="get">
+      <p>
+        <label for="demo-name">Name</label><br>
+        <input type="text" id="demo-name" name="name" required autocomplete="name">
+      </p>
+      <p>
+        <label for="demo-email">Email</label><br>
+        <input type="email" id="demo-email" name="email" required placeholder="you@example.com" autocomplete="email">
+      </p>
+      <p>
+        <label for="demo-people">Number of guests</label><br>
+        <input type="number" id="demo-people" name="guests" min="1" max="8" value="2">
+      </p>
+      <fieldset>
+        <legend>Seating</legend>
+        <input type="radio" id="demo-in" name="seating" value="inside" checked>
+        <label for="demo-in">Inside</label>
+        <input type="radio" id="demo-out" name="seating" value="outside">
+        <label for="demo-out">Outside</label>
+      </fieldset>
+      <p>
+        <input type="checkbox" id="demo-news" name="newsletter" value="yes">
+        <label for="demo-news">Email me about future events</label>
+      </p>
+      <p>
+        <button type="submit">Book table</button>
+        <button type="reset">Reset</button>
+      </p>
+    </form>
+  </div>
+
+  <p>
+    Click the word "Inside" rather than the radio itself — it still works, because the label is
+    correctly associated. That's your quick test for whether you wired the labels up properly.
+  </p>
+
+  <h2>Other useful bits</h2>
+  <ul>
+    <li><code>disabled</code> — greys out a control and excludes it from submission.</li>
+    <li><code>readonly</code> — value can't be edited but is still submitted.</li>
+    <li><code>autofocus</code> — focuses on load. One per page at most, and skip it on mobile.</li>
+    <li><code>&lt;datalist&gt;</code> — suggestions for a text input while still allowing free text.</li>
+    <li><code>&lt;output&gt;</code> — where a calculated result goes.</li>
+    <li><code>&lt;progress&gt;</code> and <code>&lt;meter&gt;</code> — a task's completion, and a value in a known range.</li>
+  </ul>
+
+  <h2>Try it</h2>
+  <ol class="checklist">
+    <li>Build a contact form with name, email, subject dropdown and message. Label everything.</li>
+    <li>Set <code>method="get"</code>, submit it, and read the query string in the address bar. Now
+        remove one field's <code>name</code> and submit again — watch it disappear.</li>
+    <li>Add <code>required</code> to two fields and submit empty to see the browser's messages.</li>
+    <li>Open the form on a phone, or in a browser's device emulation, and check that the email field
+        brings up the @ keyboard.</li>
+    <li>Now do <a href="../exercises/03-signup-form/starter.html">exercise 03: the signup form</a>.</li>
+  </ol>
+
+  <nav class="pager">
+    <a href="06-tables.html">← Lesson 06</a>
+    <span class="spacer"></span>
+    <a href="08-head-and-accessibility.html">Lesson 08: The head and accessibility →</a>
+  </nav>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">Learn HTML — lesson 07 of 08</div>
+</footer>
+
+</body>
+</html>

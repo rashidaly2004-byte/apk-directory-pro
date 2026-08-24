@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lesson 05 · Page structure and semantics</title>
+  <link rel="stylesheet" href="../assets/course.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <p class="eyebrow">Lesson 05</p>
+    <h1>Page structure and semantics</h1>
+    <p class="lede">
+      How to lay out a whole page so that its shape means something — and when a plain
+      <code>div</code> is genuinely the right call.
+    </p>
+  </div>
+</header>
+
+<main class="wrap">
+  <p class="crumbs"><a href="../index.html">Course home</a> · <a href="04-images-and-media.html">← Lesson 04</a></p>
+
+  <h2>Block and inline</h2>
+  <p>
+    Elements come in two default flavours. <strong>Block</strong> elements start on a new line and
+    take the full width available: <code>&lt;p&gt;</code>, <code>&lt;h1&gt;</code>,
+    <code>&lt;div&gt;</code>, <code>&lt;ul&gt;</code>, <code>&lt;section&gt;</code>.
+    <strong>Inline</strong> elements sit inside a line of text and are only as wide as their
+    content: <code>&lt;a&gt;</code>, <code>&lt;strong&gt;</code>, <code>&lt;em&gt;</code>,
+    <code>&lt;span&gt;</code>, <code>&lt;img&gt;</code>.
+  </p>
+  <p>
+    The practical consequence: block elements can contain inline elements, but not the other way
+    round. A <code>&lt;div&gt;</code> inside a <code>&lt;p&gt;</code> is invalid, and the browser
+    will close your paragraph early to fix it.
+  </p>
+
+  <h2>The landmark elements</h2>
+  <p>
+    Before these existed, every site was <code>&lt;div class="header"&gt;</code>,
+    <code>&lt;div class="nav"&gt;</code>, <code>&lt;div class="footer"&gt;</code>. HTML5 turned those
+    conventions into real elements. Screen readers expose them as <em>landmarks</em> that users can
+    jump between, which is the whole reason to use them.
+  </p>
+
+  <table class="ref">
+    <thead><tr><th>Element</th><th>Use it for</th></tr></thead>
+    <tbody>
+      <tr><td><code>&lt;header&gt;</code></td>
+          <td>Introductory content — site logo and title at the top of the page, or the byline block
+              at the top of an article. You can have several per page.</td></tr>
+      <tr><td><code>&lt;nav&gt;</code></td>
+          <td>A block of navigation links. Not every group of links: reserve it for real navigation.</td></tr>
+      <tr><td><code>&lt;main&gt;</code></td>
+          <td>The page's unique content. <strong>Exactly one per page</strong>, and nothing that repeats
+              across pages (no site header, no footer) goes inside it.</td></tr>
+      <tr><td><code>&lt;section&gt;</code></td>
+          <td>A thematic grouping that would appear in an outline. Should have a heading.</td></tr>
+      <tr><td><code>&lt;article&gt;</code></td>
+          <td>A self-contained item that would still make sense republished elsewhere: a blog post, a
+              product card, a comment.</td></tr>
+      <tr><td><code>&lt;aside&gt;</code></td>
+          <td>Tangential content — a pull quote, related links, an ad.</td></tr>
+      <tr><td><code>&lt;footer&gt;</code></td>
+          <td>Closing content for its section: copyright, contact, author info.</td></tr>
+      <tr><td><code>&lt;div&gt;</code></td>
+          <td>No meaning whatsoever. A box for CSS to grab. Perfectly fine when there's no meaning to
+              express — a flex wrapper is a <code>div</code>.</td></tr>
+    </tbody>
+  </table>
+
+  <h2>A whole page, put together</h2>
+
+  <p class="filename">index.html</p>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="utf-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1"&gt;
+  &lt;title&gt;Field Notes — a blog about soil&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+  &lt;header&gt;
+    &lt;a href="/"&gt;&lt;img src="logo.svg" alt="Field Notes home" width="120" height="32"&gt;&lt;/a&gt;
+    &lt;nav aria-label="Main"&gt;
+      &lt;ul&gt;
+        &lt;li&gt;&lt;a href="/"&gt;Home&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="/archive"&gt;Archive&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="/about" aria-current="page"&gt;About&lt;/a&gt;&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/nav&gt;
+  &lt;/header&gt;
+
+  &lt;main&gt;
+    &lt;h1&gt;Field Notes&lt;/h1&gt;
+
+    &lt;article&gt;
+      &lt;header&gt;
+        &lt;h2&gt;&lt;a href="/posts/clay"&gt;Working with clay soil&lt;/a&gt;&lt;/h2&gt;
+        &lt;p&gt;&lt;time datetime="2026-08-12"&gt;12 August 2026&lt;/time&gt; · 6 min read&lt;/p&gt;
+      &lt;/header&gt;
+      &lt;p&gt;Clay holds water, which is both the problem and the point…&lt;/p&gt;
+      &lt;footer&gt;&lt;p&gt;Filed under: soil, drainage&lt;/p&gt;&lt;/footer&gt;
+    &lt;/article&gt;
+
+    &lt;article&gt;
+      &lt;h2&gt;&lt;a href="/posts/compost"&gt;A compost heap that actually heats up&lt;/a&gt;&lt;/h2&gt;
+      &lt;p&gt;Three parts brown to one part green, and patience…&lt;/p&gt;
+    &lt;/article&gt;
+
+    &lt;aside aria-labelledby="popular"&gt;
+      &lt;h2 id="popular"&gt;Most read&lt;/h2&gt;
+      &lt;ul&gt;
+        &lt;li&gt;&lt;a href="/posts/mulch"&gt;Mulch, ranked&lt;/a&gt;&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/aside&gt;
+  &lt;/main&gt;
+
+  &lt;footer&gt;
+    &lt;p&gt;&amp;copy; 2026 Field Notes. &lt;a href="mailto:hi@example.com"&gt;Say hello&lt;/a&gt;.&lt;/p&gt;
+  &lt;/footer&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+
+  <p>
+    Notice the nesting: <code>&lt;article&gt;</code> has its own <code>&lt;header&gt;</code> and
+    <code>&lt;footer&gt;</code>. Those elements are defined relative to their nearest sectioning
+    ancestor, not the page, so this is exactly right.
+  </p>
+
+  <h2>section vs article vs div</h2>
+  <p>Run through these three questions in order:</p>
+  <ol>
+    <li><strong>Would this still make sense on its own,</strong> pulled out and posted elsewhere?
+        Then it's an <code>&lt;article&gt;</code>.</li>
+    <li><strong>Is it a distinct part of this page that deserves a heading?</strong> Then it's a
+        <code>&lt;section&gt;</code>. If you can't think of a heading for it, it probably isn't one.</li>
+    <li><strong>Neither?</strong> It's a <code>&lt;div&gt;</code>, and that's fine. Wrapping things
+        for layout is not a semantic act.</li>
+  </ol>
+
+  <div class="gotcha">
+    <strong>Don't sprinkle semantic tags for their own sake.</strong> A
+    <code>&lt;section&gt;</code> with no heading is worse than a <code>&lt;div&gt;</code>: it adds a
+    meaningless entry to the document outline. Wrong semantics are more confusing than none.
+  </div>
+
+  <h2>Skip links</h2>
+  <p>
+    Keyboard users tab through everything, top to bottom — including your whole navigation, on every
+    page. A skip link, as the very first element in the body, lets them jump straight to the content:
+  </p>
+
+<pre><code>&lt;body&gt;
+  &lt;a class="skip-link" href="#content"&gt;Skip to content&lt;/a&gt;
+  &lt;header&gt;…&lt;/header&gt;
+  &lt;main id="content"&gt;…&lt;/main&gt;</code></pre>
+
+  <p>
+    CSS normally hides it until it receives keyboard focus. It costs one line and it's one of the
+    highest-value accessibility features you can add.
+  </p>
+
+  <h2>Two attributes you'll use everywhere</h2>
+  <p>
+    <code>id</code> uniquely names one element — used by fragment links, by
+    <code>&lt;label for&gt;</code>, and by JavaScript. <code>class</code> tags any number of elements
+    with a shared name, and one element can have several, space-separated. Classes are for CSS;
+    ids should be rare.
+  </p>
+
+<pre><code>&lt;section id="pricing" class="panel panel--wide"&gt;…&lt;/section&gt;</code></pre>
+
+  <p>
+    Other global attributes worth knowing: <code>title</code> (tooltip — don't rely on it, it's
+    invisible on touch), <code>hidden</code> (removes the element from the page entirely),
+    <code>lang</code> (mark a passage in another language), and <code>data-*</code> (your own custom
+    data, e.g. <code>data-user-id="42"</code>).
+  </p>
+
+  <h2>Try it</h2>
+  <ol class="checklist">
+    <li>Rebuild the page above from scratch, without copying, using your own content.</li>
+    <li>Open your browser's dev tools and use the accessibility or landmarks panel to check that
+        header, nav, main and footer are all detected.</li>
+    <li>Take any page you've written and try to justify each wrapper element. Turn the ones you
+        can't justify into <code>&lt;div&gt;</code>s.</li>
+    <li>Add a skip link and tab through the page from the address bar to feel the difference.</li>
+    <li>Now do <a href="../exercises/02-profile-page/starter.html">exercise 02: the profile page</a>.</li>
+  </ol>
+
+  <nav class="pager">
+    <a href="04-images-and-media.html">← Lesson 04</a>
+    <span class="spacer"></span>
+    <a href="06-tables.html">Lesson 06: Tables →</a>
+  </nav>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">Learn HTML — lesson 05 of 08</div>
+</footer>
+
+</body>
+</html>

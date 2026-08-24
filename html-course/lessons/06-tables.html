@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lesson 06 · Tables</title>
+  <link rel="stylesheet" href="../assets/course.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <p class="eyebrow">Lesson 06</p>
+    <h1>Tables</h1>
+    <p class="lede">
+      For data with rows and columns, a table is the right answer and nothing else comes close.
+      For anything else, it isn't.
+    </p>
+  </div>
+</header>
+
+<main class="wrap">
+  <p class="crumbs"><a href="../index.html">Course home</a> · <a href="05-structure.html">← Lesson 05</a></p>
+
+  <h2>The parts of a table</h2>
+  <p>
+    A table is rows of cells. <code>&lt;tr&gt;</code> is a row, <code>&lt;td&gt;</code> is a data
+    cell, <code>&lt;th&gt;</code> is a header cell. Group rows with
+    <code>&lt;thead&gt;</code>, <code>&lt;tbody&gt;</code> and <code>&lt;tfoot&gt;</code>, and give
+    the table a <code>&lt;caption&gt;</code> as its accessible name.
+  </p>
+
+<pre><code>&lt;table&gt;
+  &lt;caption&gt;Office plants and their watering needs&lt;/caption&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th scope="col"&gt;Plant&lt;/th&gt;
+      &lt;th scope="col"&gt;Light&lt;/th&gt;
+      &lt;th scope="col"&gt;Water&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;th scope="row"&gt;Snake plant&lt;/th&gt;
+      &lt;td&gt;Low to bright&lt;/td&gt;
+      &lt;td&gt;Every 3 weeks&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th scope="row"&gt;Fern&lt;/th&gt;
+      &lt;td&gt;Indirect&lt;/td&gt;
+      &lt;td&gt;Twice a week&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;</code></pre>
+
+  <p class="demo-label">Renders as</p>
+  <div class="demo">
+    <table>
+      <caption>Office plants and their watering needs</caption>
+      <thead>
+        <tr>
+          <th scope="col">Plant</th>
+          <th scope="col">Light</th>
+          <th scope="col">Water</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">Snake plant</th>
+          <td>Low to bright</td>
+          <td>Every 3 weeks</td>
+        </tr>
+        <tr>
+          <th scope="row">Fern</th>
+          <td>Indirect</td>
+          <td>Twice a week</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="note">
+    <strong>An unstyled table has no visible grid.</strong> Browsers draw no borders by default, so
+    the demo above only looks like a table because this page's stylesheet gives it
+    <code>border-collapse</code>, borders and padding. Old tutorials do it with
+    <code>border="1" cellpadding="6"</code> attributes on the <code>&lt;table&gt;</code> — those are
+    deprecated, and a validator will flag them. Use CSS.
+  </div>
+
+  <h2>scope is the part people skip</h2>
+  <p>
+    A sighted reader sees which column a cell belongs to. A screen reader has to be told. Marking
+    header cells with <code>&lt;th&gt;</code> and adding <code>scope="col"</code> or
+    <code>scope="row"</code> lets it announce "Water: every 3 weeks" as it moves through the row,
+    instead of reading a stream of disconnected values.
+  </p>
+  <p>
+    Column headers get <code>scope="col"</code>. The first cell of a row that names that row gets
+    <code>scope="row"</code>. That's the whole rule, and it takes ten seconds.
+  </p>
+
+  <h2>Spanning cells</h2>
+  <p>
+    <code>colspan</code> makes a cell wider, <code>rowspan</code> makes it taller. The spanned cells
+    are then <em>not</em> written — this is where hand-built tables usually go wrong, since every row
+    still has to add up to the same number of columns.
+  </p>
+
+<pre><code>&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;th scope="col"&gt;Item&lt;/th&gt;
+      &lt;th scope="col"&gt;Qty&lt;/th&gt;
+      &lt;th scope="col"&gt;Price&lt;/th&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Notebook&lt;/td&gt;&lt;td&gt;2&lt;/td&gt;&lt;td&gt;£7.00&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td colspan="2"&gt;Total&lt;/td&gt;&lt;td&gt;£7.00&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;</code></pre>
+
+  <p class="demo-label">Renders as</p>
+  <div class="demo">
+    <table>
+      <tbody>
+        <tr>
+          <th scope="col">Item</th>
+          <th scope="col">Qty</th>
+          <th scope="col">Price</th>
+        </tr>
+        <tr>
+          <td>Notebook</td><td>2</td><td>&pound;7.00</td>
+        </tr>
+        <tr>
+          <td colspan="2"><strong>Total</strong></td><td>&pound;7.00</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>
+    The total row has two cells, not three, because the first one covers two columns. If you ever see
+    a stray extra column appear in a table, count your spans.
+  </p>
+
+  <h2>colgroup</h2>
+  <p>
+    <code>&lt;colgroup&gt;</code> lets you target whole columns for styling without adding a class to
+    every single cell:
+  </p>
+
+<pre><code>&lt;table&gt;
+  &lt;colgroup&gt;
+    &lt;col&gt;
+    &lt;col span="2" class="numeric"&gt;
+  &lt;/colgroup&gt;
+  …
+&lt;/table&gt;</code></pre>
+
+  <h2>What tables are not for</h2>
+  <p>
+    In the 1990s, tables were the only way to lay out a page, so sites were built as nested grids of
+    invisible cells. That era is over: CSS Grid and Flexbox do layout properly. Using a table for
+    layout produces markup that reads as gibberish in a screen reader and collapses on a phone.
+  </p>
+  <p>
+    The test is simple. Does the content have a meaningful relationship between rows and columns, such
+    that a cell needs both its row and its column to be understood? Then it's a table. Is it a grid of
+    cards that happens to look tabular? Then it's a list, styled with CSS.
+  </p>
+
+  <div class="tip">
+    <strong>Wide tables on small screens:</strong> wrap the table in a
+    <code>&lt;div style="overflow-x: auto"&gt;</code> so it scrolls sideways rather than breaking the
+    layout. Add <code>tabindex="0"</code> to that wrapper so keyboard users can scroll it too.
+  </div>
+
+  <h2>Try it</h2>
+  <ol class="checklist">
+    <li>Build a table of the next five days: date, forecast, high, low. Use
+        <code>&lt;caption&gt;</code>, <code>&lt;thead&gt;</code> and <code>&lt;tbody&gt;</code>.</li>
+    <li>Add <code>scope</code> to every header cell.</li>
+    <li>Add a final row that spans the first two columns and shows an average.</li>
+    <li>Delete one <code>&lt;td&gt;</code> from the middle of a row and reload — see how the whole
+        column shifts. That's what a mis-counted <code>colspan</code> looks like.</li>
+  </ol>
+
+  <nav class="pager">
+    <a href="05-structure.html">← Lesson 05</a>
+    <span class="spacer"></span>
+    <a href="07-forms.html">Lesson 07: Forms →</a>
+  </nav>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">Learn HTML — lesson 06 of 08</div>
+</footer>
+
+</body>
+</html>

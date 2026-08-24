@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lesson 08 · The head, accessibility and shipping</title>
+  <link rel="stylesheet" href="../assets/course.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <p class="eyebrow">Lesson 08</p>
+    <h1>The head, accessibility and shipping</h1>
+    <p class="lede">
+      The part of the page nobody sees, the rules that decide whether everybody can use it,
+      and how to check your work.
+    </p>
+  </div>
+</header>
+
+<main class="wrap">
+  <p class="crumbs"><a href="../index.html">Course home</a> · <a href="07-forms.html">← Lesson 07</a></p>
+
+  <h2>A head worth copying</h2>
+
+  <p class="filename">index.html — the head</p>
+<pre><code>&lt;head&gt;
+  &lt;meta charset="utf-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1"&gt;
+
+  &lt;title&gt;Working with clay soil — Field Notes&lt;/title&gt;
+  &lt;meta name="description" content="Why clay holds water, and three ways to
+        improve drainage without replacing your topsoil."&gt;
+  &lt;link rel="canonical" href="https://example.com/posts/clay"&gt;
+
+  &lt;link rel="icon" href="/favicon.svg" type="image/svg+xml"&gt;
+  &lt;link rel="apple-touch-icon" href="/apple-touch-icon.png"&gt;
+
+  &lt;meta property="og:title" content="Working with clay soil"&gt;
+  &lt;meta property="og:description" content="Why clay holds water, and how to fix drainage."&gt;
+  &lt;meta property="og:image" content="https://example.com/img/clay-preview.jpg"&gt;
+  &lt;meta property="og:type" content="article"&gt;
+  &lt;meta name="twitter:card" content="summary_large_image"&gt;
+
+  &lt;link rel="stylesheet" href="/assets/styles.css"&gt;
+&lt;/head&gt;</code></pre>
+
+  <table class="ref">
+    <thead><tr><th>Tag</th><th>Why it's there</th></tr></thead>
+    <tbody>
+      <tr><td><code>&lt;title&gt;</code></td>
+          <td>Tab label, bookmark name, and the clickable line in search results. Put the specific
+              part first: page name, then site name.</td></tr>
+      <tr><td><code>meta description</code></td>
+          <td>The snippet under the title in search results. Around 150 characters. Doesn't affect
+              ranking directly, does affect whether anyone clicks.</td></tr>
+      <tr><td><code>link canonical</code></td>
+          <td>"This is the real address of this page." Prevents duplicate-content confusion when a
+              page is reachable via several URLs.</td></tr>
+      <tr><td><code>link icon</code></td><td>The favicon. An SVG one covers light and dark modes and every size.</td></tr>
+      <tr><td><code>og:*</code> / <code>twitter:*</code></td>
+          <td>Open Graph tags: the title, blurb and image used when your link is pasted into Slack,
+              WhatsApp, Discord or a social feed. Without them you get an unappealing bare URL.</td></tr>
+      <tr><td><code>link stylesheet</code></td><td>Loads your CSS. Goes in the head so the page doesn't flash unstyled.</td></tr>
+    </tbody>
+  </table>
+
+  <p>
+    Also worth knowing: <code>&lt;script src="app.js" defer&gt;&lt;/script&gt;</code> in the head
+    loads JavaScript in parallel and runs it after the HTML is parsed — the sensible default. And
+    <code>&lt;meta name="theme-color" content="#0f1420"&gt;</code> tints browser UI on mobile.
+  </p>
+
+  <div class="gotcha">
+    <strong>There is no <code>meta keywords</code> worth writing.</strong> Search engines have
+    ignored it for well over a decade. If a tutorial tells you to add it, that tutorial is old.
+  </div>
+
+  <h2>Accessibility: the short list that covers most of it</h2>
+  <p>
+    You've already met all of these across the course. Together they handle the large majority of
+    real-world accessibility problems in static HTML.
+  </p>
+  <ol class="checklist">
+    <li><strong>Use the right element.</strong> A <code>&lt;button&gt;</code> for actions, an
+        <code>&lt;a href&gt;</code> for navigation. Native elements are focusable, keyboard-operable
+        and announced correctly for free; a <code>div</code> with a click handler is none of those.</li>
+    <li><strong>Set <code>lang</code> on <code>&lt;html&gt;</code>.</strong> It picks the screen
+        reader's pronunciation.</li>
+    <li><strong>Every image gets an <code>alt</code></strong> — descriptive, or empty if decorative.</li>
+    <li><strong>Every form control gets a <code>&lt;label&gt;</code>.</strong></li>
+    <li><strong>Headings form a real outline.</strong> One <code>&lt;h1&gt;</code>, no skipped levels.</li>
+    <li><strong>Landmarks exist:</strong> <code>header</code>, <code>nav</code>, <code>main</code>,
+        <code>footer</code>, and a skip link to <code>main</code>.</li>
+    <li><strong>Never remove focus outlines</strong> without replacing them with something at least
+        as visible. Tab through your page and confirm you can always see where you are.</li>
+    <li><strong>Link text makes sense alone.</strong> No "click here".</li>
+    <li><strong>Don't convey meaning by colour alone,</strong> and keep text contrast high.</li>
+  </ol>
+
+  <h3>Where ARIA fits</h3>
+  <p>
+    ARIA attributes add accessibility information that HTML can't express on its own —
+    <code>aria-label</code>, <code>aria-labelledby</code>, <code>aria-current</code>,
+    <code>aria-describedby</code>, <code>aria-expanded</code>. They're useful, but the first rule of
+    ARIA is: <em>don't use ARIA if a plain HTML element already does the job.</em> Adding
+    <code>role="button"</code> to a div means you now have to reimplement focus, Enter, Space and
+    disabled states yourself. Bad ARIA is worse than none.
+  </p>
+
+  <h2>Checking your work</h2>
+  <ul>
+    <li><strong><a href="https://validator.w3.org/nu/">The W3C validator</a></strong> — paste your
+        markup and it lists unclosed tags, invalid nesting and misspelled attributes. Do this before
+        you debug anything weird.</li>
+    <li><strong>Dev tools (F12)</strong> — the Elements panel shows the tree the browser actually
+        built, which is not always the one you typed. The Accessibility panel shows how your page
+        looks to a screen reader.</li>
+    <li><strong>Lighthouse</strong>, built into Chrome dev tools, audits accessibility, performance
+        and SEO and links to explanations.</li>
+    <li><strong>Your keyboard.</strong> Put your mouse down and Tab through the page. If you can't
+        reach something, or can't see where focus is, that's a bug.</li>
+  </ul>
+
+  <h2>Habits that keep markup clean</h2>
+  <ul>
+    <li>Lower-case tag and attribute names; double-quoted attribute values.</li>
+    <li>Indent one level per nesting level. When you're lost in a page, it's almost always because
+        the indentation stopped being honest.</li>
+    <li>Close every element, even the ones browsers let you leave open.</li>
+    <li>No inline <code>style</code> attributes in real work — put styling in a stylesheet.</li>
+    <li>No <code>&lt;center&gt;</code>, <code>&lt;font&gt;</code>, <code>&lt;marquee&gt;</code>, or
+        <code>align</code> / <code>bgcolor</code> attributes. All long dead; CSS does all of it.</li>
+    <li>Prefer fewer elements. If a wrapper isn't doing anything, delete it.</li>
+  </ul>
+
+  <h2>Final project</h2>
+  <p>
+    Build a three-page personal site using only what's in this course, no CSS framework:
+  </p>
+  <ol class="checklist">
+    <li><code>index.html</code> — a header with your name and a nav, a <code>&lt;main&gt;</code> with
+        a short intro and a list of three things you've made as <code>&lt;article&gt;</code>s, and a
+        footer.</li>
+    <li><code>about.html</code> — a photo with real alt text in a <code>&lt;figure&gt;</code>, a few
+        paragraphs, and a table of skills or a timeline.</li>
+    <li><code>contact.html</code> — a properly labelled form with at least four fields, one
+        <code>&lt;fieldset&gt;</code>, and <code>required</code> where it matters.</li>
+  </ol>
+  <p>
+    Every page shares the same nav, has a complete head with a description and Open Graph tags, and
+    passes the W3C validator with zero errors. Then Tab through all three from top to bottom.
+  </p>
+
+  <h2>Where to go next</h2>
+  <ul>
+    <li><strong>CSS</strong> is the obvious next step, and the payoff is immediate: your existing HTML
+        suddenly looks like a real site. Learn the box model, then Flexbox, then Grid, then custom
+        properties.</li>
+    <li><strong>JavaScript</strong> after that, for behaviour.</li>
+    <li><strong><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element">MDN's element
+        reference</a></strong> is the reference to bookmark. Every element, with examples and browser
+        support. When you wonder "is there a tag for this?", the answer is usually there.</li>
+    <li><strong><a href="https://html.spec.whatwg.org/multipage/">The HTML spec</a></strong> is
+        surprisingly readable when you want to know exactly what's allowed inside what.</li>
+  </ul>
+
+  <div class="tip">
+    <strong>You now know enough.</strong> HTML has a couple of hundred elements and you will use
+    thirty of them for the rest of your life. The remaining skill isn't more tags — it's choosing the
+    right one, which only comes from building things.
+  </div>
+
+  <nav class="pager">
+    <a href="07-forms.html">← Lesson 07</a>
+    <span class="spacer"></span>
+    <a href="../index.html">Course home →</a>
+  </nav>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">Learn HTML — lesson 08 of 08. That's the course.</div>
+</footer>
+
+</body>
+</html>

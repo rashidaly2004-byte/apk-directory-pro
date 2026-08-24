@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lesson 02 · Text: headings, paragraphs, lists</title>
+  <link rel="stylesheet" href="../assets/course.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <p class="eyebrow">Lesson 02</p>
+    <h1>Text: headings, paragraphs, lists</h1>
+    <p class="lede">
+      Eight or nine elements cover most of the text on most pages. Learn these properly
+      and you can build something real today.
+    </p>
+  </div>
+</header>
+
+<main class="wrap">
+  <p class="crumbs"><a href="../index.html">Course home</a> · <a href="01-your-first-page.html">← Lesson 01</a></p>
+
+  <h2>Headings</h2>
+  <p>
+    There are six levels, <code>&lt;h1&gt;</code> through <code>&lt;h6&gt;</code>. They are an
+    outline, not a set of font sizes. Screen reader users navigate by jumping heading to heading,
+    and search engines read them as your page's table of contents.
+  </p>
+
+<pre><code>&lt;h1&gt;Making Sourdough&lt;/h1&gt;
+&lt;h2&gt;Feeding the starter&lt;/h2&gt;
+&lt;h3&gt;Day one&lt;/h3&gt;
+&lt;h3&gt;Day two&lt;/h3&gt;
+&lt;h2&gt;Mixing the dough&lt;/h2&gt;</code></pre>
+
+  <p>Two rules worth taking seriously:</p>
+  <ul>
+    <li><strong>One <code>&lt;h1&gt;</code> per page</strong>, and it should say what the page is about.</li>
+    <li><strong>Don't skip levels.</strong> An <code>&lt;h4&gt;</code> directly after an
+        <code>&lt;h2&gt;</code> leaves a hole in the outline. If you only want smaller text, that's a
+        CSS decision, not a reason to pick <code>&lt;h5&gt;</code>.</li>
+  </ul>
+
+  <h2>Paragraphs</h2>
+  <p>
+    <code>&lt;p&gt;</code> is the workhorse. Every block of prose goes in one. Don't try to make
+    two paragraphs by putting <code>&lt;br&gt;&lt;br&gt;</code> in the middle of one — you'll
+    lose the ability to style them, and assistive technology loses the structure.
+  </p>
+
+<pre><code>&lt;p&gt;First thought.&lt;/p&gt;
+&lt;p&gt;Second thought.&lt;/p&gt;</code></pre>
+
+  <h3>When you do want a line break</h3>
+  <p>
+    <code>&lt;br&gt;</code> is for content where the line ending is <em>part of the content</em>:
+    addresses, poems, song lyrics.
+  </p>
+
+<pre><code>&lt;p&gt;
+  Ada Lovelace&lt;br&gt;
+  12 Analytical Way&lt;br&gt;
+  London
+&lt;/p&gt;</code></pre>
+
+  <p class="demo-label">Renders as</p>
+  <div class="demo">
+    <p>
+      Ada Lovelace<br>
+      12 Analytical Way<br>
+      London
+    </p>
+  </div>
+
+  <h2>Inline semantics: em, strong, and friends</h2>
+  <p>
+    <code>&lt;em&gt;</code> means emphasis — the word you'd stress if you read the sentence aloud.
+    <code>&lt;strong&gt;</code> means importance or urgency. Browsers render them italic and bold by
+    default, but the meaning is the point.
+  </p>
+
+<pre><code>&lt;p&gt;I said &lt;em&gt;maybe&lt;/em&gt;, not yes.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Do not&lt;/strong&gt; water the cactus daily.&lt;/p&gt;</code></pre>
+
+  <p class="demo-label">Renders as</p>
+  <div class="demo">
+    <p>I said <em>maybe</em>, not yes.</p>
+    <p><strong>Do not</strong> water the cactus daily.</p>
+  </div>
+
+  <p>
+    There are also <code>&lt;b&gt;</code> and <code>&lt;i&gt;</code>, which mean "bold this" and
+    "italicise this" with no implied meaning. Reach for <code>&lt;em&gt;</code> and
+    <code>&lt;strong&gt;</code> by default; you'll almost never need the other two.
+  </p>
+
+  <p>A few more inline elements that come up:</p>
+  <table class="ref">
+    <thead><tr><th>Element</th><th>Means</th></tr></thead>
+    <tbody>
+      <tr><td><code>&lt;code&gt;</code></td><td>A fragment of code or a filename. Rendered in a monospace font.</td></tr>
+      <tr><td><code>&lt;small&gt;</code></td><td>Side comments and fine print, like a legal disclaimer.</td></tr>
+      <tr><td><code>&lt;mark&gt;</code></td><td>Highlighted for the reader's benefit, e.g. a search term match.</td></tr>
+      <tr><td><code>&lt;del&gt;</code> / <code>&lt;ins&gt;</code></td><td>Text removed from / added to the document.</td></tr>
+      <tr><td><code>&lt;abbr title="…"&gt;</code></td><td>An abbreviation; the title gives the expansion on hover.</td></tr>
+      <tr><td><code>&lt;time datetime="2026-08-24"&gt;</code></td><td>A date or time in a form machines can read.</td></tr>
+      <tr><td><code>&lt;span&gt;</code></td><td>Nothing at all. A hook for styling a run of text when no real element fits.</td></tr>
+    </tbody>
+  </table>
+
+  <p class="demo-label">All together</p>
+  <div class="demo">
+    <p>
+      The <abbr title="HyperText Markup Language">HTML</abbr> spec was
+      <del>32</del> <ins>1,400</ins> pages long as of <time datetime="2026-08-24">24 August 2026</time>.
+      Run <code>npx serve</code> to preview. <mark>This bit matched your search.</mark>
+      <small>Terms and conditions apply.</small>
+    </p>
+  </div>
+
+  <h2>Lists</h2>
+  <p>
+    Unordered lists are for collections where order doesn't matter. Ordered lists are for
+    sequences and rankings. In both cases every direct child must be an
+    <code>&lt;li&gt;</code>.
+  </p>
+
+<pre><code>&lt;ul&gt;
+  &lt;li&gt;Flour&lt;/li&gt;
+  &lt;li&gt;Water&lt;/li&gt;
+  &lt;li&gt;Salt&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Mix the dough&lt;/li&gt;
+  &lt;li&gt;Rest for an hour&lt;/li&gt;
+  &lt;li&gt;Fold and rest again&lt;/li&gt;
+&lt;/ol&gt;</code></pre>
+
+  <p class="demo-label">Renders as</p>
+  <div class="demo">
+    <ul>
+      <li>Flour</li>
+      <li>Water</li>
+      <li>Salt</li>
+    </ul>
+    <ol>
+      <li>Mix the dough</li>
+      <li>Rest for an hour</li>
+      <li>Fold and rest again</li>
+    </ol>
+  </div>
+
+  <p>
+    Nest a list by putting it <em>inside</em> an <code>&lt;li&gt;</code>, not between two of them:
+  </p>
+
+<pre><code>&lt;ul&gt;
+  &lt;li&gt;Dry ingredients
+    &lt;ul&gt;
+      &lt;li&gt;Flour&lt;/li&gt;
+      &lt;li&gt;Salt&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Wet ingredients&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+
+  <p>
+    Useful attributes on <code>&lt;ol&gt;</code>: <code>start="5"</code> to begin numbering
+    elsewhere, <code>reversed</code> to count down, and <code>type="a"</code> for letters.
+  </p>
+
+  <h3>Description lists</h3>
+  <p>
+    <code>&lt;dl&gt;</code> pairs terms with descriptions — glossaries, metadata, key/value facts.
+    <code>&lt;dt&gt;</code> is the term, <code>&lt;dd&gt;</code> is the description, and one term
+    can have several descriptions.
+  </p>
+
+<pre><code>&lt;dl&gt;
+  &lt;dt&gt;Element&lt;/dt&gt;
+  &lt;dd&gt;An opening tag, its content, and its closing tag.&lt;/dd&gt;
+
+  &lt;dt&gt;Attribute&lt;/dt&gt;
+  &lt;dd&gt;Extra information attached to an opening tag.&lt;/dd&gt;
+&lt;/dl&gt;</code></pre>
+
+  <p class="demo-label">Renders as</p>
+  <div class="demo">
+    <dl>
+      <dt><strong>Element</strong></dt>
+      <dd>An opening tag, its content, and its closing tag.</dd>
+      <dt><strong>Attribute</strong></dt>
+      <dd>Extra information attached to an opening tag.</dd>
+    </dl>
+  </div>
+
+  <h2>Quotes</h2>
+  <p>
+    <code>&lt;blockquote&gt;</code> for a quoted block, <code>&lt;q&gt;</code> for a short inline
+    quote. Both take a <code>cite</code> attribute holding the source URL. Visible attribution goes
+    in a <code>&lt;figcaption&gt;</code> or a <code>&lt;cite&gt;</code> element, because the
+    <code>cite</code> <em>attribute</em> isn't shown to anyone.
+  </p>
+
+<pre><code>&lt;blockquote cite="https://example.com/talk"&gt;
+  &lt;p&gt;Any sufficiently complicated program contains an
+     ad-hoc, informally-specified interpreter.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;— &lt;cite&gt;Greenspun's Tenth Rule&lt;/cite&gt;&lt;/p&gt;</code></pre>
+
+  <h2>Preformatted text</h2>
+  <p>
+    Remember that HTML collapses whitespace. <code>&lt;pre&gt;</code> is the exception: it keeps
+    every space and newline exactly as typed, in a monospace font. Code blocks are conventionally
+    <code>&lt;pre&gt;&lt;code&gt;…&lt;/code&gt;&lt;/pre&gt;</code> — this very page is full of them.
+  </p>
+
+  <h2>Character entities</h2>
+  <p>
+    Some characters can't be typed literally, because they mean something to HTML. Write them as
+    entities: an ampersand, a name, a semicolon.
+  </p>
+
+  <table class="ref">
+    <thead><tr><th>Write this</th><th>To get</th><th>Because</th></tr></thead>
+    <tbody>
+      <tr><td><code>&amp;lt;</code></td><td><code>&lt;</code></td><td>A bare <code>&lt;</code> starts a tag.</td></tr>
+      <tr><td><code>&amp;gt;</code></td><td><code>&gt;</code></td><td>Pairs with the above; safest to escape both.</td></tr>
+      <tr><td><code>&amp;amp;</code></td><td><code>&amp;</code></td><td>A bare <code>&amp;</code> starts an entity.</td></tr>
+      <tr><td><code>&amp;quot;</code></td><td><code>"</code></td><td>Needed inside a double-quoted attribute value.</td></tr>
+      <tr><td><code>&amp;nbsp;</code></td><td>a space that never breaks</td><td>Keeps <code>10&amp;nbsp;kg</code> on one line.</td></tr>
+      <tr><td><code>&amp;copy;</code> <code>&amp;mdash;</code> <code>&amp;hellip;</code></td><td>© — …</td><td>Convenience, though with UTF-8 you can paste these directly.</td></tr>
+    </tbody>
+  </table>
+
+  <div class="gotcha">
+    <strong>This is why showing code on a web page is fiddly.</strong> To display
+    <code>&lt;p&gt;</code> on screen, the file has to contain
+    <code>&amp;lt;p&amp;gt;</code>. Open this lesson's source file and look at any code block —
+    that's exactly what you'll find.
+  </div>
+
+  <h2>Horizontal rules</h2>
+  <p>
+    <code>&lt;hr&gt;</code> marks a thematic break — a scene change in a story, a shift of topic.
+    It's a meaning, not a decorative line. For a decorative line, use a CSS border.
+  </p>
+
+  <h2>Try it</h2>
+  <ol class="checklist">
+    <li>Write a page about something you know well, using one <code>&lt;h1&gt;</code>, at least three
+        <code>&lt;h2&gt;</code>s, and real paragraphs under each.</li>
+    <li>Add an unordered list and an ordered list. Nest a list inside one of the list items.</li>
+    <li>Emphasise a word with <code>&lt;em&gt;</code> and another with <code>&lt;strong&gt;</code>.
+        Then swap them and read the sentence aloud both ways.</li>
+    <li>Get the text <code>&lt;h1&gt; is a heading &amp; nothing else</code> to appear literally on
+        the page.</li>
+    <li>Now do <a href="../exercises/01-recipe-card/starter.html">exercise 01: the recipe card</a>.</li>
+  </ol>
+
+  <nav class="pager">
+    <a href="01-your-first-page.html">← Lesson 01</a>
+    <span class="spacer"></span>
+    <a href="03-links.html">Lesson 03: Links →</a>
+  </nav>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">Learn HTML — lesson 02 of 08</div>
+</footer>
+
+</body>
+</html>

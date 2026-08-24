@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lesson 01 · Your first page</title>
+  <link rel="stylesheet" href="../assets/course.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <p class="eyebrow">Lesson 01</p>
+    <h1>Your first page</h1>
+    <p class="lede">
+      What an element actually is, why every page starts with the same five lines,
+      and the difference between the head and the body.
+    </p>
+  </div>
+</header>
+
+<main class="wrap">
+  <p class="crumbs"><a href="../index.html">← Course home</a></p>
+
+  <h2>HTML is labelling, not drawing</h2>
+  <p>
+    HTML doesn't describe how a page looks. It describes what each piece of content
+    <em>is</em>: this is a heading, this is a paragraph, this is a list, this is a link.
+    The browser then applies its own default styling to those labels. That's why an
+    unstyled page still looks vaguely sensible — bigger headings, indented lists —
+    without you writing a single line of CSS.
+  </p>
+  <p>
+    Getting the labels right is the whole skill. It's what makes your page work in a
+    screen reader, in Google's index, in reader mode, and on a screen size you never
+    tested.
+  </p>
+
+  <h2>The anatomy of an element</h2>
+  <p>
+    You label content by wrapping it in <strong>tags</strong>. A tag is a name in angle
+    brackets. Most content needs an opening tag and a closing tag, and the closing one
+    has a slash:
+  </p>
+
+<pre><code>&lt;p&gt;Hello, world.&lt;/p&gt;
+ ↑        ↑        ↑
+ opening  content  closing
+ tag               tag</code></pre>
+
+  <p>
+    Opening tag plus content plus closing tag is called an <strong>element</strong>. Elements
+    can hold other elements, which is how a page becomes a tree:
+  </p>
+
+<pre><code>&lt;p&gt;I am &lt;strong&gt;quite&lt;/strong&gt; sure about this.&lt;/p&gt;</code></pre>
+
+  <p class="demo-label">What the browser shows</p>
+  <div class="demo">
+    <p>I am <strong>quite</strong> sure about this.</p>
+  </div>
+
+  <p>
+    Nesting has one rule you cannot break: elements must close in the reverse order they
+    opened. <code>&lt;p&gt;&lt;strong&gt;…&lt;/strong&gt;&lt;/p&gt;</code> is fine.
+    <code>&lt;p&gt;&lt;strong&gt;…&lt;/p&gt;&lt;/strong&gt;</code> is not, and browsers will
+    silently rearrange your page trying to make sense of it.
+  </p>
+
+  <h3>Attributes</h3>
+  <p>
+    Tags can carry extra information as <strong>attributes</strong> — name/value pairs inside
+    the opening tag. A link needs to know where it goes, an image needs to know which file
+    to load:
+  </p>
+
+<pre><code>&lt;a href="https://example.com"&gt;Visit example&lt;/a&gt;
+&lt;img src="cat.jpg" alt="A ginger cat asleep on a keyboard"&gt;</code></pre>
+
+  <p>
+    Always put attribute values in double quotes. It's technically optional in some cases,
+    and it will bite you the first time a value contains a space.
+  </p>
+
+  <h3>Elements with no content</h3>
+  <p>
+    A few elements have nothing to wrap, so they have no closing tag at all. These are called
+    <strong>void elements</strong>: <code>&lt;img&gt;</code>, <code>&lt;br&gt;</code>,
+    <code>&lt;hr&gt;</code>, <code>&lt;input&gt;</code>, <code>&lt;meta&gt;</code>,
+    <code>&lt;link&gt;</code>. Writing <code>&lt;/img&gt;</code> is an error.
+  </p>
+
+  <h2>The five lines every page starts with</h2>
+  <p>
+    Here is a complete, valid HTML document. Nothing here is decoration — try removing
+    lines and see what breaks.
+  </p>
+
+  <p class="filename">hello.html</p>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="utf-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1"&gt;
+  &lt;title&gt;My first page&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;h1&gt;My first page&lt;/h1&gt;
+  &lt;p&gt;I made this with my hands.&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+
+  <p>Line by line:</p>
+
+  <table class="ref">
+    <thead>
+      <tr><th>Line</th><th>What it's for</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>&lt;!DOCTYPE html&gt;</code></td>
+        <td>Tells the browser to use modern standards mode. Leave it out and browsers fall back to
+            emulating 1990s bugs. It's not really a tag, and it takes no closing tag.</td>
+      </tr>
+      <tr>
+        <td><code>&lt;html lang="en"&gt;</code></td>
+        <td>The root element — everything else lives inside it. The <code>lang</code> attribute tells
+            screen readers which language to pronounce and browsers which dictionary to spellcheck with.</td>
+      </tr>
+      <tr>
+        <td><code>&lt;head&gt;</code></td>
+        <td>Information <em>about</em> the page, not shown in it: title, character encoding, stylesheets,
+            description. Covered properly in lesson 08.</td>
+      </tr>
+      <tr>
+        <td><code>&lt;meta charset="utf-8"&gt;</code></td>
+        <td>Declares the text encoding. Without it, accented letters, curly quotes and emoji can render
+            as garbage. Make it the first thing in the head.</td>
+      </tr>
+      <tr>
+        <td><code>&lt;meta name="viewport" …&gt;</code></td>
+        <td>Tells phones to use their real width instead of pretending to be a desktop and zooming out.
+            Without this line your page looks tiny on mobile.</td>
+      </tr>
+      <tr>
+        <td><code>&lt;title&gt;</code></td>
+        <td>The browser tab label, the bookmark name, and the blue line in search results. Required.</td>
+      </tr>
+      <tr>
+        <td><code>&lt;body&gt;</code></td>
+        <td>Everything the visitor actually sees.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="note">
+    <strong>You will type this a hundred times.</strong> Don't memorise it by staring — memorise it by
+    typing it from scratch each time you start a file, for the first week. In VS Code, typing
+    <code>!</code> then Tab expands the whole skeleton, but earn that shortcut first.
+  </div>
+
+  <h2>Whitespace is collapsed</h2>
+  <p>
+    HTML treats any run of spaces, tabs and newlines as a single space. These two paragraphs render
+    identically:
+  </p>
+
+<pre><code>&lt;p&gt;Hello        there&lt;/p&gt;
+
+&lt;p&gt;Hello
+   there&lt;/p&gt;</code></pre>
+
+  <p class="demo-label">Both render as</p>
+  <div class="demo">
+    <p>Hello
+       there</p>
+  </div>
+
+  <p>
+    This is good news: you can indent your markup however you like to keep it readable, and it
+    won't change the output. It also means you can't create space by hammering the space bar —
+    spacing is CSS's job.
+  </p>
+
+  <h2>Comments</h2>
+  <p>
+    Anything between <code>&lt;!--</code> and <code>--&gt;</code> is ignored by the browser. Useful
+    for notes to yourself and for temporarily disabling a chunk of markup.
+  </p>
+
+<pre><code>&lt;!-- Pricing table goes here once we have prices --&gt;</code></pre>
+
+  <div class="gotcha">
+    <strong>Comments are not private.</strong> They're shipped to the browser and anyone can read them
+    with View Source. Never put anything in a comment that you wouldn't say out loud.
+  </div>
+
+  <h2>Try it</h2>
+  <ol class="checklist">
+    <li>Create a file called <code>hello.html</code> anywhere on your computer and type the skeleton
+        above into it from memory. Double-click it to open it in your browser.</li>
+    <li>Change the <code>&lt;title&gt;</code> and refresh. Notice that the tab changes but the page
+        doesn't.</li>
+    <li>Add a second paragraph. Add a <code>&lt;strong&gt;</code> inside it.</li>
+    <li>Delete the closing <code>&lt;/p&gt;</code> of your first paragraph and refresh. Does it still
+        look right? Now open your browser's developer tools (F12), look at the Elements panel, and see
+        what the browser decided your page structure was.</li>
+    <li>Delete <code>&lt;meta charset="utf-8"&gt;</code>, put the word <em>café</em> and an emoji in a
+        paragraph, and refresh. Then put the meta tag back.</li>
+  </ol>
+
+  <nav class="pager">
+    <a href="../index.html">← Course home</a>
+    <span class="spacer"></span>
+    <a href="02-text.html">Lesson 02: Text →</a>
+  </nav>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">Learn HTML — lesson 01 of 08</div>
+</footer>
+
+</body>
+</html>
