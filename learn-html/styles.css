@@ -1,0 +1,268 @@
+:root {
+  --bg: #0f1c17;
+  --surface: #172820;
+  --ink: #e8f0ea;
+  --muted: #9bb3a4;
+  --accent: #5ecf8a;
+  --accent-dim: #2a6b45;
+  --line: #2a3d33;
+  --warn: #e8c56a;
+  --font-display: "Fraunces", "Palatino Linotype", Palatino, Georgia, serif;
+  --font-body: "Source Sans 3", "Segoe UI", Tahoma, sans-serif;
+  --font-code: "IBM Plex Mono", "Consolas", monospace;
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=IBM+Plex+Mono:wght@400;500&family=Source+Sans+3:wght@400;600;700&display=swap");
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: var(--font-body);
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: var(--ink);
+  background:
+    radial-gradient(ellipse 80% 50% at 10% -10%, #1e4a32 0%, transparent 55%),
+    radial-gradient(ellipse 60% 40% at 100% 0%, #243528 0%, transparent 50%),
+    var(--bg);
+}
+
+a {
+  color: var(--accent);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.18em;
+}
+
+a:hover {
+  color: #9aefb8;
+}
+
+.site-header,
+.site-footer,
+main {
+  width: min(720px, calc(100% - 2rem));
+  margin-inline: auto;
+}
+
+.site-header {
+  padding: 2.5rem 0 1rem;
+  animation: rise 0.6s ease-out both;
+}
+
+.brand {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 5vw, 2.75rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--accent);
+}
+
+.tagline {
+  margin: 0.4rem 0 0;
+  color: var(--muted);
+}
+
+main {
+  padding-bottom: 3rem;
+}
+
+.intro,
+.path,
+.how,
+.lesson,
+.try,
+.cheat {
+  margin-top: 1.75rem;
+  padding: 1.25rem 1.35rem;
+  background: color-mix(in srgb, var(--surface) 88%, transparent);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  animation: rise 0.7s ease-out both;
+}
+
+.path {
+  animation-delay: 0.08s;
+}
+
+.how {
+  animation-delay: 0.16s;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-display);
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+}
+
+h1 {
+  margin: 0 0 0.6rem;
+  font-size: clamp(1.6rem, 3.5vw, 2rem);
+}
+
+h2 {
+  margin: 0 0 0.85rem;
+  font-size: 1.35rem;
+  color: var(--accent);
+}
+
+h3 {
+  margin: 1.25rem 0 0.5rem;
+  font-size: 1.1rem;
+}
+
+p {
+  margin: 0 0 0.85rem;
+  color: color-mix(in srgb, var(--ink) 92%, var(--muted));
+}
+
+.lesson-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.65rem;
+}
+
+.lesson-list li {
+  display: grid;
+  gap: 0.15rem;
+  padding: 0.75rem 0.85rem;
+  border-left: 3px solid var(--accent-dim);
+  background: color-mix(in srgb, var(--bg) 55%, transparent);
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+
+.lesson-list li:hover {
+  border-color: var(--accent);
+  transform: translateX(3px);
+}
+
+.lesson-list a {
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.lesson-list span {
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+
+.nav-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 1.25rem;
+  margin: 1.25rem 0 0;
+  font-size: 0.95rem;
+}
+
+pre,
+code {
+  font-family: var(--font-code);
+}
+
+pre {
+  margin: 0.85rem 0;
+  padding: 0.9rem 1rem;
+  overflow-x: auto;
+  background: #0a140f;
+  border: 1px solid var(--line);
+  border-radius: 3px;
+  font-size: 0.88rem;
+  line-height: 1.5;
+}
+
+code {
+  font-size: 0.9em;
+  color: #b8f0cc;
+}
+
+.try {
+  border-color: var(--accent-dim);
+  background: linear-gradient(135deg, #1a3326, var(--surface));
+}
+
+.try h2 {
+  color: var(--warn);
+}
+
+.try ul,
+.try ol {
+  margin: 0.4rem 0 0;
+  padding-left: 1.25rem;
+  color: var(--muted);
+}
+
+.demo {
+  margin: 1rem 0;
+  padding: 1rem;
+  border: 1px dashed var(--accent-dim);
+  border-radius: 3px;
+  background: #101c16;
+}
+
+.demo > *:first-child {
+  margin-top: 0;
+}
+
+.demo > *:last-child {
+  margin-bottom: 0;
+}
+
+.cheat dl {
+  margin: 0;
+  display: grid;
+  gap: 0.55rem;
+}
+
+.cheat dt {
+  font-family: var(--font-code);
+  color: var(--accent);
+  font-size: 0.9rem;
+}
+
+.cheat dd {
+  margin: 0.15rem 0 0.55rem;
+  color: var(--muted);
+}
+
+.site-footer {
+  padding: 1rem 0 2.5rem;
+  color: var(--muted);
+  font-size: 0.92rem;
+  border-top: 1px solid var(--line);
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 520px) {
+  .intro,
+  .path,
+  .how,
+  .lesson,
+  .try,
+  .cheat {
+    padding: 1rem;
+  }
+}

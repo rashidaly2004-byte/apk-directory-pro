@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>05 — Tables</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <p class="brand">Learn HTML</p>
+      <nav class="nav-bar">
+        <a href="04-lists.html">← Prev</a>
+        <a href="index.html">Home</a>
+        <a href="06-forms.html">Next →</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="lesson">
+        <h1>05 — Tables</h1>
+        <p>Use tables for tabular data — not for page layout.</p>
+
+        <pre><code>&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Language&lt;/th&gt;
+      &lt;th&gt;Role&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;HTML&lt;/td&gt;
+      &lt;td&gt;Structure&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;CSS&lt;/td&gt;
+      &lt;td&gt;Style&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;</code></pre>
+
+        <h3>Live demo</h3>
+        <div class="demo">
+          <table style="width: 100%; border-collapse: collapse">
+            <thead>
+              <tr>
+                <th style="text-align: left; border-bottom: 1px solid #2a3d33; padding: 0.4rem">Language</th>
+                <th style="text-align: left; border-bottom: 1px solid #2a3d33; padding: 0.4rem">Role</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="padding: 0.4rem">HTML</td>
+                <td style="padding: 0.4rem">Structure</td>
+              </tr>
+              <tr>
+                <td style="padding: 0.4rem">CSS</td>
+                <td style="padding: 0.4rem">Style</td>
+              </tr>
+              <tr>
+                <td style="padding: 0.4rem">JavaScript</td>
+                <td style="padding: 0.4rem">Behavior</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="cheat">
+        <h2>Pieces</h2>
+        <dl>
+          <dt>table</dt>
+          <dd>The whole table.</dd>
+          <dt>tr</dt>
+          <dd>Table row.</dd>
+          <dt>th</dt>
+          <dd>Header cell (usually bold / scoped).</dd>
+          <dt>td</dt>
+          <dd>Data cell.</dd>
+        </dl>
+      </section>
+
+      <section class="try">
+        <h2>Your turn</h2>
+        <ol>
+          <li>Make a 3-column table: Day, Topic, Done?</li>
+          <li>Fill in a mini study schedule for this week.</li>
+        </ol>
+      </section>
+    </main>
+  </body>
+</html>

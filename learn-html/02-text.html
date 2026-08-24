@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>02 — Text &amp; headings</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <p class="brand">Learn HTML</p>
+      <nav class="nav-bar">
+        <a href="01-skeleton.html">← Prev</a>
+        <a href="index.html">Home</a>
+        <a href="03-links-images.html">Next →</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="lesson">
+        <h1>02 — Text &amp; headings</h1>
+        <p>Headings create hierarchy. Paragraphs hold body text. Inline tags emphasize words.</p>
+
+        <pre><code>&lt;h1&gt;Main title (one per page)&lt;/h1&gt;
+&lt;h2&gt;Section title&lt;/h2&gt;
+&lt;h3&gt;Subsection&lt;/h3&gt;
+
+&lt;p&gt;This is a paragraph of text.&lt;/p&gt;
+&lt;p&gt;Use &lt;strong&gt;strong&lt;/strong&gt; for important words,
+and &lt;em&gt;em&lt;/em&gt; for stress/emphasis.&lt;/p&gt;
+
+&lt;p&gt;Line break:&lt;br /&gt;starts a new line.&lt;/p&gt;
+&lt;hr /&gt;
+&lt;p&gt;Horizontal rule above this paragraph.&lt;/p&gt;</code></pre>
+
+        <h3>Live demo</h3>
+        <div class="demo">
+          <h1 style="font-size: 1.5rem; margin: 0 0 0.4rem">Main title</h1>
+          <h2 style="font-size: 1.2rem; margin: 0 0 0.4rem; color: inherit">Section title</h2>
+          <p>This is a paragraph of text.</p>
+          <p>
+            Use <strong>strong</strong> for important words, and <em>em</em> for stress/emphasis.
+          </p>
+          <p>Line break:<br />starts a new line.</p>
+          <hr />
+          <p>Horizontal rule above this paragraph.</p>
+        </div>
+      </section>
+
+      <section class="cheat">
+        <h2>Rules of thumb</h2>
+        <ul>
+          <li>Use one <code>&lt;h1&gt;</code> per page — the main topic.</li>
+          <li>Don’t skip levels (h1 → h3). Go in order.</li>
+          <li><code>&lt;strong&gt;</code> / <code>&lt;em&gt;</code> mean meaning, not just bold/italic styling.</li>
+        </ul>
+      </section>
+
+      <section class="try">
+        <h2>Your turn</h2>
+        <ol>
+          <li>In <code>my-page.html</code>, add an <code>&lt;h1&gt;</code> with your name.</li>
+          <li>Add an <code>&lt;h2&gt;</code> called “About me”.</li>
+          <li>Write 2–3 paragraphs under it.</li>
+          <li>Bold one important word with <code>&lt;strong&gt;</code>.</li>
+        </ol>
+      </section>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>01 — Page skeleton</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <p class="brand">Learn HTML</p>
+      <nav class="nav-bar">
+        <a href="index.html">Home</a>
+        <a href="02-text.html">Next lesson →</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="lesson">
+        <h1>01 — Page skeleton</h1>
+        <p>
+          Every HTML page starts with the same bones. Memorize this shape —
+          you’ll write it constantly.
+        </p>
+
+        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+  &lt;head&gt;
+    &lt;meta charset="UTF-8" /&gt;
+    &lt;title&gt;My first page&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;!-- visible content goes here --&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+
+        <h3>What each piece does</h3>
+        <dl>
+          <dt><code>&lt;!DOCTYPE html&gt;</code></dt>
+          <dd>Tells the browser: “this is modern HTML.”</dd>
+          <dt><code>&lt;html&gt;</code></dt>
+          <dd>Root of the document. <code>lang="en"</code> helps accessibility &amp; SEO.</dd>
+          <dt><code>&lt;head&gt;</code></dt>
+          <dd>Metadata (title, charset, CSS links). Not shown on the page.</dd>
+          <dt><code>&lt;body&gt;</code></dt>
+          <dd>Everything the user sees.</dd>
+        </dl>
+      </section>
+
+      <section class="cheat">
+        <h2>Tags vs elements</h2>
+        <p>
+          A <strong>tag</strong> is the markup like <code>&lt;p&gt;</code>.
+          An <strong>element</strong> is the whole thing:
+          <code>&lt;p&gt;Hello&lt;/p&gt;</code>.
+        </p>
+        <p>
+          Most elements have an opening and closing tag.
+          Some are self-closing (void): <code>&lt;img /&gt;</code>, <code>&lt;br /&gt;</code>, <code>&lt;meta /&gt;</code>.
+        </p>
+      </section>
+
+      <section class="try">
+        <h2>Your turn</h2>
+        <ol>
+          <li>Create a new file called <code>my-page.html</code> next to this one.</li>
+          <li>Copy the skeleton above into it.</li>
+          <li>Change the <code>&lt;title&gt;</code> to your name.</li>
+          <li>Inside <code>&lt;body&gt;</code>, write: <code>&lt;h1&gt;Hello, world&lt;/h1&gt;</code></li>
+          <li>Open <code>my-page.html</code> in your browser.</li>
+        </ol>
+      </section>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>07 — Semantic HTML</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <p class="brand">Learn HTML</p>
+      <nav class="nav-bar">
+        <a href="06-forms.html">← Prev</a>
+        <a href="index.html">Home</a>
+        <a href="08-project.html">Next →</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="lesson">
+        <h1>07 — Semantic HTML</h1>
+        <p>
+          Semantic tags describe meaning, not just boxes. They help accessibility,
+          SEO, and your future self reading the code.
+        </p>
+
+        <pre><code>&lt;header&gt;...site or page header...&lt;/header&gt;
+&lt;nav&gt;...links...&lt;/nav&gt;
+&lt;main&gt;
+  &lt;article&gt;
+    &lt;section&gt;...related content...&lt;/section&gt;
+  &lt;/article&gt;
+  &lt;aside&gt;...sidebar / related notes...&lt;/aside&gt;
+&lt;/main&gt;
+&lt;footer&gt;...footer...&lt;/footer&gt;</code></pre>
+
+        <h3>Prefer meaning over empty wrappers</h3>
+        <p>
+          Use <code>&lt;div&gt;</code> when you need a generic box for layout/CSS.
+          Prefer semantic tags when the content has a clear role.
+        </p>
+      </section>
+
+      <section class="cheat">
+        <h2>Quick map</h2>
+        <dl>
+          <dt>header</dt>
+          <dd>Intro / branding / top of a page or section.</dd>
+          <dt>nav</dt>
+          <dd>Primary navigation links.</dd>
+          <dt>main</dt>
+          <dd>The unique main content of the page (one per page).</dd>
+          <dt>section / article</dt>
+          <dd>section = thematic group; article = self-contained piece.</dd>
+          <dt>footer</dt>
+          <dd>Closing info, copyright, secondary links.</dd>
+        </dl>
+      </section>
+
+      <section class="try">
+        <h2>Your turn</h2>
+        <ol>
+          <li>Refactor <code>my-page.html</code> to use header, main, section, footer.</li>
+          <li>Put your nav links inside <code>&lt;nav&gt;</code>.</li>
+        </ol>
+      </section>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>03 — Links &amp; images</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <p class="brand">Learn HTML</p>
+      <nav class="nav-bar">
+        <a href="02-text.html">← Prev</a>
+        <a href="index.html">Home</a>
+        <a href="04-lists.html">Next →</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="lesson">
+        <h1>03 — Links &amp; images</h1>
+        <p>
+          Links connect pages. Images show pictures. Both need an attribute that
+          points to a URL or file path.
+        </p>
+
+        <pre><code>&lt;!-- Link to another page or site --&gt;
+&lt;a href="https://developer.mozilla.org/"&gt;MDN Web Docs&lt;/a&gt;
+
+&lt;!-- Open in a new tab --&gt;
+&lt;a href="https://example.com" target="_blank" rel="noopener"&gt;
+  Example
+&lt;/a&gt;
+
+&lt;!-- Image: always include alt text --&gt;
+&lt;img
+  src="https://picsum.photos/400/240"
+  alt="A random landscape photo"
+  width="400"
+  height="240"
+/&gt;</code></pre>
+
+        <h3>Live demo</h3>
+        <div class="demo">
+          <p>
+            Visit
+            <a href="https://developer.mozilla.org/en-US/docs/Web/HTML" target="_blank" rel="noopener"
+              >MDN HTML docs</a
+            >.
+          </p>
+          <img
+            src="https://picsum.photos/seed/htmllearn/400/240"
+            alt="A sample landscape photo from picsum"
+            width="400"
+            height="240"
+            style="max-width: 100%; height: auto; display: block"
+          />
+        </div>
+      </section>
+
+      <section class="cheat">
+        <h2>Key attributes</h2>
+        <dl>
+          <dt>href</dt>
+          <dd>Where the link goes (URL or relative path like <code>index.html</code>).</dd>
+          <dt>src</dt>
+          <dd>Where the image file is.</dd>
+          <dt>alt</dt>
+          <dd>Text description for screen readers &amp; when the image fails to load.</dd>
+        </dl>
+      </section>
+
+      <section class="try">
+        <h2>Your turn</h2>
+        <ol>
+          <li>Add a link from your page to <code>index.html</code>.</li>
+          <li>Add an external link to your favorite website.</li>
+          <li>Add an image with meaningful <code>alt</code> text.</li>
+        </ol>
+      </section>
+    </main>
+  </body>
+</html>

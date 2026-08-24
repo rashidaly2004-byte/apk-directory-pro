@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>06 — Forms</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <p class="brand">Learn HTML</p>
+      <nav class="nav-bar">
+        <a href="05-tables.html">← Prev</a>
+        <a href="index.html">Home</a>
+        <a href="07-semantic.html">Next →</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="lesson">
+        <h1>06 — Forms</h1>
+        <p>
+          Forms collect user input. Always connect a <code>&lt;label&gt;</code> to each
+          input with matching <code>for</code> / <code>id</code>.
+        </p>
+
+        <pre><code>&lt;form action="#" method="get"&gt;
+  &lt;label for="name"&gt;Name&lt;/label&gt;
+  &lt;input id="name" name="name" type="text" required /&gt;
+
+  &lt;label for="email"&gt;Email&lt;/label&gt;
+  &lt;input id="email" name="email" type="email" /&gt;
+
+  &lt;label for="level"&gt;Level&lt;/label&gt;
+  &lt;select id="level" name="level"&gt;
+    &lt;option&gt;Beginner&lt;/option&gt;
+    &lt;option&gt;Intermediate&lt;/option&gt;
+  &lt;/select&gt;
+
+  &lt;label for="bio"&gt;Bio&lt;/label&gt;
+  &lt;textarea id="bio" name="bio" rows="3"&gt;&lt;/textarea&gt;
+
+  &lt;button type="submit"&gt;Save&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+
+        <h3>Live demo</h3>
+        <div class="demo">
+          <form action="#" method="get" style="display: grid; gap: 0.65rem; max-width: 320px">
+            <label for="name">Name</label>
+            <input id="name" name="name" type="text" required />
+
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" />
+
+            <label for="level">Level</label>
+            <select id="level" name="level">
+              <option>Beginner</option>
+              <option>Intermediate</option>
+            </select>
+
+            <label for="bio">Bio</label>
+            <textarea id="bio" name="bio" rows="3"></textarea>
+
+            <button type="submit">Save</button>
+          </form>
+        </div>
+      </section>
+
+      <section class="cheat">
+        <h2>Useful input types</h2>
+        <p>
+          <code>text</code>, <code>email</code>, <code>password</code>,
+          <code>number</code>, <code>checkbox</code>, <code>radio</code>,
+          <code>date</code>, <code>file</code>
+        </p>
+      </section>
+
+      <section class="try">
+        <h2>Your turn</h2>
+        <ol>
+          <li>Build a “Contact me” form with name, email, and message.</li>
+          <li>Make name and email required.</li>
+          <li>Add a checkbox: “Subscribe to updates”.</li>
+        </ol>
+      </section>
+    </main>
+  </body>
+</html>
